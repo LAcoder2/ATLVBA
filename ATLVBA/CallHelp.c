@@ -227,133 +227,133 @@ typedef void(__cdecl *csub11)(void*, void*, void*, void*, void*, void*, void*, v
 void CCall0(INT_PTR fn, void* ret, int retSz){
 	if (ret != NULL){
 		if (retSz <= 8){
-			INT64 ret64 = ((fun0)fn)();
+			INT64 ret64 = ((cfun0)fn)();
 			memcpy(ret, &ret64, retSz);
 		}else{
-			((sub1)fn)(ret);
+			((csub1)fn)(ret);
 		}
 	}else{
-		((sub0)fn)();
+		((csub0)fn)();
 	}
 }
 void CCall1(INT_PTR fn, void* ret, int retSz, void* a1){
 	if (ret != NULL){
 		if (retSz <= 8){
-			INT64 ret64 = ((fun1)fn)(a1);
+			INT64 ret64 = ((cfun1)fn)(a1);
 			memcpy(ret, &ret64, retSz);
 		}else{
-			((sub2)fn)(ret, a1);
+			((csub2)fn)(ret, a1);
 		}
 	}else{
-		((sub1)fn)(a1);
+		((csub1)fn)(a1);
 	}
 }
 void CCall2(INT_PTR fn, void* ret, int retSz, void* a1, void* a2){
 	if (ret != NULL){
 		if (retSz <= 8){
-			INT64 ret64 = ((fun2)fn)(a1, a2);
+			INT64 ret64 = ((cfun2)fn)(a1, a2);
 			memcpy(ret, &ret64, retSz);
 		}else{
-			((sub3)fn)(ret, a1, a2);
+			((csub3)fn)(ret, a1, a2);
 		}
 	}else{
-		((sub2)fn)(a1, a2);
+		((csub2)fn)(a1, a2);
 	}
 }
 void CCall3(INT_PTR fn, void* ret, int retSz, void* a1, void* a2, void* a3){
 	if (ret != NULL){
 		if (retSz <= 8){
-			INT64 ret64 = ((fun3)fn)(a1, a2, a3);
+			INT64 ret64 = ((cfun3)fn)(a1, a2, a3);
 			memcpy(ret, &ret64, retSz);
 		}else{
-			((sub4)fn)(ret, a1, a2, a3);
+			((csub4)fn)(ret, a1, a2, a3);
 		}
 	}else{
-		((sub3)fn)(a1, a2, a3);
+		((csub3)fn)(a1, a2, a3);
 	}
 }
 void CCall4(INT_PTR fn, void* ret, int retSz, void* a1, void* a2, void* a3, void* a4){
 	if (ret != NULL){
 		if (retSz <= 8){
-			INT64 ret64 = ((fun4)fn)(a1, a2, a3, a4);
+			INT64 ret64 = ((cfun4)fn)(a1, a2, a3, a4);
 			memcpy(ret, &ret64, retSz);
 		}else{
-			((sub5)fn)(ret, a1, a2, a3, a4);
+			((csub5)fn)(ret, a1, a2, a3, a4);
 		}
 	}else{
-		((sub4)fn)(a1, a2, a3, a4);
+		((csub4)fn)(a1, a2, a3, a4);
 	}
 }
 void CCall5(INT_PTR fn, void* ret, int retSz, void* a1, void* a2, void* a3, void* a4, void* a5){
 	if (ret != NULL){
 		if (retSz <= 8){
-			INT64 ret64 = ((fun5)fn)(a1, a2, a3, a4, a5);
+			INT64 ret64 = ((cfun5)fn)(a1, a2, a3, a4, a5);
 			memcpy(ret, &ret64, retSz);
 		}else{
-			((sub6)fn)(ret, a1, a2, a3, a4, a5);
+			((csub6)fn)(ret, a1, a2, a3, a4, a5);
 		}
 	}else{
-		((sub5)fn)(a1, a2, a3, a4, a5);
+		((csub5)fn)(a1, a2, a3, a4, a5);
 	}
 }
 void CCall6(INT_PTR fn, void* ret, int retSz, void* a1, void* a2, void* a3, void* a4, void* a5, void* a6){
 	if (ret != NULL){
 		if (retSz <= 8){
-			INT64 ret64 = ((fun6)fn)(a1, a2, a3, a4, a5, a6);
+			INT64 ret64 = ((cfun6)fn)(a1, a2, a3, a4, a5, a6);
 			memcpy(ret, &ret64, retSz);
 		}else{
-			((sub7)fn)(ret, a1, a2, a3, a4, a5, a6);
+			((csub7)fn)(ret, a1, a2, a3, a4, a5, a6);
 		}
 	}else{
-		((sub6)fn)(a1, a2, a3, a4, a5, a6);
+		((csub6)fn)(a1, a2, a3, a4, a5, a6);
 	}
 }
 void CCall7(INT_PTR fn, void* ret, int retSz, void* a1, void* a2, void* a3, void* a4, void* a5, void* a6, void* a7){
 	if (ret != NULL){
 		if (retSz <= 8){
-			INT64 ret64 = ((fun7)fn)(a1, a2, a3, a4, a5, a6, a7);
+			INT64 ret64 = ((cfun7)fn)(a1, a2, a3, a4, a5, a6, a7);
 			memcpy(ret, &ret64, retSz);
 		}else{
-			((sub8)fn)(ret, a1, a2, a3, a4, a5, a6, a7);
+			((csub8)fn)(ret, a1, a2, a3, a4, a5, a6, a7);
 		}
 	}else{
-		((sub7)fn)(a1, a2, a3, a4, a5, a6, a7);
+		((csub7)fn)(a1, a2, a3, a4, a5, a6, a7);
 	}
 }
 void CCall8(INT_PTR fn, void* ret, int retSz, void* a1, void* a2, void* a3, void* a4, void* a5, void* a6, void* a7, void* a8){
 	if (ret != NULL){
 		if (retSz <= 8){
-			INT64 ret64 = ((fun8)fn)(a1, a2, a3, a4, a5, a6, a7, a8);
+			INT64 ret64 = ((cfun8)fn)(a1, a2, a3, a4, a5, a6, a7, a8);
 			memcpy(ret, &ret64, retSz);
 		}else{
-			((sub9)fn)(ret, a1, a2, a3, a4, a5, a6, a7, a8);
+			((csub9)fn)(ret, a1, a2, a3, a4, a5, a6, a7, a8);
 		}
 	}else{
-		((sub8)fn)(a1, a2, a3, a4, a5, a6, a7, a8);
+		((csub8)fn)(a1, a2, a3, a4, a5, a6, a7, a8);
 	}
 }
 void CCall9(INT_PTR fn, void* ret, int retSz, void* a1, void* a2, void* a3, void* a4, void* a5, void* a6, void* a7, void* a8, void* a9){
 	if (ret != NULL){
 		if (retSz <= 8){
-			INT64 ret64 = ((fun9)fn)(a1, a2, a3, a4, a5, a6, a7, a8, a9);
+			INT64 ret64 = ((cfun9)fn)(a1, a2, a3, a4, a5, a6, a7, a8, a9);
 			memcpy(ret, &ret64, retSz);
 		}else{
-			((sub10)fn)(ret, a1, a2, a3, a4, a5, a6, a7, a8, a9);
+			((csub10)fn)(ret, a1, a2, a3, a4, a5, a6, a7, a8, a9);
 		}
 	}else{
-		((sub9)fn)(a1, a2, a3, a4, a5, a6, a7, a8, a9);
+		((csub9)fn)(a1, a2, a3, a4, a5, a6, a7, a8, a9);
 	}
 }
 void CCall10(INT_PTR fn, void* ret, int retSz, void* a1, void* a2, void* a3, void* a4, void* a5, void* a6, void* a7, void* a8, void* a9, void* a10){
 	if (ret != NULL){
 		if (retSz <= 8){
-			INT64 ret64 = ((fun10)fn)(a1, a2, a3, a4, a5, a6, a7, a8, a9, a10);
+			INT64 ret64 = ((cfun10)fn)(a1, a2, a3, a4, a5, a6, a7, a8, a9, a10);
 			memcpy(ret, &ret64, retSz);
 		}else{
-			((sub11)fn)(ret, a1, a2, a3, a4, a5, a6, a7, a8, a9, a10);
+			((csub11)fn)(ret, a1, a2, a3, a4, a5, a6, a7, a8, a9, a10);
 		}
 	}else{
-		((sub10)fn)(a1, a2, a3, a4, a5, a6, a7, a8, a9, a10);
+		((csub10)fn)(a1, a2, a3, a4, a5, a6, a7, a8, a9, a10);
 	}
 }
 

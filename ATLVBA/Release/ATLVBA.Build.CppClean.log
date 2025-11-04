@@ -1,3 +1,5 @@
+f:\vsprojects\atlvba\release\atlvba.lib
+f:\vsprojects\atlvba\release\atlvba.exp
 f:\vsprojects\atlvba\atlvba\release\vc141.pdb
 f:\vsprojects\atlvba\atlvba\release\atlvba.obj
 f:\vsprojects\atlvba\atlvba\release\atlvba_i.obj
@@ -7,12 +9,19 @@ f:\vsprojects\atlvba\atlvba\release\dllmain.obj
 f:\vsprojects\atlvba\atlvba\release\memhlp.obj
 f:\vsprojects\atlvba\atlvba\release\functions.obj
 f:\vsprojects\atlvba\atlvba\release\xdlldata.obj
+f:\vsprojects\atlvba\release\atlvba.dll
+f:\vsprojects\atlvba\release\atlvba.pdb
 f:\vsprojects\atlvba\atlvba\release\atlvba.tlb
 f:\vsprojects\atlvba\atlvba\atlvba_i.c
 f:\vsprojects\atlvba\atlvba\atlvba_i.h
+f:\vsprojects\atlvba\atlvba\release\atlvba.res
+f:\vsprojects\atlvba\atlvba\release\atlvba.tlog\atlvba.write.1u.tlog
 f:\vsprojects\atlvba\atlvba\release\atlvba.tlog\cl.command.1.tlog
 f:\vsprojects\atlvba\atlvba\release\atlvba.tlog\cl.read.1.tlog
 f:\vsprojects\atlvba\atlvba\release\atlvba.tlog\cl.write.1.tlog
+f:\vsprojects\atlvba\atlvba\release\atlvba.tlog\link.command.1.tlog
+f:\vsprojects\atlvba\atlvba\release\atlvba.tlog\link.read.1.tlog
+f:\vsprojects\atlvba\atlvba\release\atlvba.tlog\link.write.1.tlog
 f:\vsprojects\atlvba\atlvba\release\atlvba.tlog\midl.command.1.tlog
 f:\vsprojects\atlvba\atlvba\release\atlvba.tlog\midl.read.1.tlog
 f:\vsprojects\atlvba\atlvba\release\atlvba.tlog\midl.write.1.tlog

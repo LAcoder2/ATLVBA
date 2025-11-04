@@ -236,7 +236,7 @@ EXTERN_C const IID LIBID_ATLVBALib;
     const void *Buf2,
     __int3264 Size);
 
-/* [entry] */ long __stdcall memCpy( 
+/* [entry] */ __int3264 __stdcall memCpy( 
     void *dst,
     const void *src,
     __int3264 sz);

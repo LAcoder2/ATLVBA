@@ -104,7 +104,7 @@ library ATLVBALib
 		[entry("SwapVT")] void SwapVT(VARIANT* var1, VARIANT* var2);
 
 		[entry("memCmp")] long __stdcall memCmp(const void* Buf1, const void* Buf2, __int3264 Size);
-		[entry("memCpy")] long __stdcall memCpy(void* dst, const void* src, __int3264 sz);
+		[entry("memCpy")] __int3264 __stdcall memCpy(void* dst, const void* src, __int3264 sz);
 	};
 	module StrHlp{
 		[entry("ToAnsi")] BSTR ToAnsi(BSTR str);
