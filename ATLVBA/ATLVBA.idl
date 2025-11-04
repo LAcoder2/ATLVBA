@@ -1,0 +1,154 @@
+﻿// ATLVBA.idl: источник языка IDL для ATLVBA
+//
+
+// Этот файл будет обработан средством MIDL для
+// создание библиотеки типов ($handlersafeidlname$.tlb) и кода маршалирования.
+
+import "oaidl.idl";
+import "ocidl.idl";
+
+[
+	uuid(566442d4-10d6-4437-b9d4-836bd6a64c04),
+	version(1.0),
+]
+library ATLVBALib
+{
+	importlib("stdole2.tlb");
+	typedef [public] void AnyType;
+	const __int3264 NullPtr = 0;
+	//[
+	//	uuid(DB8F8B36-848D-45D8-BF77-C6C1ADEABB1C), 
+	//	dllname("ATLVBA.dll"),
+	//	helpstring("Example functions module")
+	//]
+	//module MathFunctions{
+		//[entry(1)]
+		//double __stdcall ExampleFun(
+		//	[in] double a,
+		//	[in] double b);
+	//};
+	[
+		uuid(9300AA31-2722-453F-9140-1082D95E486D),
+		dllname("ATLVBA.dll")
+	]
+	module MemoryFunctions{
+		[entry("GetMemPtr")] void GetMemPtr(const void* src, void* dst);
+		[entry("GetMem1")] void GetMem1(const void* src, void* dst);
+		[entry("GetMem2")] void GetMem2(const void* src, void* dst);
+		[entry("GetMem4")] void GetMem4(const void* src, void* dst);
+		[entry("GetMem8")] void GetMem8(const void* src, void* dst);
+		[entry("GetMem16")] void GetMem16(const void* src, void* dst);
+		[entry("GetMemVT")] void GetMemVT(const void* src, void* dst);		
+		
+		[entry("PutMemPtr")] void PutMemPtr(void* dst, __int3264 src);
+		[entry("PutMem1")] void PutMem1(void* dst, byte src);
+		[entry("PutMem2")] void PutMem2(void* dst, short src);
+		[entry("PutMem4")] void PutMem4(void* dst, long src);
+		[entry("PutMem8")] void PutMem8(void* dst, CY src);
+		[entry("PutMem8")] void PutMemLL(void* dst, __int64 src);
+		[entry("PutMemVT")] void PutMemVT(void* dst, VARIANT src);
+
+		[entry("GetMem1"), propget]
+		HRESULT __stdcall GetByt([in] void* Src, [out, retval] byte* bRetVal);
+		[entry("PutMem1"), propput]
+		HRESULT __stdcall PutByt([in] void* Dst, [in] byte bNewVal);
+
+		[entry("GetMem2"), propget]
+		HRESULT __stdcall GetInt([in] void* Src, [out, retval] short* iRetVal);
+		[entry("PutMem2"), propput]
+		HRESULT __stdcall PutInt([in] void* Dst, [in] short iNewVal);
+
+		[entry("GetMem4"), propget]
+		HRESULT __stdcall GetLng([in] void* Src, [out, retval] int* lRetVal);
+		[entry("PutMem4"), propput]
+		HRESULT __stdcall PutLng([in] void* Dst, [in] int lNewVal);
+
+		[entry("GetMemPtr"), propget, helpstring("Returns or sets the value referenced by the source parameter cast to a DWord Long.")]
+		HRESULT __stdcall GetPtr([in] void* Src, [out, retval] __int3264* pRetVal);
+		[entry("PutMemPtr"), propput, ]
+		HRESULT __stdcall PutPtr([in] void* Dst, [in] __int3264 pNewVal);
+		
+		[entry("GetMemPtr"), propget]
+		HRESULT __stdcall StringPtr([in] BSTR* Src, [out, retval] __int3264* pRetVal);
+		[entry("PutMemPtr"), propput]
+		HRESULT __stdcall StringPtr([in] BSTR* Src, [in] __int3264 pNewVal);
+		
+		[entry("GetMemPtr"), propget]
+		HRESULT __stdcall SAPtr([in] SAFEARRAY(void)* Array, [out, retval] __int3264* pRetVal);
+		[entry("PutMemPtr"), propput]
+		HRESULT __stdcall SAPtr([in] SAFEARRAY(void)* Array, [in] __int3264 pNewVal);
+		
+		//[entry("GetMemPtr"), propget]
+		//HRESULT __stdcall StrSAPtr([in] SAFEARRAY(BSTR)* Array, [out, retval] __int3264* lpRetVal);
+		//[entry("PutMemPtr"), propput, ]
+		//HRESULT __stdcall StrSAPtr([in] SAFEARRAY(BSTR)* Array, [in] __int3264 NewValue);
+
+		[entry("GetMem8"), propget]
+		HRESULT __stdcall GetCur([in] void* Src, [out, retval] CURRENCY* cRetVal);
+		[entry("PutMem8"), propput]
+		HRESULT __stdcall PutCur([in] void* Dst, [in] CURRENCY cNewVal);
+		[entry("GetMem8"), propget]
+		HRESULT __stdcall GetDbl([in] void* Src, [out, retval] double* dRetVal);
+		[entry("PutMem8"), propput]
+		HRESULT __stdcall PutDbl([in] void* Dst, [in] double dNewVal);
+		
+		[entry("MovePtr")] void MovePtr(void* dst, void* src);
+		[entry("MovePtr"), helpstring("Перемещает только указатель SA, не заботясь о данных массива dst (предполагается, что он пустой)")] 
+		void MoveAryPtr(SAFEARRAY(void)* dst, SAFEARRAY(void)* src);
+		[entry("MoveAry")] void MoveAry(SAFEARRAY(void)* dst, SAFEARRAY(void)* src);
+		[entry("MoveStr")] void MoveStr(BSTR* dst, BSTR* src);
+		[entry("MoveVT")] void MoveVT(void* dst, void* src);
+		
+		[entry("SwapPtr")] void SwapPtr(void* var1, void* var2);
+		[entry("SwapPtr")] void SwapAry(SAFEARRAY(void)* var1, SAFEARRAY(void)* var2);
+		[entry("SwapVT")] void SwapVT(VARIANT* var1, VARIANT* var2);
+
+		[entry("memCmp")] long __stdcall memCmp(const void* Buf1, const void* Buf2, __int3264 Size);
+		[entry("memCpy")] long __stdcall memCpy(void* dst, const void* src, __int3264 sz);
+	};
+	module StrHlp{
+		[entry("ToAnsi")] BSTR ToAnsi(BSTR str);
+		[entry("FromAnsi")] BSTR FromAnsi(BSTR str);
+	};
+	module CallBackFunctions{
+		[entry("Call0")] void __stdcall Call0(__int3264 fn, void* ret, int retSz);
+		[entry("Call1")] void __stdcall Call1(__int3264 fn, void* ret, int retSz, void* a1);
+		[entry("Call2")] void __stdcall Call2(__int3264 fn, void* ret, int retSz, void* a1, void* a2);
+		[entry("Call3")] void __stdcall Call3(__int3264 fn, void* ret, int retSz, void* a1, void* a2, void* a3);
+		[entry("Call4")] void __stdcall Call4(__int3264 fn, void* ret, int retSz, void* a1, void* a2, void* a3, void* a4);
+		[entry("Call5")] void __stdcall Call5(__int3264 fn, void* ret, int retSz, void* a1, void* a2, void* a3, void* a4, void* a5);
+		[entry("Call6")] void __stdcall Call6(__int3264 fn, void* ret, int retSz, void* a1, void* a2, void* a3, void* a4, void* a5, void* a6);
+		[entry("Call7")] void __stdcall Call7(__int3264 fn, void* ret, int retSz, void* a1, void* a2, void* a3, void* a4, void* a5, void* a6, void* a7);
+		[entry("Call8")] void __stdcall Call8(__int3264 fn, void* ret, int retSz, void* a1, void* a2, void* a3, void* a4, void* a5, void* a6, void* a7, void* a8);
+		[entry("Call9")] void __stdcall Call9(__int3264 fn, void* ret, int retSz, void* a1, void* a2, void* a3, void* a4, void* a5, void* a6, void* a7, void* a8, void* a9);
+		[entry("Call10")] void __stdcall Call10(__int3264 fn, void* ret, int retSz, void* a1, void* a2, void* a3, void* a4, void* a5, void* a6, void* a7, void* a8, void* a9, void* a10);
+		
+		[entry("CCall0")] void __stdcall CCall0(__int3264 fn, void* ret, int retSz);
+		[entry("CCall1")] void __stdcall CCall1(__int3264 fn, void* ret, int retSz, void* a1);
+		[entry("CCall2")] void __stdcall CCall2(__int3264 fn, void* ret, int retSz, void* a1, void* a2);
+		[entry("CCall3")] void __stdcall CCall3(__int3264 fn, void* ret, int retSz, void* a1, void* a2, void* a3);
+		[entry("CCall4")] void __stdcall CCall4(__int3264 fn, void* ret, int retSz, void* a1, void* a2, void* a3, void* a4);
+		[entry("CCall5")] void __stdcall CCall5(__int3264 fn, void* ret, int retSz, void* a1, void* a2, void* a3, void* a4, void* a5);
+		[entry("CCall6")] void __stdcall CCall6(__int3264 fn, void* ret, int retSz, void* a1, void* a2, void* a3, void* a4, void* a5, void* a6);
+		[entry("CCall7")] void __stdcall CCall7(__int3264 fn, void* ret, int retSz, void* a1, void* a2, void* a3, void* a4, void* a5, void* a6, void* a7);
+		[entry("CCall8")] void __stdcall CCall8(__int3264 fn, void* ret, int retSz, void* a1, void* a2, void* a3, void* a4, void* a5, void* a6, void* a7, void* a8);
+		[entry("CCall9")] void __stdcall CCall9(__int3264 fn, void* ret, int retSz, void* a1, void* a2, void* a3, void* a4, void* a5, void* a6, void* a7, void* a8, void* a9);
+		[entry("CCall10")] void __stdcall CCall10(__int3264 fn, void* ret, int retSz, void* a1, void* a2, void* a3, void* a4, void* a5, void* a6, void* a7, void* a8, void* a9, void* a10);
+		[entry("Call2_"), helpstring("Экспериментальная версия")] 
+			void __stdcall Call2_(__int3264 fn, void* ret, int retSz, void* a1, void* a2);
+		//void __stdcall Call2(__int3264 fn, void* ret, int retSz, [in, optional, defaultvalue(NullPtr)] void* arg1, [in, optional, defaultvalue(NullPtr)] void* arg2);
+	};
+
+	[
+		dllname("Kernel32.dll"),
+		helpstring("Library Functions")
+	]
+	module LibraryFunctions{
+		[entry("LoadLibraryW")]
+		__int3264 __stdcall LoadLibW( [in] BSTR LibFileName );
+		[entry("FreeLibrary")]
+		long FreeLib( [in] __int3264 hLibModule );
+		[entry("GetProcAddress")]
+		__int3264 GetProcAddr( [in] __int3264 hModule, [in] BSTR AnsiProcName );
+	};
+};
