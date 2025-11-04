@@ -6,7 +6,5 @@ Private Declare PtrSafe Function LoadLibrary Lib "kernel32.dll" Alias "LoadLibra
 
 Private Sub Workbook_Open()
     LoadLibrary ThisWorkbook.Path & "\ATLVBA.dll"
-'    Debug.Print "Workbook_Open"
-'    ChDir ThisWorkbook.Path
 End Sub
 ```
