@@ -1,4 +1,5 @@
-﻿  Processing .\ATLVBA.idl
+﻿F:\Microsoft Visual Studio\2017\Community\Common7\IDE\VC\VCTargets\Microsoft.CppClean.targets(76,5): warning : Отказано в доступе по пути "f:\vsprojects\atlvba\release\atlvba.dll".
+  Processing .\ATLVBA.idl
   ATLVBA.idl
   Processing C:\Program Files (x86)\Windows Kits\10\Include\10.0.26100.0\um\oaidl.idl
   oaidl.idl
@@ -31,7 +32,7 @@
   ATLVBA.cpp
   ATLVBA_i.c
   CallHelp.c
-f:\vsprojects\atlvba\atlvba\callhelp.c(86): warning C4022: copyFnArr: несоответствие указателя для фактического параметра 2
+f:\vsprojects\atlvba\atlvba\callhelp.c(116): warning C4022: copyFnArr: несоответствие указателя для фактического параметра 2
   StrHlp.c
   Создание кода...
   dllmain.cpp
@@ -39,8 +40,4 @@ f:\vsprojects\atlvba\atlvba\callhelp.c(86): warning C4022: copyFnArr: несоо
   MemHlp.cpp
   Создание кода...
   xdlldata.c
-     Создается библиотека F:\VSProjects\ATLVBA\Release\ATLVBA.lib и объект F:\VSProjects\ATLVBA\Release\ATLVBA.exp
-ATLVBA.exp : warning LNK4070: директива /OUT:ATLProjectLib.dll в .EXP отличается от имени выходного файла "F:\VSProjects\ATLVBA\Release\ATLVBA.dll"; директива игнорируется
-  ATLVBA.vcxproj -> F:\VSProjects\ATLVBA\Release\ATLVBA.dll
-F:\Microsoft Visual Studio\2017\Community\Common7\IDE\VC\VCTargets\Microsoft.CppCommon.targets(1840,5): warning MSB3075: команда "regsvr32 /s "F:\VSProjects\ATLVBA\Release\ATLVBA.dll"" завершила работу с кодом 5. Убедитесь в наличии достаточных прав для выполнения этой команды.
-F:\Microsoft Visual Studio\2017\Community\Common7\IDE\VC\VCTargets\Microsoft.CppCommon.targets(1852,5): error MSB8011: не удалось зарегистрировать выход. Попробуйте включить перенаправления регистраций пользователя или зарегистрировать компонент из командной строки, запущенной с повышенными разрешениями.
+LINK : fatal error LNK1104: не удается открыть файл "F:\VSProjects\ATLVBA\Release\ATLVBA.dll"

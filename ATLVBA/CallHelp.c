@@ -25,6 +25,36 @@ typedef void(__stdcall *sub8)(void*, void*, void*, void*, void*, void*, void*, v
 typedef void(__stdcall *sub9)(void*, void*, void*, void*, void*, void*, void*, void*, void*);
 typedef void(__stdcall *sub10)(void*, void*, void*, void*, void*, void*, void*, void*, void*, void*);
 typedef void(__stdcall *sub11)(void*, void*, void*, void*, void*, void*, void*, void*, void*, void*, void*);
+//########################CDECL Section########################
+//#ifdef _WIN64
+//#define CALL_CONV __stdcall
+//#else
+//#define CALL_CONV __cdecl
+//#endif
+typedef INT64(__cdecl *cfun0)();
+typedef INT64(__cdecl *cfun1)(void*);
+typedef INT64(__cdecl *cfun2)(void*, void*);
+typedef INT64(__cdecl *cfun3)(void*, void*, void*);
+typedef INT64(__cdecl *cfun4)(void*, void*, void*, void*);
+typedef INT64(__cdecl *cfun5)(void*, void*, void*, void*, void*);
+typedef INT64(__cdecl *cfun6)(void*, void*, void*, void*, void*, void*);
+typedef INT64(__cdecl *cfun7)(void*, void*, void*, void*, void*, void*, void*);
+typedef INT64(__cdecl *cfun8)(void*, void*, void*, void*, void*, void*, void*, void*);
+typedef INT64(__cdecl *cfun9)(void*, void*, void*, void*, void*, void*, void*, void*, void*);
+typedef INT64(__cdecl *cfun10)(void*, void*, void*, void*, void*, void*, void*, void*, void*, void*);
+typedef void(__cdecl *csub0)();
+typedef void(__cdecl *csub1)(void*);
+typedef void(__cdecl *csub2)(void*, void*);
+typedef void(__cdecl *csub3)(void*, void*, void*);
+typedef void(__cdecl *csub4)(void*, void*, void*, void*);
+typedef void(__cdecl *csub5)(void*, void*, void*, void*, void*);
+typedef void(__cdecl *csub6)(void*, void*, void*, void*, void*, void*);
+typedef void(__cdecl *csub7)(void*, void*, void*, void*, void*, void*, void*);
+typedef void(__cdecl *csub8)(void*, void*, void*, void*, void*, void*, void*, void*);
+typedef void(__cdecl *csub9)(void*, void*, void*, void*, void*, void*, void*, void*, void*);
+typedef void(__cdecl *csub10)(void*, void*, void*, void*, void*, void*, void*, void*, void*, void*);
+typedef void(__cdecl *csub11)(void*, void*, void*, void*, void*, void*, void*, void*, void*, void*, void*);
+
 
 void Call0(INT_PTR fn, void* ret, int retSz){
 	if (ret != NULL){
@@ -199,30 +229,6 @@ void Call10(INT_PTR fn, void* ret, int retSz, void* a1, void* a2, void* a3, void
 		((sub10)fn)(a1, a2, a3, a4, a5, a6, a7, a8, a9, a10);
 	}
 }
-//########################CDECL Section########################
-typedef INT64(__cdecl *cfun0)();
-typedef INT64(__cdecl *cfun1)(void*);
-typedef INT64(__cdecl *cfun2)(void*, void*);
-typedef INT64(__cdecl *cfun3)(void*, void*, void*);
-typedef INT64(__cdecl *cfun4)(void*, void*, void*, void*);
-typedef INT64(__cdecl *cfun5)(void*, void*, void*, void*, void*);
-typedef INT64(__cdecl *cfun6)(void*, void*, void*, void*, void*, void*);
-typedef INT64(__cdecl *cfun7)(void*, void*, void*, void*, void*, void*, void*);
-typedef INT64(__cdecl *cfun8)(void*, void*, void*, void*, void*, void*, void*, void*);
-typedef INT64(__cdecl *cfun9)(void*, void*, void*, void*, void*, void*, void*, void*, void*);
-typedef INT64(__cdecl *cfun10)(void*, void*, void*, void*, void*, void*, void*, void*, void*, void*);
-typedef void(__cdecl *csub0)();
-typedef void(__cdecl *csub1)(void*);
-typedef void(__cdecl *csub2)(void*, void*);
-typedef void(__cdecl *csub3)(void*, void*, void*);
-typedef void(__cdecl *csub4)(void*, void*, void*, void*);
-typedef void(__cdecl *csub5)(void*, void*, void*, void*, void*);
-typedef void(__cdecl *csub6)(void*, void*, void*, void*, void*, void*);
-typedef void(__cdecl *csub7)(void*, void*, void*, void*, void*, void*, void*);
-typedef void(__cdecl *csub8)(void*, void*, void*, void*, void*, void*, void*, void*);
-typedef void(__cdecl *csub9)(void*, void*, void*, void*, void*, void*, void*, void*, void*);
-typedef void(__cdecl *csub10)(void*, void*, void*, void*, void*, void*, void*, void*, void*, void*);
-typedef void(__cdecl *csub11)(void*, void*, void*, void*, void*, void*, void*, void*, void*, void*, void*);
 
 void CCall0(INT_PTR fn, void* ret, int retSz){
 	if (ret != NULL){
