@@ -7,8 +7,8 @@
 /* at Tue Jan 19 11:14:07 2038
  */
 /* Compiler settings for ATLVBA.idl:
-    Oicf, W1, Zp8, env=Win64 (32b run), target_arch=AMD64 8.01.0628 
-    protocol : all , ms_ext, c_ext, robust
+    Oicf, W1, Zp8, env=Win32 (32b run), target_arch=X86 8.01.0628 
+    protocol : dce , ms_ext, c_ext, robust
     error checks: allocation ref bounds_check enum stub_data 
     VC __declspec() decoration level: 
          __declspec(uuid()), __declspec(selectany), __declspec(novtable)
@@ -72,11 +72,11 @@ typedef /* [public] */ void AnyType;
 EXTERN_C const IID LIBID_ATLVBALib;
 
 
-#ifndef __MemoryFunctions_MODULE_DEFINED__
-#define __MemoryFunctions_MODULE_DEFINED__
+#ifndef __MemHelp_MODULE_DEFINED__
+#define __MemHelp_MODULE_DEFINED__
 
 
-/* module MemoryFunctions */
+/* module MemHelp */
 /* [dllname][uuid] */ 
 
 /* [entry] */ void GetMemPtr( 
@@ -241,15 +241,21 @@ EXTERN_C const IID LIBID_ATLVBALib;
     const void *src,
     __int3264 sz);
 
-#endif /* __MemoryFunctions_MODULE_DEFINED__ */
+#endif /* __MemHelp_MODULE_DEFINED__ */
 
 
-#ifndef __StrHlp_MODULE_DEFINED__
-#define __StrHlp_MODULE_DEFINED__
+#ifndef __StrHelp_MODULE_DEFINED__
+#define __StrHelp_MODULE_DEFINED__
 
 
-/* module StrHlp */
+/* module StrHelp */
 
+
+/* [entry] */ INT32 StrLen( 
+    BSTR str);
+
+/* [entry] */ INT32 StrLenB( 
+    BSTR str);
 
 /* [entry] */ BSTR ToAnsi( 
     BSTR str);
@@ -257,14 +263,14 @@ EXTERN_C const IID LIBID_ATLVBALib;
 /* [entry] */ BSTR FromAnsi( 
     BSTR str);
 
-#endif /* __StrHlp_MODULE_DEFINED__ */
+#endif /* __StrHelp_MODULE_DEFINED__ */
 
 
-#ifndef __CallBackFunctions_MODULE_DEFINED__
-#define __CallBackFunctions_MODULE_DEFINED__
+#ifndef __CallHelp_MODULE_DEFINED__
+#define __CallHelp_MODULE_DEFINED__
 
 
-/* module CallBackFunctions */
+/* module CallHelp */
 
 
 /* [entry] */ void __stdcall Call0( 
@@ -494,14 +500,14 @@ EXTERN_C const IID LIBID_ATLVBALib;
     void *a1,
     void *a2);
 
-#endif /* __CallBackFunctions_MODULE_DEFINED__ */
+#endif /* __CallHelp_MODULE_DEFINED__ */
 
 
-#ifndef __LibraryFunctions_MODULE_DEFINED__
-#define __LibraryFunctions_MODULE_DEFINED__
+#ifndef __LibHelp_MODULE_DEFINED__
+#define __LibHelp_MODULE_DEFINED__
 
 
-/* module LibraryFunctions */
+/* module LibHelp */
 /* [helpstring][dllname] */ 
 
 /* [entry] */ __int3264 __stdcall LoadLibW( 
@@ -514,7 +520,7 @@ EXTERN_C const IID LIBID_ATLVBALib;
     /* [in] */ __int3264 hModule,
     /* [in] */ BSTR AnsiProcName);
 
-#endif /* __LibraryFunctions_MODULE_DEFINED__ */
+#endif /* __LibHelp_MODULE_DEFINED__ */
 #endif /* __ATLVBALib_LIBRARY_DEFINED__ */
 
 /* Additional Prototypes for ALL interfaces */

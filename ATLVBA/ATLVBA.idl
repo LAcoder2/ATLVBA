@@ -31,7 +31,7 @@ library ATLVBALib
 		uuid(9300AA31-2722-453F-9140-1082D95E486D),
 		dllname("ATLVBA.dll")
 	]
-	module MemoryFunctions{
+	module MemHelp{
 		[entry("GetMemPtr")] void GetMemPtr(const void* src, void* dst);
 		[entry("GetMem1")] void GetMem1(const void* src, void* dst);
 		[entry("GetMem2")] void GetMem2(const void* src, void* dst);
@@ -106,11 +106,13 @@ library ATLVBALib
 		[entry("memCmp")] long __stdcall memCmp(const void* Buf1, const void* Buf2, __int3264 Size);
 		[entry("memCpy")] __int3264 __stdcall memCpy(void* dst, const void* src, __int3264 sz);
 	};
-	module StrHlp{
+	module StrHelp{
+		[entry("StrLen")] INT32 StrLen(BSTR str);
+		[entry("StrLenB")] INT32 StrLenB(BSTR str);
 		[entry("ToAnsi")] BSTR ToAnsi(BSTR str);
 		[entry("FromAnsi")] BSTR FromAnsi(BSTR str);
 	};
-	module CallBackFunctions{
+	module CallHelp{
 		[entry("Call0")] void __stdcall Call0(__int3264 fn, void* ret, int retSz);
 		[entry("Call1")] void __stdcall Call1(__int3264 fn, void* ret, int retSz, void* a1);
 		[entry("Call2")] void __stdcall Call2(__int3264 fn, void* ret, int retSz, void* a1, void* a2);
@@ -143,7 +145,7 @@ library ATLVBALib
 		dllname("Kernel32.dll"),
 		helpstring("Library Functions")
 	]
-	module LibraryFunctions{
+	module LibHelp{
 		[entry("LoadLibraryW")]
 		__int3264 __stdcall LoadLibW( [in] BSTR LibFileName );
 		[entry("FreeLibrary")]

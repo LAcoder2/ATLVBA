@@ -17,6 +17,15 @@
       <UniqueIdentifier>{5cca87c2-e688-4be2-84cc-58893dea1559}</UniqueIdentifier>
       <SourceControlFiles>False</SourceControlFiles>
     </Filter>
+    <Filter Include="Исходные файлы\Expotrs">
+      <UniqueIdentifier>{47a0462c-ef32-4720-95d4-54dcec628062}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\ComExport">
+      <UniqueIdentifier>{4241afe6-784c-49af-b08f-05b04dccc018}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\StdFiles">
+      <UniqueIdentifier>{9589b52f-cc5d-4fe7-80af-888043621e8c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -42,29 +51,29 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="ATLVBA.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
-    <ClCompile Include="dllmain.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
-    <ClCompile Include="xdlldata.c">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
     <ClCompile Include="ATLVBA_i.c">
       <Filter>Созданные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="Functions.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
     <ClCompile Include="CallHelp.c">
-      <Filter>Исходные файлы</Filter>
+      <Filter>Исходные файлы\Expotrs</Filter>
     </ClCompile>
-    <ClCompile Include="StrHlp.c">
-      <Filter>Исходные файлы</Filter>
+    <ClCompile Include="Functions.cpp">
+      <Filter>Исходные файлы\Expotrs</Filter>
     </ClCompile>
-    <ClCompile Include="MemHlp.cpp">
-      <Filter>Исходные файлы</Filter>
+    <ClCompile Include="MemHelp.cpp">
+      <Filter>Исходные файлы\Expotrs</Filter>
+    </ClCompile>
+    <ClCompile Include="StrHelp.c">
+      <Filter>Исходные файлы\Expotrs</Filter>
+    </ClCompile>
+    <ClCompile Include="ATLVBA.cpp">
+      <Filter>Исходные файлы\StdFiles</Filter>
+    </ClCompile>
+    <ClCompile Include="dllmain.cpp">
+      <Filter>Исходные файлы\StdFiles</Filter>
+    </ClCompile>
+    <ClCompile Include="xdlldata.c">
+      <Filter>Исходные файлы\StdFiles</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -77,12 +86,12 @@
       <Filter>Файлы ресурсов</Filter>
     </None>
     <None Include="ATLVBA.def">
-      <Filter>Исходные файлы</Filter>
+      <Filter>Исходные файлы\ComExport</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>
     <Midl Include="ATLVBA.idl">
-      <Filter>Исходные файлы</Filter>
+      <Filter>Исходные файлы\ComExport</Filter>
     </Midl>
   </ItemGroup>
 </Project>

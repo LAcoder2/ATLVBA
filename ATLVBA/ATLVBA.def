@@ -1,63 +1,65 @@
 ﻿; ATLVBA.def: объявляет параметры модуля.
 
 LIBRARY ATLProjectLib
-EXPORTS
-	DllCanUnloadNow		PRIVATE
-	DllGetClassObject	PRIVATE
-	DllRegisterServer	PRIVATE
-	DllUnregisterServer	PRIVATE
-	DllInstall			PRIVATE	
-	;
-	GetMemPtr
-	GetMem1
-	GetMem2
-	GetMem4
-	GetMem8
-	GetMem16
-	GetMemVT	
-	;
-	PutMemPtr
-	PutMem1
-	PutMem2
-	PutMem4
-	PutMem8
-	PutMemVT	
-	;
-	MovePtr
-	MoveStr
-	MoveAry	
-	MoveVT
-	;
-	SwapPtr
-	SwapVT
-	;=== msvcrt ===
-	memCpy @1
-	memCmp @2
-    ;=== строки ===
-	ToAnsi
-	FromAnsi
-	;--- stdcall-колбечники ===
-	Call0
-    Call1
-    Call2
-    Call3
-    Call4
-    Call5
-    Call6
-    Call7
-    Call8
-    Call9
-    Call10
-	Call2_
-	;=== cdecl-колбечники ===
-	CCall0
-    CCall1
-    CCall2
-    CCall3
-    CCall4
-    CCall5
-    CCall6
-    CCall7
-    CCall8
-    CCall9
-    CCall10
+EXPORTS		
+	;===MemHelp===
+		GetMemPtr
+		GetMem1
+		GetMem2
+		GetMem4
+		GetMem8
+		GetMem16
+		GetMemVT	
+		;
+		PutMemPtr
+		PutMem1
+		PutMem2
+		PutMem4
+		PutMem8
+		PutMemVT	
+		;
+		MovePtr
+		MoveStr
+		MoveAry	
+		MoveVT
+		;
+		SwapPtr
+		SwapVT
+		; msvcrt.dll
+		memCpy @1
+		memCmp @2
+    ;=== StrHelp ===
+		StrLen
+		StrLenB
+		ToAnsi
+		FromAnsi
+	;=== CallHelp ===
+		Call0
+		Call1
+		Call2
+		Call3
+		Call4
+		Call5
+		Call6
+		Call7
+		Call8
+		Call9
+		Call10
+		Call2_
+		CCall0
+		CCall1
+		CCall2
+		CCall3
+		CCall4
+		CCall5
+		CCall6
+		CCall7
+		CCall8
+		CCall9
+		CCall10
+	; Standart Eports
+		DllCanUnloadNow		PRIVATE
+		DllGetClassObject	PRIVATE
+		DllRegisterServer	PRIVATE
+		DllUnregisterServer	PRIVATE
+		DllInstall			PRIVATE
