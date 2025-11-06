@@ -42,6 +42,7 @@ void MoveAry(SAFEARRAY** dst, SAFEARRAY** src) {
 		*src = NULL;
 		return;
 	}
+	
 	if (*dst != NULL) {			// если *dst инициализирован, освобождаем его
 		SafeArrayDestroy(*dst);
 	}

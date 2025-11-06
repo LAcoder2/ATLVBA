@@ -111,6 +111,8 @@ library ATLVBALib
 		[entry("StrLenB")] INT32 StrLenB(BSTR str);
 		[entry("ToAnsi")] BSTR ToAnsi(BSTR str);
 		[entry("FromAnsi")] BSTR FromAnsi(BSTR str);
+		[entry("InStrByt"), helpstring("Analogue of the InStrB function for byte arrays")] 
+		INT32 InStrByt(int Start, SAFEARRAY(byte)* Where, SAFEARRAY(byte)* What);
 	};
 	module CallHelp{
 		[entry("Call0")] void __stdcall Call0(__int3264 fn, void* ret, int retSz);
