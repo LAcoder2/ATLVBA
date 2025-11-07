@@ -89,7 +89,7 @@ int InStrByt(int Start, SAFEARRAY** ppSAWhere, SAFEARRAY** ppSAWhat) {
 	char *pcWhat1 = (char*)(*ppSAWhat)->pvData;
 	char *pcWhat2 = pcWhat1 + 1;
 	
-	if (Start > 0) {
+	/*if (Start > 0) {
 		if (Start < cntWhere) {}else{return 0;}
 	}
 	else if (Start == 0) {
@@ -98,20 +98,34 @@ int InStrByt(int Start, SAFEARRAY** ppSAWhere, SAFEARRAY** ppSAWhat) {
 	else {
 		Start = cntWhere + Start + 1;
 		if (Start > 0) {}else {Start = 1;}
+	}*/
+	if (Start > 0) {
+		if (Start < cntWhere) {
+			Start = Start - 1;
+		}else{ 
+			return 0; 
+		}
+	}
+	else if (Start == 0) {
+		//Start = 0;
+	}
+	else {
+		Start = cntWhere + Start; //+ 1;
+		if (Start >= 0) {}
+		else { Start = 0; }
 	}
 	
 	char *pcEndIter = pcWhere1 + cntWhere - cntWhat;
 	char *pcEndIter2 = pcWhat1 + cntWhat; //- 1;
-	char cWhat1 = *pcWhat1;
-	char *pcWhere = pcWhere1 + Start - 1;
-	for(; pcWhere <= pcEndIter; pcWhere++) {
+	char cWhat1 = *pcWhat1;	
+	for(char *pcWhere = pcWhere1 + Start; pcWhere <= pcEndIter; pcWhere++) {
 		if (*pcWhere == cWhat1) {			
-			char *pcWhat = pcWhat2;
-			for (; pcWhat < pcEndIter2; pcWhat++) {
-				pcWhere++;
-				if (*pcWhere != *pcWhat) goto Nxt;
+			char *pcWhere_ = pcWhere;			
+			for (char *pcWhat = pcWhat2; pcWhat < pcEndIter2; pcWhat++) {
+				pcWhere_++;
+				if (*pcWhere_ != *pcWhat) goto Nxt;
 			}
-			return (pcWhere - pcWhere1) - cntWhat + 2;
+			return (pcWhere - pcWhere1) + 1;
 		}
 	Nxt:;
 	}

@@ -263,7 +263,7 @@ EXTERN_C const IID LIBID_ATLVBALib;
 /* [entry] */ BSTR FromAnsi( 
     BSTR str);
 
-/* [entry] */ INT32 InStrByt( 
+/* [helpstring][entry] */ INT32 InStrByt( 
     int Start,
     SAFEARRAY * *Where,
     SAFEARRAY * *What);
