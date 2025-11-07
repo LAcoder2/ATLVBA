@@ -252,21 +252,50 @@ EXTERN_C const IID LIBID_ATLVBALib;
 
 
 /* [entry] */ INT32 StrLen( 
-    BSTR str);
+    /* [in] */ BSTR str);
 
 /* [entry] */ INT32 StrLenB( 
-    BSTR str);
+    /* [in] */ BSTR str);
 
 /* [entry] */ BSTR ToAnsi( 
-    BSTR str);
+    /* [in] */ BSTR str);
 
 /* [entry] */ BSTR FromAnsi( 
-    BSTR str);
+    /* [in] */ BSTR str);
+
+/* [entry] */ INT32 InStrB2( 
+    /* [in] */ int Start,
+    /* [in] */ BSTR Where,
+    /* [in] */ BSTR What);
+
+/* [entry] */ INT32 InStrLenB( 
+    /* [in] */ int Start,
+    /* [in] */ BSTR Where,
+    /* [in] */ BSTR What,
+    /* [in] */ int Length);
+
+/* [entry] */ INT32 InStrEndB( 
+    /* [in] */ int Start,
+    /* [in] */ BSTR Where,
+    /* [in] */ BSTR What,
+    /* [in] */ int lStop);
 
 /* [helpstring][entry] */ INT32 InStrByt( 
-    int Start,
-    SAFEARRAY * *Where,
-    SAFEARRAY * *What);
+    /* [in] */ int Start,
+    /* [in] */ SAFEARRAY * *Where,
+    /* [in] */ SAFEARRAY * *What);
+
+/* [entry] */ INT32 InStrLenByt( 
+    /* [in] */ int Start,
+    /* [in] */ SAFEARRAY * *Where,
+    /* [in] */ SAFEARRAY * *What,
+    /* [in] */ int Length);
+
+/* [entry] */ INT32 InStrEndByt( 
+    /* [in] */ int Start,
+    /* [in] */ SAFEARRAY * *Where,
+    /* [in] */ SAFEARRAY * *What,
+    /* [in] */ int lStop);
 
 #endif /* __StrHelp_MODULE_DEFINED__ */
 

@@ -35,6 +35,12 @@ f:\vsprojects\atlvba\atlvba\callhelp.c(116): warning C4022: copyFnArr: несо�
   StrHelp.c
 f:\vsprojects\atlvba\atlvba\strhelp.c(40): warning C4047: return: "INT32" отличается по уровням косвенного обращения от "void *"
 f:\vsprojects\atlvba\atlvba\strhelp.c(45): warning C4047: return: "INT32" отличается по уровням косвенного обращения от "void *"
+f:\vsprojects\atlvba\atlvba\strhelp.c(103): warning C4028: формальный параметр 2 отличается от объявления
+f:\vsprojects\atlvba\atlvba\strhelp.c(103): warning C4028: формальный параметр 3 отличается от объявления
+f:\vsprojects\atlvba\atlvba\strhelp.c(116): warning C4028: формальный параметр 2 отличается от объявления
+f:\vsprojects\atlvba\atlvba\strhelp.c(116): warning C4028: формальный параметр 3 отличается от объявления
+f:\vsprojects\atlvba\atlvba\strhelp.c(125): warning C4028: формальный параметр 2 отличается от объявления
+f:\vsprojects\atlvba\atlvba\strhelp.c(125): warning C4028: формальный параметр 3 отличается от объявления
   Создание кода...
   dllmain.cpp
   Functions.cpp

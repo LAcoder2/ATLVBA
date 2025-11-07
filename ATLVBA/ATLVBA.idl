@@ -107,12 +107,22 @@ library ATLVBALib
 		[entry("memCpy")] __int3264 __stdcall memCpy(void* dst, const void* src, __int3264 sz);
 	};
 	module StrHelp{
-		[entry("StrLen")] INT32 StrLen(BSTR str);
-		[entry("StrLenB")] INT32 StrLenB(BSTR str);
-		[entry("ToAnsi")] BSTR ToAnsi(BSTR str);
-		[entry("FromAnsi")] BSTR FromAnsi(BSTR str);
-		[entry("InStrByt"), helpstring("Analogue of the InStrB function for byte arrays")] 
-		INT32 InStrByt(int Start, SAFEARRAY(byte)* Where, SAFEARRAY(byte)* What);
+		[entry("StrLen")] INT32 StrLen([in] BSTR str);
+		[entry("StrLenB")] INT32 StrLenB([in] BSTR str);
+		[entry("ToAnsi")] BSTR ToAnsi([in] BSTR str);
+		[entry("FromAnsi")] BSTR FromAnsi([in] BSTR str);
+		[entry("InStrB2")]
+		INT32 InStrB2([in] int Start, [in] BSTR Where, [in] BSTR What);
+		[entry("InStrLenB")] 
+		INT32 InStrLenB([in] int Start, [in] BSTR Where, [in] BSTR What, [in] int Length);
+		[entry("InStrEndB")] 
+		INT32 InStrEndB([in] int Start, [in] BSTR Where, [in] BSTR What, [in] int lStop);
+		[entry("InStrByt"), helpstring("Analogue of the InStrB function for byte arrays")]
+		INT32 InStrByt([in] int Start, [in] SAFEARRAY(byte)* Where, [in] SAFEARRAY(byte)* What);
+		[entry("InStrLenByt")] 
+		INT32 InStrLenByt([in] int Start, [in] SAFEARRAY(byte)* Where, [in] SAFEARRAY(byte)* What, [in] int Length);
+		[entry("InStrEndByt")] 
+		INT32 InStrEndByt([in] int Start, [in] SAFEARRAY(byte)* Where, [in] SAFEARRAY(byte)* What, [in] int lStop);
 	};
 	module CallHelp{
 		[entry("Call0")] void __stdcall Call0(__int3264 fn, void* ret, int retSz);

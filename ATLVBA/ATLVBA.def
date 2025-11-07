@@ -33,7 +33,12 @@ EXPORTS
 		StrLenB
 		ToAnsi
 		FromAnsi
+		InStrB2
+		InStrLenB
+		InStrEndB
 		InStrByt
+		InStrLenByt
+		InStrEndByt
 	;=== CallHelp ===
 		Call0
 		Call1

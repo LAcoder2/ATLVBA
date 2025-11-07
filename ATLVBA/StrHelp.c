@@ -45,13 +45,146 @@ INT32 StrLen(BSTR str) {
 	if (str == NULL) return NULL;
 	return *((INT32*)str - 1) / 2;	
 }
-//int InStrByt(int Start, SAFEARRAY** Where, SAFEARRAY** What) {
-//	int cntWhere = (*Where)->rgsabound[0].cElements;
-//	int cntWhat = (*What)->rgsabound[0].cElements;
-//	char *pcWhat1 = (char*)(*What)->pvData;
-//	char *pcWhat2 = pcWhat1 + 1;  // Исправлено
-//
-//	if (Start > 0) {
+
+#define INSTRBYT_VARPREP \
+	int cntWhere = (*ppsaWhere)->rgsabound[0].cElements; \
+	int cntWhat = (*ppsaWhat)->rgsabound[0].cElements; \
+	char *pcWhere1 = (char*)(*ppsaWhere)->pvData; \
+	char *pcWhat1 = (char*)(*ppsaWhat)->pvData; \
+	char *pcWhat2 = pcWhat1 + 1; 
+#define INSTR_START_VALIDATION \
+	if (Start > 0) { \
+		if (Start < cntWhere) { \
+			Start = Start - 1; \
+		} else { \
+			return 0; \
+		} \
+	} \
+	else if (Start == 0) {} \
+	else { \
+		Start = cntWhere + Start; \
+		if (Start >= 0) {} \
+		else { Start = 0; } \
+	}
+#define BYTE_SEARCH_LOOP \
+    char *pcEndIter = pcWhere1 + cntWhere - cntWhat; \
+    char *pcEndIter2 = pcWhat1 + cntWhat; \
+    char cWhat1 = *pcWhat1; \
+    for(char *pcWhere = pcWhere1 + Start; pcWhere <= pcEndIter; pcWhere++) { \
+        if (*pcWhere == cWhat1) { \
+            char *pcWhere_ = pcWhere; \
+            for (char *pcWhat = pcWhat2; pcWhat < pcEndIter2; pcWhat++) { \
+                pcWhere_++; \
+                if (*pcWhere_ != *pcWhat) goto Nxt; \
+            } \
+            return (pcWhere - pcWhere1) + 1; \
+        } \
+    Nxt:; \
+    }
+#define INSTRB_VARPREP \
+	int cntWhere = *((int*)psWhere - 1); \
+	int cntWhat = *((int*)psWhat - 1); \
+	char *pcWhere1 = (char*)psWhere; \
+	char *pcWhat1 = (char*)psWhat; \
+	char *pcWhat2 = pcWhat1 + 1;
+#define INSTR_LEN_VALIDATION \
+	if (Length > 0) {\
+	int maxLen = Start + Length;\
+	if (maxLen >= cntWhere) {}\
+	else { cntWhere = maxLen; }\
+	}
+	//else if (Length < 0) { return 0; } //или генерация ошибки
+#define INSTR_STOP_VALIDATION \
+	if (Stop > 0) { \
+	if (Stop < cntWhere) { cntWhere = Stop; } \
+	}
+	//else if (Stop < 0) { return 0; } //или генерация ошибки
+
+int InStrB2(int Start, const BSTR psWhere, const BSTR psWhat) {
+	//int cntWhere = *((int*)psWhere - 1);
+	//int cntWhat = *((int*)psWhat - 1);
+	//char *pcWhere1 = (char*)psWhere;
+	//char *pcWhat1 = (char*)psWhat;
+	//char *pcWhat2 = pcWhat1 + 1;
+	INSTRB_VARPREP;
+	INSTR_START_VALIDATION;
+	
+	BYTE_SEARCH_LOOP;
+
+	return 0;
+}
+int InStrLenB(int Start, const BSTR psWhere, const BSTR psWhat, int Length) {
+	INSTRB_VARPREP;
+	INSTR_START_VALIDATION;
+	INSTR_LEN_VALIDATION;
+	
+	BYTE_SEARCH_LOOP;
+
+	return 0;
+}
+int InStrEndB(int Start, const BSTR psWhere, const BSTR psWhat, int Stop) {
+	INSTRB_VARPREP;
+	INSTR_START_VALIDATION;
+	INSTR_STOP_VALIDATION;
+
+	BYTE_SEARCH_LOOP;
+
+	return 0;
+}
+int InStrByt(int Start, SAFEARRAY** ppsaWhere, SAFEARRAY** ppsaWhat) {
+	//int cntWhere = (*ppsaWhere)->rgsabound[0].cElements;
+	//int cntWhat = (*ppsaWhat)->rgsabound[0].cElements;
+	//char *pcWhere1 = (char*)(*ppsaWhere)->pvData;
+	//char *pcWhat1 = (char*)(*ppsaWhat)->pvData;
+	//char *pcWhat2 = pcWhat1 + 1;
+	/*if (Start > 0) {
+		if (Start < cntWhere) {
+			Start = Start - 1;
+		} else { 
+			return 0; 
+		}
+	}
+	else if (Start == 0) {}
+	else {
+		Start = cntWhere + Start;
+		if (Start >= 0) {}
+		else { Start = 0; }
+	}*/
+
+	INSTRBYT_VARPREP;
+	INSTR_START_VALIDATION;
+	BYTE_SEARCH_LOOP;
+
+	return 0;
+}
+
+int InStrLenByt(int Start, SAFEARRAY** ppsaWhere, SAFEARRAY** ppsaWhat, int Length) {	
+	INSTRBYT_VARPREP;
+	INSTR_START_VALIDATION;
+	INSTR_LEN_VALIDATION;
+
+	BYTE_SEARCH_LOOP;
+
+	return 0;
+}
+
+int InStrEndByt(int Start, SAFEARRAY** ppsaWhere, SAFEARRAY** ppsaWhat, int Stop) {	
+	INSTRBYT_VARPREP;
+	INSTR_START_VALIDATION;
+	INSTR_STOP_VALIDATION;
+
+	BYTE_SEARCH_LOOP;
+
+	return 0;
+}
+//int InStrByt(int Start, SAFEARRAY** ppsaWhere, SAFEARRAY** ppsaWhat) {
+//	int cntWhere = (*ppsaWhere)->rgsabound[0].cElements;
+//	int cntWhat = (*ppsaWhat)->rgsabound[0].cElements;
+//	char *pcWhere1 = (char*)(*ppsaWhere)->pvData;
+//	char *pcWhat1 = (char*)(*ppsaWhat)->pvData;
+//	char *pcWhat2 = pcWhat1 + 1;
+//	
+//	/*if (Start > 0) {
 //		if (Start < cntWhere) {}else{return 0;}
 //	}
 //	else if (Start == 0) {
@@ -60,89 +193,37 @@ INT32 StrLen(BSTR str) {
 //	else {
 //		Start = cntWhere + Start + 1;
 //		if (Start > 0) {}else {Start = 1;}
+//	}*/
+//	if (Start > 0) {
+//		if (Start < cntWhere) {
+//			Start = Start - 1;
+//		}else{ 
+//			return 0; 
+//		}
 //	}
-//
-//	char *pcWhere = (char*)(*Where)->pvData;
-//	char *pcEndIter = pcWhere + (cntWhere - cntWhat);
-//	char *pcEndIter2 = pcWhat1 + cntWhat;
-//	char cWhat1 = *pcWhat1;
-//
-//	char *current = pcWhere + Start - 1;  // Временный указатель
-//	for (; current <= pcEndIter; current++) {
-//		if (*current == cWhat1) {
-//			char *search_ptr = current + 1;
-//			char *pattern_ptr = pcWhat2;
-//
-//			for (; pattern_ptr < pcEndIter2; pattern_ptr++, search_ptr++) {
-//				if (*search_ptr != *pattern_ptr) goto Nxt;
+//	else if (Start == 0) {
+//		//Start = 0;
+//	}
+//	else {
+//		Start = cntWhere + Start; //+ 1;
+//		if (Start >= 0) {}
+//		else { Start = 0; }
+//	}
+//	
+//	char *pcEndIter = pcWhere1 + cntWhere - cntWhat;
+//	char *pcEndIter2 = pcWhat1 + cntWhat; //- 1;
+//	char cWhat1 = *pcWhat1;	
+//	for(char *pcWhere = pcWhere1 + Start; pcWhere <= pcEndIter; pcWhere++) {
+//		if (*pcWhere == cWhat1) {			
+//			char *pcWhere_ = pcWhere;			
+//			for (char *pcWhat = pcWhat2; pcWhat < pcEndIter2; pcWhat++) {
+//				pcWhere_++;
+//				if (*pcWhere_ != *pcWhat) goto Nxt;
 //			}
-//			return (current - pcWhere) + 1;  // Исправлен расчет
+//			return (pcWhere - pcWhere1) + 1;
 //		}
 //	Nxt:;
 //	}
 //	return 0;
 //}
-int InStrByt(int Start, SAFEARRAY** ppSAWhere, SAFEARRAY** ppSAWhat) {
-	int cntWhere = (*ppSAWhere)->rgsabound[0].cElements;
-	int cntWhat = (*ppSAWhat)->rgsabound[0].cElements;
-	char *pcWhere1 = (char*)(*ppSAWhere)->pvData;
-	char *pcWhat1 = (char*)(*ppSAWhat)->pvData;
-	char *pcWhat2 = pcWhat1 + 1;
-	
-	/*if (Start > 0) {
-		if (Start < cntWhere) {}else{return 0;}
-	}
-	else if (Start == 0) {
-		Start = 1;
-	}
-	else {
-		Start = cntWhere + Start + 1;
-		if (Start > 0) {}else {Start = 1;}
-	}*/
-	if (Start > 0) {
-		if (Start < cntWhere) {
-			Start = Start - 1;
-		}else{ 
-			return 0; 
-		}
-	}
-	else if (Start == 0) {
-		//Start = 0;
-	}
-	else {
-		Start = cntWhere + Start; //+ 1;
-		if (Start >= 0) {}
-		else { Start = 0; }
-	}
-	
-	char *pcEndIter = pcWhere1 + cntWhere - cntWhat;
-	char *pcEndIter2 = pcWhat1 + cntWhat; //- 1;
-	char cWhat1 = *pcWhat1;	
-	for(char *pcWhere = pcWhere1 + Start; pcWhere <= pcEndIter; pcWhere++) {
-		if (*pcWhere == cWhat1) {			
-			char *pcWhere_ = pcWhere;			
-			for (char *pcWhat = pcWhat2; pcWhat < pcEndIter2; pcWhat++) {
-				pcWhere_++;
-				if (*pcWhere_ != *pcWhat) goto Nxt;
-			}
-			return (pcWhere - pcWhere1) + 1;
-		}
-	Nxt:;
-	}
-	return 0;
-}
-	
 
-//	For i = Start - 1 To cntWhere - cntWhat
-//	If Where(i) = What1 Then
-//	For l = l2 To ubWhat
-//	i = i + 1
-//	If Where(i) < > What(l) Then GoTo Nxt
-//	Next
-//
-//	VBInStrByt = i - cntWhat + 2
-//	Exit Function
-//	End If
-//	Nxt :
-//Next
-//End Function
