@@ -80,7 +80,7 @@ void SwapVT(VARIANT* var1, VARIANT* var2) {
 #define ROL(bitmask, n) (((bitmask) << (n)) | ((bitmask) >> (32 - (n))))
 
 // Railgun_6pp by Georgi 'Sanmayce'
-__int3264 memmem(char* pbTarget, long cbTarget, char* pbPattern, long cbPattern) {
+__int3264 memmem(char* pbTarget, const long cbTarget, char* pbPattern, const long cbPattern) {
 	char * pbTargetMax = pbTarget + cbTarget;
 	char * pbTargetMax2 = pbTargetMax - 8;
 	unsigned long ulHashPattern = *(unsigned long *)(pbPattern);

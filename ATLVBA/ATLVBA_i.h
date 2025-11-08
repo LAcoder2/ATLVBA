@@ -306,6 +306,12 @@ EXTERN_C const IID LIBID_ATLVBALib;
     /* [in] */ SAFEARRAY * *What,
     /* [in] */ int lStop);
 
+/* [entry] */ BSTR ToUTF8( 
+    /* [in] */ const BSTR sInp);
+
+/* [entry] */ BSTR FromUTF8( 
+    /* [in] */ const BSTR sInp);
+
 #endif /* __StrHelp_MODULE_DEFINED__ */
 
 

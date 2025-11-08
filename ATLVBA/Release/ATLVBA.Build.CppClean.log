@@ -1,12 +1,12 @@
 f:\vsprojects\atlvba\release\atlvba.lib
 f:\vsprojects\atlvba\release\atlvba.exp
 f:\vsprojects\atlvba\atlvba\release\vc141.pdb
-f:\vsprojects\atlvba\atlvba\release\arrhelp.obj
-f:\vsprojects\atlvba\atlvba\release\atlvba.obj
-f:\vsprojects\atlvba\atlvba\release\atlvba_i.obj
 f:\vsprojects\atlvba\atlvba\release\strhelp.obj
 f:\vsprojects\atlvba\atlvba\release\memhelp.obj
 f:\vsprojects\atlvba\atlvba\release\callhelp.obj
+f:\vsprojects\atlvba\atlvba\release\arrhelp.obj
+f:\vsprojects\atlvba\atlvba\release\atlvba.obj
+f:\vsprojects\atlvba\atlvba\release\atlvba_i.obj
 f:\vsprojects\atlvba\atlvba\release\dllmain.obj
 f:\vsprojects\atlvba\atlvba\release\functions.obj
 f:\vsprojects\atlvba\atlvba\release\xdlldata.obj

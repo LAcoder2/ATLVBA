@@ -5,7 +5,6 @@
 BSTR ToAnsi(BSTR str)
 {
 	if (str == NULL) return NULL;
-
 	DWORD size = *((DWORD*)str - 1);
 	if (size == 0) return NULL;
 
@@ -182,6 +181,51 @@ int InStrEndByt(int Start, SAFEARRAY** ppsaWhere, SAFEARRAY** ppsaWhat, int Stop
 
 	return 0;
 }
+BSTR ToUTF8(const BSTR sInp){
+	if (sInp == NULL) return NULL;
+	int srcLen = *((int*)sInp - 1) / 2;
+	if (srcLen == 0) return NULL; 
+
+	int utf8Len = WideCharToMultiByte(CP_UTF8, 0, sInp, srcLen, NULL, 0, NULL, NULL);
+	//if (utf8Len == 0) return NULL;
+	BSTR result = SysAllocStringByteLen(NULL, utf8Len);
+	if (result == NULL) return NULL;
+
+	// Конвертируем Unicode в UTF-8
+	WideCharToMultiByte(CP_UTF8, 0, sInp, srcLen, (char*)result, utf8Len, NULL, NULL);
+	return result;
+}
+BSTR FromUTF8(const BSTR sInp){
+	if (sInp == NULL) return NULL;
+	int srcLen = *((int*)sInp - 1);
+	if (srcLen == 0) return NULL;
+
+	int wideLen = MultiByteToWideChar(CP_UTF8, 0, (char*)sInp, srcLen, NULL, 0);
+	//if (wideLen == 0) return NULL;
+	BSTR result = SysAllocStringLen(NULL, wideLen);
+	if (result == NULL) return NULL;
+
+	// Конвертируем UTF-8 в Unicode
+	MultiByteToWideChar(CP_UTF8, 0, (char*)sInp, srcLen, result, wideLen);
+	return result;
+}
+//Private Function ToUTF8(sText As String) As String 
+//    Dim Ln As Long
+//    Ln = WideCharToMultiByte(CP_UTF8, 0, StrPtr(sText), Len(sText), 0, 0, 0, 0)
+//    If Ln Then
+//        ToUTF8 = MidB$(String$(Ln \ 2 + 1, vbNullChar), 1, Ln)
+//        WideCharToMultiByte CP_UTF8, 0, StrPtr(sText), Len(sText), StrPtr(ToUTF8), Ln, 0, 0
+//    End If
+//End Function
+//Public Function FromUTF8(sText As String) As String 'utf8(1byte) to unicode(2byte)
+//    Dim Ln As Long
+//    Ln = MultiByteToWideChar(CP_UTF8, 0, StrPtr(sText), LenB(sText), 0, 0)
+//    If Ln Then
+//        FromUTF8 = String(Ln, vbNullChar)
+//        MultiByteToWideChar CP_UTF8, 0, StrPtr(sText), LenB(sText), StrPtr(FromUTF8), Ln
+//    End If
+//End Function
+
 //int InStrByt(int Start, SAFEARRAY** ppsaWhere, SAFEARRAY** ppsaWhat) {
 //	int cntWhere = (*ppsaWhere)->rgsabound[0].cElements;
 //	int cntWhat = (*ppsaWhat)->rgsabound[0].cElements;

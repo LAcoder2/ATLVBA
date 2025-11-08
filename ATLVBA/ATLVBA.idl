@@ -125,6 +125,8 @@ library ATLVBALib
 		INT32 InStrLenByt([in] int Start, [in] SAFEARRAY(byte)* Where, [in] SAFEARRAY(byte)* What, [in] int Length);
 		[entry("InStrEndByt")] 
 		INT32 InStrEndByt([in] int Start, [in] SAFEARRAY(byte)* Where, [in] SAFEARRAY(byte)* What, [in] int lStop);
+		[entry("ToUTF8")] BSTR ToUTF8([in] const BSTR sInp);
+		[entry("FromUTF8")] BSTR FromUTF8([in] const BSTR sInp);
 	};
 	module ArrHelp{
 		[entry("VarPtr")] __int3264 ArrPtr([in] const SAFEARRAY(void)* Arr);
