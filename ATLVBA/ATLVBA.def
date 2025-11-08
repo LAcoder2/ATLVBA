@@ -28,9 +28,11 @@ EXPORTS
 		; msvcrt.dll
 		memCpy @1
 		memCmp @2
+		memmem @3
     ;=== StrHelp ===
 		StrLen
 		StrLenB
+		ArrLen
 		ToAnsi
 		FromAnsi
 		InStrB2

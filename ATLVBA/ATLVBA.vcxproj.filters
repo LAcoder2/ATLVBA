@@ -60,9 +60,6 @@
     <ClCompile Include="Functions.cpp">
       <Filter>Исходные файлы\Expotrs</Filter>
     </ClCompile>
-    <ClCompile Include="MemHelp.cpp">
-      <Filter>Исходные файлы\Expotrs</Filter>
-    </ClCompile>
     <ClCompile Include="StrHelp.c">
       <Filter>Исходные файлы\Expotrs</Filter>
     </ClCompile>
@@ -74,6 +71,9 @@
     </ClCompile>
     <ClCompile Include="xdlldata.c">
       <Filter>Исходные файлы\StdFiles</Filter>
+    </ClCompile>
+    <ClCompile Include="MemHelp.c">
+      <Filter>Исходные файлы\Expotrs</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

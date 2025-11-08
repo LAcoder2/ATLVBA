@@ -103,12 +103,14 @@ library ATLVBALib
 		[entry("SwapPtr")] void SwapAry(SAFEARRAY(void)* var1, SAFEARRAY(void)* var2);
 		[entry("SwapVT")] void SwapVT(VARIANT* var1, VARIANT* var2);
 
-		[entry("memCmp")] long __stdcall memCmp(const void* Buf1, const void* Buf2, __int3264 Size);
-		[entry("memCpy")] __int3264 __stdcall memCpy(void* dst, const void* src, __int3264 sz);
+		[entry("memCmp")] long __stdcall memCmp(const void* Buf1, void* Buf2, __int3264 Size);
+		[entry("memCpy")] __int3264 __stdcall memCpy(void* dst, void* src, __int3264 sz);
+		[entry(3)] __int3264 memmem([in] byte* pbTarget, [in] long cbTarget, [in] byte* pbPattern, [in] long cbPattern);
 	};
 	module StrHelp{
 		[entry("StrLen")] INT32 StrLen([in] BSTR str);
 		[entry("StrLenB")] INT32 StrLenB([in] BSTR str);
+		[entry("ArrLen")] INT32 ArrLen([in] SAFEARRAY(void)* Arr);
 		[entry("ToAnsi")] BSTR ToAnsi([in] BSTR str);
 		[entry("FromAnsi")] BSTR FromAnsi([in] BSTR str);
 		[entry("InStrB2")]

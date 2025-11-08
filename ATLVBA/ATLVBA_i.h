@@ -233,13 +233,19 @@ EXTERN_C const IID LIBID_ATLVBALib;
 
 /* [entry] */ long __stdcall memCmp( 
     const void *Buf1,
-    const void *Buf2,
+    void *Buf2,
     __int3264 Size);
 
 /* [entry] */ __int3264 __stdcall memCpy( 
     void *dst,
-    const void *src,
+    void *src,
     __int3264 sz);
+
+/* [entry] */ __int3264 memmem( 
+    /* [in] */ byte *pbTarget,
+    /* [in] */ long cbTarget,
+    /* [in] */ byte *pbPattern,
+    /* [in] */ long cbPattern);
 
 #endif /* __MemHelp_MODULE_DEFINED__ */
 
@@ -256,6 +262,9 @@ EXTERN_C const IID LIBID_ATLVBALib;
 
 /* [entry] */ INT32 StrLenB( 
     /* [in] */ BSTR str);
+
+/* [entry] */ INT32 ArrLen( 
+    /* [in] */ SAFEARRAY * *Arr);
 
 /* [entry] */ BSTR ToAnsi( 
     /* [in] */ BSTR str);

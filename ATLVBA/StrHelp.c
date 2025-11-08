@@ -40,6 +40,10 @@ INT32 StrLenB(BSTR str) {
 	if (str == NULL) return NULL;
 	return *((INT32*)str - 1);
 }
+INT32 ArrLen(SAFEARRAY** ppsaAry) {
+	return (*ppsaAry)->rgsabound[0].cElements;
+}
+
 //[ComExport]
 INT32 StrLen(BSTR str) {
 	if (str == NULL) return NULL;
