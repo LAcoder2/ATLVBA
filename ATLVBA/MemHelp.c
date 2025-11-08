@@ -25,6 +25,8 @@ void PutMemLL(INT64* dst, INT64 src) {*dst = src;}
 void PutMemVT(VARIANT* dst, VARIANT src) {*dst = src;}
 void PutMemPtr(INT_PTR* dst, INT_PTR src) {*dst = src;}
 
+__int3264 VarPtr(const void* var) { return var; }
+
 int memCmp(const void* buf1, const void* buf2, size_t Size) {return memcmp(buf1, buf2, Size);}
 __int3264 memCpy(void* dst, const void* src, __int3264 sz) {return memcpy(dst, src, sz);}
 

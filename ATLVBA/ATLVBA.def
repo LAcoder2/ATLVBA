@@ -16,7 +16,7 @@ EXPORTS
 		PutMem2
 		PutMem4
 		PutMem8
-		PutMemVT	
+		PutMemVT			
 		;
 		MovePtr
 		MoveStr
@@ -29,7 +29,10 @@ EXPORTS
 		memCpy @1
 		memCmp @2
 		memmem @3
-    ;=== StrHelp ===
+    ;===ArrHelp===
+		VarPtr
+		isObjInit
+	;=== StrHelp ===
 		StrLen
 		StrLenB
 		ArrLen

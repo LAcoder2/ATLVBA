@@ -126,33 +126,37 @@ library ATLVBALib
 		[entry("InStrEndByt")] 
 		INT32 InStrEndByt([in] int Start, [in] SAFEARRAY(byte)* Where, [in] SAFEARRAY(byte)* What, [in] int lStop);
 	};
+	module ArrHelp{
+		[entry("VarPtr")] __int3264 ArrPtr([in] const SAFEARRAY(void)* Arr);
+		[entry("isObjInit")] VARIANT_BOOL isArrayInit([in] SAFEARRAY(void)* Arr);
+	}
 	module CallHelp{
-		[entry("Call0")] void __stdcall Call0(__int3264 fn, void* ret, int retSz);
-		[entry("Call1")] void __stdcall Call1(__int3264 fn, void* ret, int retSz, void* a1);
-		[entry("Call2")] void __stdcall Call2(__int3264 fn, void* ret, int retSz, void* a1, void* a2);
-		[entry("Call3")] void __stdcall Call3(__int3264 fn, void* ret, int retSz, void* a1, void* a2, void* a3);
-		[entry("Call4")] void __stdcall Call4(__int3264 fn, void* ret, int retSz, void* a1, void* a2, void* a3, void* a4);
-		[entry("Call5")] void __stdcall Call5(__int3264 fn, void* ret, int retSz, void* a1, void* a2, void* a3, void* a4, void* a5);
-		[entry("Call6")] void __stdcall Call6(__int3264 fn, void* ret, int retSz, void* a1, void* a2, void* a3, void* a4, void* a5, void* a6);
-		[entry("Call7")] void __stdcall Call7(__int3264 fn, void* ret, int retSz, void* a1, void* a2, void* a3, void* a4, void* a5, void* a6, void* a7);
-		[entry("Call8")] void __stdcall Call8(__int3264 fn, void* ret, int retSz, void* a1, void* a2, void* a3, void* a4, void* a5, void* a6, void* a7, void* a8);
-		[entry("Call9")] void __stdcall Call9(__int3264 fn, void* ret, int retSz, void* a1, void* a2, void* a3, void* a4, void* a5, void* a6, void* a7, void* a8, void* a9);
-		[entry("Call10")] void __stdcall Call10(__int3264 fn, void* ret, int retSz, void* a1, void* a2, void* a3, void* a4, void* a5, void* a6, void* a7, void* a8, void* a9, void* a10);
+		[entry("Call0")] void __stdcall Call0([in] __int3264 fn, [in, out] void* ret, [in] int retSz);
+		[entry("Call1")] void __stdcall Call1([in] __int3264 fn, [in, out] void* ret, [in] int retSz, void* a1);
+		[entry("Call2")] void __stdcall Call2([in] __int3264 fn, [in, out] void* ret, [in] int retSz, void* a1, void* a2);
+		[entry("Call3")] void __stdcall Call3([in] __int3264 fn, [in, out] void* ret, [in] int retSz, void* a1, void* a2, void* a3);
+		[entry("Call4")] void __stdcall Call4([in] __int3264 fn, [in, out] void* ret, [in] int retSz, void* a1, void* a2, void* a3, void* a4);
+		[entry("Call5")] void __stdcall Call5([in] __int3264 fn, [in, out] void* ret, [in] int retSz, void* a1, void* a2, void* a3, void* a4, void* a5);
+		[entry("Call6")] void __stdcall Call6([in] __int3264 fn, [in, out] void* ret, [in] int retSz, void* a1, void* a2, void* a3, void* a4, void* a5, void* a6);
+		[entry("Call7")] void __stdcall Call7([in] __int3264 fn, [in, out] void* ret, [in] int retSz, void* a1, void* a2, void* a3, void* a4, void* a5, void* a6, void* a7);
+		[entry("Call8")] void __stdcall Call8([in] __int3264 fn, [in, out] void* ret, [in] int retSz, void* a1, void* a2, void* a3, void* a4, void* a5, void* a6, void* a7, void* a8);
+		[entry("Call9")] void __stdcall Call9([in] __int3264 fn, [in, out] void* ret, [in] int retSz, void* a1, void* a2, void* a3, void* a4, void* a5, void* a6, void* a7, void* a8, void* a9);
+		[entry("Call10")] void __stdcall Call10([in] __int3264 fn, [in, out] void* ret, [in] int retSz, void* a1, void* a2, void* a3, void* a4, void* a5, void* a6, void* a7, void* a8, void* a9, void* a10);
 		
-		[entry("CCall0")] void __stdcall CCall0(__int3264 fn, void* ret, int retSz);
-		[entry("CCall1")] void __stdcall CCall1(__int3264 fn, void* ret, int retSz, void* a1);
-		[entry("CCall2")] void __stdcall CCall2(__int3264 fn, void* ret, int retSz, void* a1, void* a2);
-		[entry("CCall3")] void __stdcall CCall3(__int3264 fn, void* ret, int retSz, void* a1, void* a2, void* a3);
-		[entry("CCall4")] void __stdcall CCall4(__int3264 fn, void* ret, int retSz, void* a1, void* a2, void* a3, void* a4);
-		[entry("CCall5")] void __stdcall CCall5(__int3264 fn, void* ret, int retSz, void* a1, void* a2, void* a3, void* a4, void* a5);
-		[entry("CCall6")] void __stdcall CCall6(__int3264 fn, void* ret, int retSz, void* a1, void* a2, void* a3, void* a4, void* a5, void* a6);
-		[entry("CCall7")] void __stdcall CCall7(__int3264 fn, void* ret, int retSz, void* a1, void* a2, void* a3, void* a4, void* a5, void* a6, void* a7);
-		[entry("CCall8")] void __stdcall CCall8(__int3264 fn, void* ret, int retSz, void* a1, void* a2, void* a3, void* a4, void* a5, void* a6, void* a7, void* a8);
-		[entry("CCall9")] void __stdcall CCall9(__int3264 fn, void* ret, int retSz, void* a1, void* a2, void* a3, void* a4, void* a5, void* a6, void* a7, void* a8, void* a9);
-		[entry("CCall10")] void __stdcall CCall10(__int3264 fn, void* ret, int retSz, void* a1, void* a2, void* a3, void* a4, void* a5, void* a6, void* a7, void* a8, void* a9, void* a10);
+		[entry("CCall0")] void __stdcall CCall0([in] __int3264 fn, [in, out] void* ret, [in] int retSz);
+		[entry("CCall1")] void __stdcall CCall1([in] __int3264 fn, [in, out] void* ret, [in] int retSz, void* a1);
+		[entry("CCall2")] void __stdcall CCall2([in] __int3264 fn, [in, out] void* ret, [in] int retSz, void* a1, void* a2);
+		[entry("CCall3")] void __stdcall CCall3([in] __int3264 fn, [in, out] void* ret, [in] int retSz, void* a1, void* a2, void* a3);
+		[entry("CCall4")] void __stdcall CCall4([in] __int3264 fn, [in, out] void* ret, [in] int retSz, void* a1, void* a2, void* a3, void* a4);
+		[entry("CCall5")] void __stdcall CCall5([in] __int3264 fn, [in, out] void* ret, [in] int retSz, void* a1, void* a2, void* a3, void* a4, void* a5);
+		[entry("CCall6")] void __stdcall CCall6([in] __int3264 fn, [in, out] void* ret, [in] int retSz, void* a1, void* a2, void* a3, void* a4, void* a5, void* a6);
+		[entry("CCall7")] void __stdcall CCall7([in] __int3264 fn, [in, out] void* ret, [in] int retSz, void* a1, void* a2, void* a3, void* a4, void* a5, void* a6, void* a7);
+		[entry("CCall8")] void __stdcall CCall8([in] __int3264 fn, [in, out] void* ret, [in] int retSz, void* a1, void* a2, void* a3, void* a4, void* a5, void* a6, void* a7, void* a8);
+		[entry("CCall9")] void __stdcall CCall9([in] __int3264 fn, [in, out] void* ret, [in] int retSz, void* a1, void* a2, void* a3, void* a4, void* a5, void* a6, void* a7, void* a8, void* a9);
+		[entry("CCall10")] void __stdcall CCall10([in] __int3264 fn, [in, out] void* ret, [in] int retSz, void* a1, void* a2, void* a3, void* a4, void* a5, void* a6, void* a7, void* a8, void* a9, void* a10);
 		[entry("Call2_"), helpstring("Экспериментальная версия")] 
-			void __stdcall Call2_(__int3264 fn, void* ret, int retSz, void* a1, void* a2);
-		//void __stdcall Call2(__int3264 fn, void* ret, int retSz, [in, optional, defaultvalue(NullPtr)] void* arg1, [in, optional, defaultvalue(NullPtr)] void* arg2);
+			void __stdcall Call2_([in] __int3264 fn, [in, out] void* ret, [in] int retSz, void* a1, void* a2);
+		//void __stdcall Call2([in] __int3264 fn, [in, out] void* ret, [in] int retSz, [in, optional, defaultvalue(NullPtr)] void* arg1, [in, optional, defaultvalue(NullPtr)] void* arg2);
 	};
 
 	[
@@ -165,6 +169,8 @@ library ATLVBALib
 		[entry("FreeLibrary")]
 		long FreeLib( [in] __int3264 hLibModule );
 		[entry("GetProcAddress")]
-		__int3264 GetProcAddr( [in] __int3264 hModule, [in] BSTR AnsiProcName );
+		__int3264 __stdcall GetProcAddr( [in] __int3264 hModule, [in] BSTR AnsiProcName );
+		[entry("RtlMoveMemory")]
+		void __stdcall CopyMem([in, out] void* dst, [in] const void* src, __int3264 sz);
 	};
 };

@@ -309,6 +309,22 @@ EXTERN_C const IID LIBID_ATLVBALib;
 #endif /* __StrHelp_MODULE_DEFINED__ */
 
 
+#ifndef __ArrHelp_MODULE_DEFINED__
+#define __ArrHelp_MODULE_DEFINED__
+
+
+/* module ArrHelp */
+
+
+/* [entry] */ __int3264 ArrPtr( 
+    /* [in] */ SAFEARRAY * *Arr);
+
+/* [entry] */ VARIANT_BOOL isArrayInit( 
+    /* [in] */ SAFEARRAY * *Arr);
+
+#endif /* __ArrHelp_MODULE_DEFINED__ */
+
+
 #ifndef __CallHelp_MODULE_DEFINED__
 #define __CallHelp_MODULE_DEFINED__
 
@@ -317,44 +333,44 @@ EXTERN_C const IID LIBID_ATLVBALib;
 
 
 /* [entry] */ void __stdcall Call0( 
-    __int3264 fn,
-    void *ret,
-    int retSz);
+    /* [in] */ __int3264 fn,
+    /* [out][in] */ void *ret,
+    /* [in] */ int retSz);
 
 /* [entry] */ void __stdcall Call1( 
-    __int3264 fn,
-    void *ret,
-    int retSz,
+    /* [in] */ __int3264 fn,
+    /* [out][in] */ void *ret,
+    /* [in] */ int retSz,
     void *a1);
 
 /* [entry] */ void __stdcall Call2( 
-    __int3264 fn,
-    void *ret,
-    int retSz,
+    /* [in] */ __int3264 fn,
+    /* [out][in] */ void *ret,
+    /* [in] */ int retSz,
     void *a1,
     void *a2);
 
 /* [entry] */ void __stdcall Call3( 
-    __int3264 fn,
-    void *ret,
-    int retSz,
+    /* [in] */ __int3264 fn,
+    /* [out][in] */ void *ret,
+    /* [in] */ int retSz,
     void *a1,
     void *a2,
     void *a3);
 
 /* [entry] */ void __stdcall Call4( 
-    __int3264 fn,
-    void *ret,
-    int retSz,
+    /* [in] */ __int3264 fn,
+    /* [out][in] */ void *ret,
+    /* [in] */ int retSz,
     void *a1,
     void *a2,
     void *a3,
     void *a4);
 
 /* [entry] */ void __stdcall Call5( 
-    __int3264 fn,
-    void *ret,
-    int retSz,
+    /* [in] */ __int3264 fn,
+    /* [out][in] */ void *ret,
+    /* [in] */ int retSz,
     void *a1,
     void *a2,
     void *a3,
@@ -362,9 +378,9 @@ EXTERN_C const IID LIBID_ATLVBALib;
     void *a5);
 
 /* [entry] */ void __stdcall Call6( 
-    __int3264 fn,
-    void *ret,
-    int retSz,
+    /* [in] */ __int3264 fn,
+    /* [out][in] */ void *ret,
+    /* [in] */ int retSz,
     void *a1,
     void *a2,
     void *a3,
@@ -373,9 +389,9 @@ EXTERN_C const IID LIBID_ATLVBALib;
     void *a6);
 
 /* [entry] */ void __stdcall Call7( 
-    __int3264 fn,
-    void *ret,
-    int retSz,
+    /* [in] */ __int3264 fn,
+    /* [out][in] */ void *ret,
+    /* [in] */ int retSz,
     void *a1,
     void *a2,
     void *a3,
@@ -385,9 +401,9 @@ EXTERN_C const IID LIBID_ATLVBALib;
     void *a7);
 
 /* [entry] */ void __stdcall Call8( 
-    __int3264 fn,
-    void *ret,
-    int retSz,
+    /* [in] */ __int3264 fn,
+    /* [out][in] */ void *ret,
+    /* [in] */ int retSz,
     void *a1,
     void *a2,
     void *a3,
@@ -398,9 +414,9 @@ EXTERN_C const IID LIBID_ATLVBALib;
     void *a8);
 
 /* [entry] */ void __stdcall Call9( 
-    __int3264 fn,
-    void *ret,
-    int retSz,
+    /* [in] */ __int3264 fn,
+    /* [out][in] */ void *ret,
+    /* [in] */ int retSz,
     void *a1,
     void *a2,
     void *a3,
@@ -412,9 +428,9 @@ EXTERN_C const IID LIBID_ATLVBALib;
     void *a9);
 
 /* [entry] */ void __stdcall Call10( 
-    __int3264 fn,
-    void *ret,
-    int retSz,
+    /* [in] */ __int3264 fn,
+    /* [out][in] */ void *ret,
+    /* [in] */ int retSz,
     void *a1,
     void *a2,
     void *a3,
@@ -427,44 +443,44 @@ EXTERN_C const IID LIBID_ATLVBALib;
     void *a10);
 
 /* [entry] */ void __stdcall CCall0( 
-    __int3264 fn,
-    void *ret,
-    int retSz);
+    /* [in] */ __int3264 fn,
+    /* [out][in] */ void *ret,
+    /* [in] */ int retSz);
 
 /* [entry] */ void __stdcall CCall1( 
-    __int3264 fn,
-    void *ret,
-    int retSz,
+    /* [in] */ __int3264 fn,
+    /* [out][in] */ void *ret,
+    /* [in] */ int retSz,
     void *a1);
 
 /* [entry] */ void __stdcall CCall2( 
-    __int3264 fn,
-    void *ret,
-    int retSz,
+    /* [in] */ __int3264 fn,
+    /* [out][in] */ void *ret,
+    /* [in] */ int retSz,
     void *a1,
     void *a2);
 
 /* [entry] */ void __stdcall CCall3( 
-    __int3264 fn,
-    void *ret,
-    int retSz,
+    /* [in] */ __int3264 fn,
+    /* [out][in] */ void *ret,
+    /* [in] */ int retSz,
     void *a1,
     void *a2,
     void *a3);
 
 /* [entry] */ void __stdcall CCall4( 
-    __int3264 fn,
-    void *ret,
-    int retSz,
+    /* [in] */ __int3264 fn,
+    /* [out][in] */ void *ret,
+    /* [in] */ int retSz,
     void *a1,
     void *a2,
     void *a3,
     void *a4);
 
 /* [entry] */ void __stdcall CCall5( 
-    __int3264 fn,
-    void *ret,
-    int retSz,
+    /* [in] */ __int3264 fn,
+    /* [out][in] */ void *ret,
+    /* [in] */ int retSz,
     void *a1,
     void *a2,
     void *a3,
@@ -472,9 +488,9 @@ EXTERN_C const IID LIBID_ATLVBALib;
     void *a5);
 
 /* [entry] */ void __stdcall CCall6( 
-    __int3264 fn,
-    void *ret,
-    int retSz,
+    /* [in] */ __int3264 fn,
+    /* [out][in] */ void *ret,
+    /* [in] */ int retSz,
     void *a1,
     void *a2,
     void *a3,
@@ -483,9 +499,9 @@ EXTERN_C const IID LIBID_ATLVBALib;
     void *a6);
 
 /* [entry] */ void __stdcall CCall7( 
-    __int3264 fn,
-    void *ret,
-    int retSz,
+    /* [in] */ __int3264 fn,
+    /* [out][in] */ void *ret,
+    /* [in] */ int retSz,
     void *a1,
     void *a2,
     void *a3,
@@ -495,9 +511,9 @@ EXTERN_C const IID LIBID_ATLVBALib;
     void *a7);
 
 /* [entry] */ void __stdcall CCall8( 
-    __int3264 fn,
-    void *ret,
-    int retSz,
+    /* [in] */ __int3264 fn,
+    /* [out][in] */ void *ret,
+    /* [in] */ int retSz,
     void *a1,
     void *a2,
     void *a3,
@@ -508,9 +524,9 @@ EXTERN_C const IID LIBID_ATLVBALib;
     void *a8);
 
 /* [entry] */ void __stdcall CCall9( 
-    __int3264 fn,
-    void *ret,
-    int retSz,
+    /* [in] */ __int3264 fn,
+    /* [out][in] */ void *ret,
+    /* [in] */ int retSz,
     void *a1,
     void *a2,
     void *a3,
@@ -522,9 +538,9 @@ EXTERN_C const IID LIBID_ATLVBALib;
     void *a9);
 
 /* [entry] */ void __stdcall CCall10( 
-    __int3264 fn,
-    void *ret,
-    int retSz,
+    /* [in] */ __int3264 fn,
+    /* [out][in] */ void *ret,
+    /* [in] */ int retSz,
     void *a1,
     void *a2,
     void *a3,
@@ -537,9 +553,9 @@ EXTERN_C const IID LIBID_ATLVBALib;
     void *a10);
 
 /* [helpstring][entry] */ void __stdcall Call2_( 
-    __int3264 fn,
-    void *ret,
-    int retSz,
+    /* [in] */ __int3264 fn,
+    /* [out][in] */ void *ret,
+    /* [in] */ int retSz,
     void *a1,
     void *a2);
 
@@ -559,9 +575,14 @@ EXTERN_C const IID LIBID_ATLVBALib;
 /* [entry] */ long FreeLib( 
     /* [in] */ __int3264 hLibModule);
 
-/* [entry] */ __int3264 GetProcAddr( 
+/* [entry] */ __int3264 __stdcall GetProcAddr( 
     /* [in] */ __int3264 hModule,
     /* [in] */ BSTR AnsiProcName);
+
+/* [entry] */ void __stdcall CopyMem( 
+    /* [out][in] */ void *dst,
+    /* [in] */ const void *src,
+    __int3264 sz);
 
 #endif /* __LibHelp_MODULE_DEFINED__ */
 #endif /* __ATLVBALib_LIBRARY_DEFINED__ */

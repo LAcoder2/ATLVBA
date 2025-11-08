@@ -1,6 +1,7 @@
 #include "ATLVBA_i.h"
 //#include <string.h>
 #include <windows.h>
+
 BSTR ToAnsi(BSTR str)
 {
 	if (str == NULL) return NULL;

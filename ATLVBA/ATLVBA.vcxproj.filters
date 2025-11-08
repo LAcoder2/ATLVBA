@@ -75,6 +75,9 @@
     <ClCompile Include="MemHelp.c">
       <Filter>Исходные файлы\Expotrs</Filter>
     </ClCompile>
+    <ClCompile Include="ArrHelp.c">
+      <Filter>Исходные файлы\Expotrs</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="ATLVBA.rc">
