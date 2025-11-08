@@ -1,5 +1,4 @@
-﻿F:\Microsoft Visual Studio\2017\Community\Common7\IDE\VC\VCTargets\Microsoft.CppClean.targets(76,5): warning : Отказано в доступе по пути "f:\vsprojects\atlvba\release\atlvba.dll".
-  Processing .\ATLVBA.idl
+﻿  Processing .\ATLVBA.idl
   ATLVBA.idl
   Processing C:\Program Files (x86)\Windows Kits\10\Include\10.0.26100.0\um\oaidl.idl
   oaidl.idl

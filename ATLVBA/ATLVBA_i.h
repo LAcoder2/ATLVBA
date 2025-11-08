@@ -336,7 +336,7 @@ EXTERN_C const IID LIBID_ATLVBALib;
 
 /* [propget][vararg][entry] */ HRESULT __stdcall get_RefList( 
     /* [in] */ SAFEARRAY * *ArgList,
-    /* [retval][out] */ SAFEARRAY * pRet);
+    /* [retval][out] */ SAFEARRAY * *pRet);
 
 /* [propput][vararg][entry] */ HRESULT __stdcall put_RefList( 
     /* [in] */ SAFEARRAY * *ArgList,
