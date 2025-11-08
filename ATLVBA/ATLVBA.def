@@ -1,6 +1,6 @@
 ﻿; ATLVBA.def: объявляет параметры модуля.
 
-LIBRARY ATLProjectLib
+LIBRARY ATLVBALib
 EXPORTS		
 	;===MemHelp===
 		GetMemPtr

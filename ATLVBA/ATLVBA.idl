@@ -133,10 +133,14 @@ library ATLVBALib
 	module ArrHelp{
 		[entry("VarPtr")] __int3264 ArrPtr([in] const SAFEARRAY(void)* Arr);
 		[entry("isObjInit")] VARIANT_BOOL isArrayInit([in] SAFEARRAY(void)* Arr);
-		[entry("GetRefList"), vararg, propget]
-		HRESULT __stdcall RefList([in] SAFEARRAY(VARIANT)* ArgList, [out, retval] SAFEARRAY(VARIANT)* pRet);
-		[entry("PutRefList"), vararg, propput]
-		HRESULT __stdcall RefList([in] SAFEARRAY(VARIANT)* ArgList, [in] SAFEARRAY(VARIANT)* pInp);
+		[entry("GetRefList"), propget, vararg]
+		HRESULT __stdcall RefList(	
+			[in, out] SAFEARRAY(VARIANT)* ArgList, 
+			[out, retval] SAFEARRAY(VARIANT)* pOut);
+		[entry("PutRefList"), propput, vararg]
+		HRESULT __stdcall RefList(
+			[in] SAFEARRAY(VARIANT)* ArgList, 
+			[in] SAFEARRAY(VARIANT)* pInp);
 	}
 	module CallHelp{
 		[entry("Call0")] void __stdcall Call0([in] __int3264 fn, [in, out] void* ret, [in] int retSz);

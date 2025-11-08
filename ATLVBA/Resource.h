@@ -4,7 +4,7 @@
 //
 
 #define IDS_PROJNAME                    100
-#define IDR_ATLPROJECT1      101
+#define IDR_ATLVBA     101
 
 // Следующие стандартные значения для новых объектов
 //

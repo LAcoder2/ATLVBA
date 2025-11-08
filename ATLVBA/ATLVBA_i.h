@@ -334,11 +334,11 @@ EXTERN_C const IID LIBID_ATLVBALib;
 /* [entry] */ VARIANT_BOOL isArrayInit( 
     /* [in] */ SAFEARRAY * *Arr);
 
-/* [propget][vararg][entry] */ HRESULT __stdcall get_RefList( 
-    /* [in] */ SAFEARRAY * *ArgList,
-    /* [retval][out] */ SAFEARRAY * *pRet);
+/* [vararg][propget][entry] */ HRESULT __stdcall get_RefList( 
+    /* [out][in] */ SAFEARRAY * *ArgList,
+    /* [retval][out] */ SAFEARRAY * *pOut);
 
-/* [propput][vararg][entry] */ HRESULT __stdcall put_RefList( 
+/* [vararg][propput][entry] */ HRESULT __stdcall put_RefList( 
     /* [in] */ SAFEARRAY * *ArgList,
     /* [in] */ SAFEARRAY * *pInp);
 
