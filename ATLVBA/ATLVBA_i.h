@@ -79,6 +79,12 @@ EXTERN_C const IID LIBID_ATLVBALib;
 /* module MemHelp */
 /* [dllname][uuid] */ 
 
+/* [entry] */ __int3264 _p( 
+    /* [in] */ const void *Var);
+
+/* [entry] */ __int3264 _ap( 
+    /* [in] */ SAFEARRAY * *Arr);
+
 /* [entry] */ void GetMemPtr( 
     const void *src,
     void *dst);
@@ -327,6 +333,14 @@ EXTERN_C const IID LIBID_ATLVBALib;
 
 /* [entry] */ VARIANT_BOOL isArrayInit( 
     /* [in] */ SAFEARRAY * *Arr);
+
+/* [propget][vararg][entry] */ HRESULT __stdcall get_RefList( 
+    /* [in] */ SAFEARRAY * *ArgList,
+    /* [retval][out] */ SAFEARRAY * pRet);
+
+/* [propput][vararg][entry] */ HRESULT __stdcall put_RefList( 
+    /* [in] */ SAFEARRAY * *ArgList,
+    /* [in] */ SAFEARRAY * *pInp);
 
 #endif /* __ArrHelp_MODULE_DEFINED__ */
 

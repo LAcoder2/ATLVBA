@@ -30,7 +30,7 @@ __int3264 VarPtr(const void* var) { return var; }
 int memCmp(const void* buf1, const void* buf2, size_t Size) {return memcmp(buf1, buf2, Size);}
 __int3264 memCpy(void* dst, const void* src, __int3264 sz) {return memcpy(dst, src, sz);}
 
-void Copy16(_16Bytes* dst, _16Bytes* src) {*dst = *src;}
+void Copy16(_16Bytes* dst, const _16Bytes* src) {*dst = *src;}
 
 void MovePtr(INT_PTR* dst, INT_PTR* src) {
 	*dst = *src;
@@ -80,7 +80,7 @@ void SwapVT(VARIANT* var1, VARIANT* var2) {
 #define ROL(bitmask, n) (((bitmask) << (n)) | ((bitmask) >> (32 - (n))))
 
 // Railgun_6pp by Georgi 'Sanmayce'
-__int3264 memmem(char* pbTarget, const long cbTarget, char* pbPattern, const long cbPattern) {
+__int3264 memmem(const char* pbTarget, long cbTarget, const char* pbPattern, long cbPattern) {
 	char * pbTargetMax = pbTarget + cbTarget;
 	char * pbTargetMax2 = pbTargetMax - 8;
 	unsigned long ulHashPattern = *(unsigned long *)(pbPattern);

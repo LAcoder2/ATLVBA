@@ -32,6 +32,8 @@ EXPORTS
     ;===ArrHelp===
 		VarPtr
 		isObjInit
+		PutRefList
+		GetRefList
 	;=== StrHelp ===
 		StrLen
 		StrLenB
