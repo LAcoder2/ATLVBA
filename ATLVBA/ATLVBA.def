@@ -32,7 +32,7 @@ EXPORTS
     ;===ArrHelp===
 		VarPtr
 		isObjInit
-		PutRefList
+		AssignVecV
 		GetRefList
 	;=== StrHelp ===
 		StrLen
@@ -72,6 +72,9 @@ EXPORTS
 		CCall8
 		CCall9
 		CCall10
+	;===Tests===
+	;	InitCallBack
+	;	TestProp
 	; Standart Eports
 		DllCanUnloadNow		PRIVATE
 		DllGetClassObject	PRIVATE

@@ -2,7 +2,7 @@
 //#include <string.h>
 #include <windows.h>
 
-BSTR ToAnsi(BSTR str)
+BSTR ToAnsi(const BSTR str)
 {
 	if (str == NULL) return NULL;
 	DWORD size = *((DWORD*)str - 1);
@@ -19,7 +19,7 @@ BSTR ToAnsi(BSTR str)
 	WideCharToMultiByte(CP_ACP, 0, str, wideLen, (char*)result, ansiLen, NULL, NULL);
 	return result;
 }
-BSTR FromAnsi(BSTR str)
+BSTR FromAnsi(const BSTR str)
 {
 	if (str == NULL) return NULL;
 
@@ -36,17 +36,17 @@ BSTR FromAnsi(BSTR str)
 	return result;
 }
 //[ComExport]
-INT32 StrLenB(BSTR str) {
-	if (str == NULL) return NULL;
+INT32 StrLenB(const BSTR str) {
+	if (str == NULL) return 0;
 	return *((INT32*)str - 1);
 }
-INT32 ArrLen(SAFEARRAY** ppsaAry) {
+INT32 ArrLen(const SAFEARRAY** ppsaAry) {
 	return (*ppsaAry)->rgsabound[0].cElements;
 }
 
 //[ComExport]
-INT32 StrLen(BSTR str) {
-	if (str == NULL) return NULL;
+INT32 StrLen(const BSTR str) {
+	if (str == NULL) return 0;
 	return *((INT32*)str - 1) / 2;	
 }
 
@@ -135,7 +135,7 @@ int InStrEndB(int Start, const BSTR psWhere, const BSTR psWhat, int Stop) {
 
 	return 0;
 }
-int InStrByt(int Start, SAFEARRAY** ppsaWhere, SAFEARRAY** ppsaWhat) {
+int InStrByt(int Start, const SAFEARRAY** ppsaWhere, const SAFEARRAY** ppsaWhat) {
 	//int cntWhere = (*ppsaWhere)->rgsabound[0].cElements;
 	//int cntWhat = (*ppsaWhat)->rgsabound[0].cElements;
 	//char *pcWhere1 = (char*)(*ppsaWhere)->pvData;
@@ -162,7 +162,7 @@ int InStrByt(int Start, SAFEARRAY** ppsaWhere, SAFEARRAY** ppsaWhat) {
 	return 0;
 }
 
-int InStrLenByt(int Start, SAFEARRAY** ppsaWhere, SAFEARRAY** ppsaWhat, int Length) {	
+int InStrLenByt(int Start, const SAFEARRAY** ppsaWhere, const SAFEARRAY** ppsaWhat, int Length) {
 	INSTRBYT_VARPREP;
 	INSTR_START_VALIDATION;
 	INSTR_LEN_VALIDATION;
@@ -172,7 +172,7 @@ int InStrLenByt(int Start, SAFEARRAY** ppsaWhere, SAFEARRAY** ppsaWhat, int Leng
 	return 0;
 }
 
-int InStrEndByt(int Start, SAFEARRAY** ppsaWhere, SAFEARRAY** ppsaWhat, int Stop) {	
+int InStrEndByt(int Start, const SAFEARRAY** ppsaWhere, const SAFEARRAY** ppsaWhat, int Stop) {	
 	INSTRBYT_VARPREP;
 	INSTR_START_VALIDATION;
 	INSTR_STOP_VALIDATION;

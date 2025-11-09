@@ -56,7 +56,7 @@ typedef void(__cdecl *csub10)(void*, void*, void*, void*, void*, void*, void*, v
 typedef void(__cdecl *csub11)(void*, void*, void*, void*, void*, void*, void*, void*, void*, void*, void*);
 
 
-void Call0(const INT_PTR fn, void* ret, const int retSz){
+void Call0(INT_PTR fn, void* ret, int retSz){
 	if (ret != NULL){
 		if (retSz <= 8){
 			INT64 ret64 = ((fun0)fn)();
@@ -68,7 +68,7 @@ void Call0(const INT_PTR fn, void* ret, const int retSz){
 		((sub0)fn)();
 	}
 }
-void Call1(const INT_PTR fn, void* ret, const int retSz, void* a1){
+void Call1(INT_PTR fn, void* ret, int retSz, void* a1){
 	if (ret != NULL){
 		if (retSz <= 8){
 			INT64 ret64 = ((fun1)fn)(a1);
@@ -85,16 +85,16 @@ typedef struct { byte bytes[3]; } _3B;
 typedef struct { byte bytes[5]; } _5B;
 typedef struct { byte bytes[6]; } _6B;
 typedef struct { byte bytes[7]; } _7B;
-void copy0(void* dst, const void* src) {}
-void copy1(void* dst, const void* src) { *(byte*)(dst) = *(byte*)(src); }
-void copy2(void* dst, const void* src) { *(INT16*)(dst) = *(INT16*)(src); }
-void copy3(void* dst, const void* src) { *(_3B*)(dst) = *(_3B*)(src); }
-void copy4(void* dst, const void* src) { *(INT32*)(dst) = *(INT32*)(src); }
-void copy5(void* dst, const void* src) { *(_5B*)(dst) = *(_5B*)(src); }
-void copy6(void* dst, const void* src) { *(_6B*)(dst) = *(_6B*)(src); }
-void copy7(void* dst, const void* src) { *(_7B*)(dst) = *(_7B*)(src); }
-void copy8(void* dst, const void* src) { *(INT64*)(dst) = *(INT64*)(src); }
-typedef void(*copyDlg)(void* dst, const void* src);
+void copy0(void* dst, void* src) {}
+void copy1(void* dst, void* src) { *(byte*)(dst) = *(byte*)(src); }
+void copy2(void* dst, void* src) { *(INT16*)(dst) = *(INT16*)(src); }
+void copy3(void* dst, void* src) { *(_3B*)(dst) = *(_3B*)(src); }
+void copy4(void* dst, void* src) { *(INT32*)(dst) = *(INT32*)(src); }
+void copy5(void* dst, void* src) { *(_5B*)(dst) = *(_5B*)(src); }
+void copy6(void* dst, void* src) { *(_6B*)(dst) = *(_6B*)(src); }
+void copy7(void* dst, void* src) { *(_7B*)(dst) = *(_7B*)(src); }
+void copy8(void* dst, void* src) { *(INT64*)(dst) = *(INT64*)(src); }
+typedef void(*copyDlg)(void* dst, void* src);
 copyDlg copyFnArr[9];
 void __cdecl initCopyFnArr() { //cdecl указан для запуска функции в файле dllmain.cpp для которого по умолчаню задан тип запуска cdecl
 	copyFnArr[0] = copy0;
@@ -108,7 +108,7 @@ void __cdecl initCopyFnArr() { //cdecl указан для запуска фун
 	copyFnArr[8] = copy8;
 }
 //__declspec(dllexport)
-void Call2_(const INT_PTR fn, void* ret, const int retSz, void* a1, void* a2) {
+void Call2_(INT_PTR fn, void* ret, int retSz, void* a1, void* a2) {
 	if (retSz > -1) {} else  return;
 	if (ret != NULL) {
 		if (retSz <= 8) {
@@ -121,7 +121,7 @@ void Call2_(const INT_PTR fn, void* ret, const int retSz, void* a1, void* a2) {
 		((sub2)fn)(a1, a2);
 	}
 }
-void Call2(const INT_PTR fn, void* ret, const int retSz, void* a1, void* a2){
+void Call2(INT_PTR fn, void* ret, int retSz, void* a1, void* a2){
 	if (ret != NULL){
 		if (retSz <= 8){
 			INT64 ret64 = ((fun2)fn)(a1, a2);
@@ -133,7 +133,7 @@ void Call2(const INT_PTR fn, void* ret, const int retSz, void* a1, void* a2){
 		((sub2)fn)(a1, a2);
 	}
 }
-void Call3(const INT_PTR fn, void* ret, const int retSz, void* a1, void* a2, void* a3){
+void Call3(INT_PTR fn, void* ret, int retSz, void* a1, void* a2, void* a3){
 	if (ret != NULL){
 		if (retSz <= 8){
 			INT64 ret64 = ((fun3)fn)(a1, a2, a3);
@@ -145,7 +145,7 @@ void Call3(const INT_PTR fn, void* ret, const int retSz, void* a1, void* a2, voi
 		((sub3)fn)(a1, a2, a3);
 	}
 }
-void Call4(const INT_PTR fn, void* ret, const int retSz, void* a1, void* a2, void* a3, void* a4){
+void Call4(INT_PTR fn, void* ret, int retSz, void* a1, void* a2, void* a3, void* a4){
 	if (ret != NULL){
 		if (retSz <= 8){
 			INT64 ret64 = ((fun4)fn)(a1, a2, a3, a4);
@@ -157,7 +157,7 @@ void Call4(const INT_PTR fn, void* ret, const int retSz, void* a1, void* a2, voi
 		((sub4)fn)(a1, a2, a3, a4);
 	}
 }
-void Call5(const INT_PTR fn, void* ret, const int retSz, void* a1, void* a2, void* a3, void* a4, void* a5){
+void Call5(INT_PTR fn, void* ret, int retSz, void* a1, void* a2, void* a3, void* a4, void* a5){
 	if (ret != NULL){
 		if (retSz <= 8){
 			INT64 ret64 = ((fun5)fn)(a1, a2, a3, a4, a5);
@@ -169,7 +169,7 @@ void Call5(const INT_PTR fn, void* ret, const int retSz, void* a1, void* a2, voi
 		((sub5)fn)(a1, a2, a3, a4, a5);
 	}
 }
-void Call6(const INT_PTR fn, void* ret, const int retSz, void* a1, void* a2, void* a3, void* a4, void* a5, void* a6){
+void Call6(INT_PTR fn, void* ret, int retSz, void* a1, void* a2, void* a3, void* a4, void* a5, void* a6){
 	if (ret != NULL){
 		if (retSz <= 8){
 			INT64 ret64 = ((fun6)fn)(a1, a2, a3, a4, a5, a6);
@@ -181,7 +181,7 @@ void Call6(const INT_PTR fn, void* ret, const int retSz, void* a1, void* a2, voi
 		((sub6)fn)(a1, a2, a3, a4, a5, a6);
 	}
 }
-void Call7(const INT_PTR fn, void* ret, const int retSz, void* a1, void* a2, void* a3, void* a4, void* a5, void* a6, void* a7){
+void Call7(INT_PTR fn, void* ret, int retSz, void* a1, void* a2, void* a3, void* a4, void* a5, void* a6, void* a7){
 	if (ret != NULL){
 		if (retSz <= 8){
 			INT64 ret64 = ((fun7)fn)(a1, a2, a3, a4, a5, a6, a7);
@@ -193,7 +193,7 @@ void Call7(const INT_PTR fn, void* ret, const int retSz, void* a1, void* a2, voi
 		((sub7)fn)(a1, a2, a3, a4, a5, a6, a7);
 	}
 }
-void Call8(const INT_PTR fn, void* ret, const int retSz, void* a1, void* a2, void* a3, void* a4, void* a5, void* a6, void* a7, void* a8){
+void Call8(INT_PTR fn, void* ret, int retSz, void* a1, void* a2, void* a3, void* a4, void* a5, void* a6, void* a7, void* a8){
 	if (ret != NULL){
 		if (retSz <= 8){
 			INT64 ret64 = ((fun8)fn)(a1, a2, a3, a4, a5, a6, a7, a8);
@@ -205,7 +205,7 @@ void Call8(const INT_PTR fn, void* ret, const int retSz, void* a1, void* a2, voi
 		((sub8)fn)(a1, a2, a3, a4, a5, a6, a7, a8);
 	}
 }
-void Call9(const INT_PTR fn, void* ret, const int retSz, void* a1, void* a2, void* a3, void* a4, void* a5, void* a6, void* a7, void* a8, void* a9){
+void Call9(INT_PTR fn, void* ret, int retSz, void* a1, void* a2, void* a3, void* a4, void* a5, void* a6, void* a7, void* a8, void* a9){
 	if (ret != NULL){
 		if (retSz <= 8){
 			INT64 ret64 = ((fun9)fn)(a1, a2, a3, a4, a5, a6, a7, a8, a9);
@@ -217,7 +217,7 @@ void Call9(const INT_PTR fn, void* ret, const int retSz, void* a1, void* a2, voi
 		((sub9)fn)(a1, a2, a3, a4, a5, a6, a7, a8, a9);
 	}
 }
-void Call10(const INT_PTR fn, void* ret, const int retSz, void* a1, void* a2, void* a3, void* a4, void* a5, void* a6, void* a7, void* a8, void* a9, void* a10){
+void Call10(INT_PTR fn, void* ret, int retSz, void* a1, void* a2, void* a3, void* a4, void* a5, void* a6, void* a7, void* a8, void* a9, void* a10){
 	if (ret != NULL){
 		if (retSz <= 8){
 			INT64 ret64 = ((fun10)fn)(a1, a2, a3, a4, a5, a6, a7, a8, a9, a10);
@@ -230,7 +230,7 @@ void Call10(const INT_PTR fn, void* ret, const int retSz, void* a1, void* a2, vo
 	}
 }
 
-void CCall0(const INT_PTR fn, void* ret, const int retSz){
+void CCall0(INT_PTR fn, void* ret, int retSz){
 	if (ret != NULL){
 		if (retSz <= 8){
 			INT64 ret64 = ((cfun0)fn)();
@@ -242,7 +242,7 @@ void CCall0(const INT_PTR fn, void* ret, const int retSz){
 		((csub0)fn)();
 	}
 }
-void CCall1(const INT_PTR fn, void* ret, const int retSz, void* a1){
+void CCall1(INT_PTR fn, void* ret, int retSz, void* a1){
 	if (ret != NULL){
 		if (retSz <= 8){
 			INT64 ret64 = ((cfun1)fn)(a1);
@@ -254,7 +254,7 @@ void CCall1(const INT_PTR fn, void* ret, const int retSz, void* a1){
 		((csub1)fn)(a1);
 	}
 }
-void CCall2(const INT_PTR fn, void* ret, const int retSz, void* a1, void* a2){
+void CCall2(INT_PTR fn, void* ret, int retSz, void* a1, void* a2){
 	if (ret != NULL){
 		if (retSz <= 8){
 			INT64 ret64 = ((cfun2)fn)(a1, a2);
@@ -266,7 +266,7 @@ void CCall2(const INT_PTR fn, void* ret, const int retSz, void* a1, void* a2){
 		((csub2)fn)(a1, a2);
 	}
 }
-void CCall3(const INT_PTR fn, void* ret, const int retSz, void* a1, void* a2, void* a3){
+void CCall3(INT_PTR fn, void* ret, int retSz, void* a1, void* a2, void* a3){
 	if (ret != NULL){
 		if (retSz <= 8){
 			INT64 ret64 = ((cfun3)fn)(a1, a2, a3);
@@ -278,7 +278,7 @@ void CCall3(const INT_PTR fn, void* ret, const int retSz, void* a1, void* a2, vo
 		((csub3)fn)(a1, a2, a3);
 	}
 }
-void CCall4(const INT_PTR fn, void* ret, const int retSz, void* a1, void* a2, void* a3, void* a4){
+void CCall4(INT_PTR fn, void* ret, int retSz, void* a1, void* a2, void* a3, void* a4){
 	if (ret != NULL){
 		if (retSz <= 8){
 			INT64 ret64 = ((cfun4)fn)(a1, a2, a3, a4);
@@ -290,7 +290,7 @@ void CCall4(const INT_PTR fn, void* ret, const int retSz, void* a1, void* a2, vo
 		((csub4)fn)(a1, a2, a3, a4);
 	}
 }
-void CCall5(const INT_PTR fn, void* ret, const int retSz, void* a1, void* a2, void* a3, void* a4, void* a5){
+void CCall5(INT_PTR fn, void* ret, int retSz, void* a1, void* a2, void* a3, void* a4, void* a5){
 	if (ret != NULL){
 		if (retSz <= 8){
 			INT64 ret64 = ((cfun5)fn)(a1, a2, a3, a4, a5);
@@ -302,7 +302,7 @@ void CCall5(const INT_PTR fn, void* ret, const int retSz, void* a1, void* a2, vo
 		((csub5)fn)(a1, a2, a3, a4, a5);
 	}
 }
-void CCall6(const INT_PTR fn, void* ret, const int retSz, void* a1, void* a2, void* a3, void* a4, void* a5, void* a6){
+void CCall6(INT_PTR fn, void* ret, int retSz, void* a1, void* a2, void* a3, void* a4, void* a5, void* a6){
 	if (ret != NULL){
 		if (retSz <= 8){
 			INT64 ret64 = ((cfun6)fn)(a1, a2, a3, a4, a5, a6);
@@ -314,7 +314,7 @@ void CCall6(const INT_PTR fn, void* ret, const int retSz, void* a1, void* a2, vo
 		((csub6)fn)(a1, a2, a3, a4, a5, a6);
 	}
 }
-void CCall7(const INT_PTR fn, void* ret, const int retSz, void* a1, void* a2, void* a3, void* a4, void* a5, void* a6, void* a7){
+void CCall7(INT_PTR fn, void* ret, int retSz, void* a1, void* a2, void* a3, void* a4, void* a5, void* a6, void* a7){
 	if (ret != NULL){
 		if (retSz <= 8){
 			INT64 ret64 = ((cfun7)fn)(a1, a2, a3, a4, a5, a6, a7);
@@ -326,7 +326,7 @@ void CCall7(const INT_PTR fn, void* ret, const int retSz, void* a1, void* a2, vo
 		((csub7)fn)(a1, a2, a3, a4, a5, a6, a7);
 	}
 }
-void CCall8(const INT_PTR fn, void* ret, const int retSz, void* a1, void* a2, void* a3, void* a4, void* a5, void* a6, void* a7, void* a8){
+void CCall8(INT_PTR fn, void* ret, int retSz, void* a1, void* a2, void* a3, void* a4, void* a5, void* a6, void* a7, void* a8){
 	if (ret != NULL){
 		if (retSz <= 8){
 			INT64 ret64 = ((cfun8)fn)(a1, a2, a3, a4, a5, a6, a7, a8);
@@ -338,7 +338,7 @@ void CCall8(const INT_PTR fn, void* ret, const int retSz, void* a1, void* a2, vo
 		((csub8)fn)(a1, a2, a3, a4, a5, a6, a7, a8);
 	}
 }
-void CCall9(const INT_PTR fn, void* ret, const int retSz, void* a1, void* a2, void* a3, void* a4, void* a5, void* a6, void* a7, void* a8, void* a9){
+void CCall9(INT_PTR fn, void* ret, int retSz, void* a1, void* a2, void* a3, void* a4, void* a5, void* a6, void* a7, void* a8, void* a9){
 	if (ret != NULL){
 		if (retSz <= 8){
 			INT64 ret64 = ((cfun9)fn)(a1, a2, a3, a4, a5, a6, a7, a8, a9);
@@ -350,7 +350,7 @@ void CCall9(const INT_PTR fn, void* ret, const int retSz, void* a1, void* a2, vo
 		((csub9)fn)(a1, a2, a3, a4, a5, a6, a7, a8, a9);
 	}
 }
-void CCall10(const INT_PTR fn, void* ret, const int retSz, void* a1, void* a2, void* a3, void* a4, void* a5, void* a6, void* a7, void* a8, void* a9, void* a10){
+void CCall10(INT_PTR fn, void* ret, int retSz, void* a1, void* a2, void* a3, void* a4, void* a5, void* a6, void* a7, void* a8, void* a9, void* a10){
 	if (ret != NULL){
 		if (retSz <= 8){
 			INT64 ret64 = ((cfun10)fn)(a1, a2, a3, a4, a5, a6, a7, a8, a9, a10);
@@ -364,7 +364,7 @@ void CCall10(const INT_PTR fn, void* ret, const int retSz, void* a1, void* a2, v
 }
 
 //#####################################################
-//void Call0(const INT_PTR fn, void* ret, const int retSz){
+//void Call0(INT_PTR fn, void* ret, int retSz){
 //	typedef INT64(__stdcall *dlg1)();
 //	typedef void(__stdcall *dlg2)(void*);
 //	if (retSz <= 8){
@@ -374,7 +374,7 @@ void CCall10(const INT_PTR fn, void* ret, const int retSz, void* a1, void* a2, v
 //		((dlg2)fn)(ret);
 //	}
 //}
-//void Call1(const INT_PTR fn, void* ret, const int retSz, void* a1){
+//void Call1(INT_PTR fn, void* ret, int retSz, void* a1){
 //	typedef INT64(__stdcall *dlg1)(void*);
 //	typedef void(__stdcall *dlg2)(void*, void*);
 //	if (retSz <= 8){
@@ -389,7 +389,7 @@ void CCall10(const INT_PTR fn, void* ret, const int retSz, void* a1, void* a2, v
 //typedef INT64(__stdcall *fun3)(void*, void*, void*);
 //typedef void(__stdcall *sub2)(void*, void*);
 //typedef void(__stdcall *sub3)(void*, void*, void*);
-//void Call2(const INT_PTR fn, void* ret, const int retSz, void* a1, void* a2){
+//void Call2(INT_PTR fn, void* ret, int retSz, void* a1, void* a2){
 //	if (ret != NULL){
 //		if (retSz <= 8){
 //			INT64 ret64 = ((fun2)fn)(a1, a2);
@@ -403,7 +403,7 @@ void CCall10(const INT_PTR fn, void* ret, const int retSz, void* a1, void* a2, v
 //		((sub2)fn)(a1, a2);  		
 //	}
 //}
-////void Call2(const INT_PTR fn, void* ret, const int retSz, void* a1, void* a2){
+////void Call2(INT_PTR fn, void* ret, int retSz, void* a1, void* a2){
 ////	typedef INT64(__stdcall *dlg1)(void*, void*);
 ////	typedef void(__stdcall *dlg2)(void*, void*, void*);
 ////	if (retSz <= 8){
@@ -413,7 +413,7 @@ void CCall10(const INT_PTR fn, void* ret, const int retSz, void* a1, void* a2, v
 ////		((dlg2)fn)(ret, a1, a2);
 ////	}
 ////}
-//void Call3(const INT_PTR fn, void* ret, const int retSz, void* a1, void* a2, void* a3){
+//void Call3(INT_PTR fn, void* ret, int retSz, void* a1, void* a2, void* a3){
 //	typedef INT64(__stdcall *dlg1)(void*, void*, void*);
 //	typedef void(__stdcall *dlg2)(void*, void*, void*, void*);
 //	if (retSz <= 8){
@@ -423,7 +423,7 @@ void CCall10(const INT_PTR fn, void* ret, const int retSz, void* a1, void* a2, v
 //		((dlg2)fn)(ret, a1, a2, a3);
 //	}
 //}
-//void Call4(const INT_PTR fn, void* ret, const int retSz, void* a1, void* a2, void* a3, void* a4){
+//void Call4(INT_PTR fn, void* ret, int retSz, void* a1, void* a2, void* a3, void* a4){
 //	typedef INT64(__stdcall *dlg1)(void*, void*, void*, void*);
 //	typedef void(__stdcall *dlg2)(void*, void*, void*, void*, void*);
 //	if (retSz <= 8){
@@ -433,7 +433,7 @@ void CCall10(const INT_PTR fn, void* ret, const int retSz, void* a1, void* a2, v
 //		((dlg2)fn)(ret, a1, a2, a3, a4);
 //	}
 //}
-//void Call5(const INT_PTR fn, void* ret, const int retSz, void* a1, void* a2, void* a3, void* a4, void* a5){
+//void Call5(INT_PTR fn, void* ret, int retSz, void* a1, void* a2, void* a3, void* a4, void* a5){
 //	typedef INT64(__stdcall *dlg1)(void*, void*, void*, void*, void*);
 //	typedef void(__stdcall *dlg2)(void*, void*, void*, void*, void*, void*);
 //	if (retSz <= 8){
@@ -443,7 +443,7 @@ void CCall10(const INT_PTR fn, void* ret, const int retSz, void* a1, void* a2, v
 //		((dlg2)fn)(ret, a1, a2, a3, a4, a5);
 //	}
 //}
-//void Call6(const INT_PTR fn, void* ret, const int retSz, void* a1, void* a2, void* a3, void* a4, void* a5, void* a6){
+//void Call6(INT_PTR fn, void* ret, int retSz, void* a1, void* a2, void* a3, void* a4, void* a5, void* a6){
 //	typedef INT64(__stdcall *dlg1)(void*, void*, void*, void*, void*, void*);
 //	typedef void(__stdcall *dlg2)(void*, void*, void*, void*, void*, void*, void*);
 //	if (retSz <= 8){
@@ -453,7 +453,7 @@ void CCall10(const INT_PTR fn, void* ret, const int retSz, void* a1, void* a2, v
 //		((dlg2)fn)(ret, a1, a2, a3, a4, a5, a6);
 //	}
 //}
-//void Call7(const INT_PTR fn, void* ret, const int retSz, void* a1, void* a2, void* a3, void* a4, void* a5, void* a6, void* a7){
+//void Call7(INT_PTR fn, void* ret, int retSz, void* a1, void* a2, void* a3, void* a4, void* a5, void* a6, void* a7){
 //	typedef INT64(__stdcall *dlg1)(void*, void*, void*, void*, void*, void*, void*);
 //	typedef void(__stdcall *dlg2)(void*, void*, void*, void*, void*, void*, void*, void*);
 //	if (retSz <= 8){
@@ -463,7 +463,7 @@ void CCall10(const INT_PTR fn, void* ret, const int retSz, void* a1, void* a2, v
 //		((dlg2)fn)(ret, a1, a2, a3, a4, a5, a6, a7);
 //	}
 //}
-//void Call8(const INT_PTR fn, void* ret, const int retSz, void* a1, void* a2, void* a3, void* a4, void* a5, void* a6, void* a7, void* a8){
+//void Call8(INT_PTR fn, void* ret, int retSz, void* a1, void* a2, void* a3, void* a4, void* a5, void* a6, void* a7, void* a8){
 //	typedef INT64(__stdcall *dlg1)(void*, void*, void*, void*, void*, void*, void*, void*);
 //	typedef void(__stdcall *dlg2)(void*, void*, void*, void*, void*, void*, void*, void*, void*);
 //	if (retSz <= 8){
@@ -473,7 +473,7 @@ void CCall10(const INT_PTR fn, void* ret, const int retSz, void* a1, void* a2, v
 //		((dlg2)fn)(ret, a1, a2, a3, a4, a5, a6, a7, a8);
 //	}
 //}
-//void Call9(const INT_PTR fn, void* ret, const int retSz, void* a1, void* a2, void* a3, void* a4, void* a5, void* a6, void* a7, void* a8, void* a9){
+//void Call9(INT_PTR fn, void* ret, int retSz, void* a1, void* a2, void* a3, void* a4, void* a5, void* a6, void* a7, void* a8, void* a9){
 //	typedef INT64(__stdcall *dlg1)(void*, void*, void*, void*, void*, void*, void*, void*, void*);
 //	typedef void(__stdcall *dlg2)(void*, void*, void*, void*, void*, void*, void*, void*, void*, void*);
 //	if (retSz <= 8){
@@ -483,7 +483,7 @@ void CCall10(const INT_PTR fn, void* ret, const int retSz, void* a1, void* a2, v
 //		((dlg2)fn)(ret, a1, a2, a3, a4, a5, a6, a7, a8, a9);
 //	}
 //}
-//void Call10(const INT_PTR fn, void* ret, const int retSz, void* a1, void* a2, void* a3, void* a4, void* a5, void* a6, void* a7, void* a8, void* a9, void* a10){
+//void Call10(INT_PTR fn, void* ret, int retSz, void* a1, void* a2, void* a3, void* a4, void* a5, void* a6, void* a7, void* a8, void* a9, void* a10){
 //	typedef INT64(__stdcall *dlg1)(void*, void*, void*, void*, void*, void*, void*, void*, void*, void*);
 //	typedef void(__stdcall *dlg2)(void*, void*, void*, void*, void*, void*, void*, void*, void*, void*, void*);
 //	if (retSz <= 8){
@@ -494,7 +494,7 @@ void CCall10(const INT_PTR fn, void* ret, const int retSz, void* a1, void* a2, v
 //	}
 //}
 ////########################CDECL Section########################
-//void CCall0(const INT_PTR fn, void* ret, const int retSz){
+//void CCall0(INT_PTR fn, void* ret, int retSz){
 //	typedef INT64(__cdecl *dlg1)();
 //	typedef void(__cdecl *dlg2)(void*);
 //	if (retSz <= 8){
@@ -504,7 +504,7 @@ void CCall10(const INT_PTR fn, void* ret, const int retSz, void* a1, void* a2, v
 //		((dlg2)fn)(ret);
 //	}
 //}
-//void CCall1(const INT_PTR fn, void* ret, const int retSz, void* a1){
+//void CCall1(INT_PTR fn, void* ret, int retSz, void* a1){
 //	typedef INT64(__cdecl *dlg1)(void*);
 //	typedef void(__cdecl *dlg2)(void*, void*);
 //	if (retSz <= 8){
@@ -514,7 +514,7 @@ void CCall10(const INT_PTR fn, void* ret, const int retSz, void* a1, void* a2, v
 //		((dlg2)fn)(ret, a1);
 //	}
 //}
-//void CCall2(const INT_PTR fn, void* ret, const int retSz, void* a1, void* a2){
+//void CCall2(INT_PTR fn, void* ret, int retSz, void* a1, void* a2){
 //	typedef INT64(__cdecl *dlg1)(void*, void*);
 //	typedef void(__cdecl *dlg2)(void*, void*, void*);
 //	if (retSz <= 8){
@@ -524,7 +524,7 @@ void CCall10(const INT_PTR fn, void* ret, const int retSz, void* a1, void* a2, v
 //		((dlg2)fn)(ret, a1, a2);
 //	}
 //}
-//void CCall3(const INT_PTR fn, void* ret, const int retSz, void* a1, void* a2, void* a3){
+//void CCall3(INT_PTR fn, void* ret, int retSz, void* a1, void* a2, void* a3){
 //	typedef INT64(__cdecl *dlg1)(void*, void*, void*);
 //	typedef void(__cdecl *dlg2)(void*, void*, void*, void*);
 //	if (retSz <= 8){
@@ -534,7 +534,7 @@ void CCall10(const INT_PTR fn, void* ret, const int retSz, void* a1, void* a2, v
 //		((dlg2)fn)(ret, a1, a2, a3);
 //	}
 //}
-//void CCall4(const INT_PTR fn, void* ret, const int retSz, void* a1, void* a2, void* a3, void* a4){
+//void CCall4(INT_PTR fn, void* ret, int retSz, void* a1, void* a2, void* a3, void* a4){
 //	typedef INT64(__cdecl *dlg1)(void*, void*, void*, void*);
 //	typedef void(__cdecl *dlg2)(void*, void*, void*, void*, void*);
 //	if (retSz <= 8){
@@ -544,7 +544,7 @@ void CCall10(const INT_PTR fn, void* ret, const int retSz, void* a1, void* a2, v
 //		((dlg2)fn)(ret, a1, a2, a3, a4);
 //	}
 //}
-//void CCall5(const INT_PTR fn, void* ret, const int retSz, void* a1, void* a2, void* a3, void* a4, void* a5){
+//void CCall5(INT_PTR fn, void* ret, int retSz, void* a1, void* a2, void* a3, void* a4, void* a5){
 //	typedef INT64(__cdecl *dlg1)(void*, void*, void*, void*, void*);
 //	typedef void(__cdecl *dlg2)(void*, void*, void*, void*, void*, void*);
 //	if (retSz <= 8){
@@ -554,7 +554,7 @@ void CCall10(const INT_PTR fn, void* ret, const int retSz, void* a1, void* a2, v
 //		((dlg2)fn)(ret, a1, a2, a3, a4, a5);
 //	}
 //}
-//void CCall6(const INT_PTR fn, void* ret, const int retSz, void* a1, void* a2, void* a3, void* a4, void* a5, void* a6){
+//void CCall6(INT_PTR fn, void* ret, int retSz, void* a1, void* a2, void* a3, void* a4, void* a5, void* a6){
 //	typedef INT64(__cdecl *dlg1)(void*, void*, void*, void*, void*, void*);
 //	typedef void(__cdecl *dlg2)(void*, void*, void*, void*, void*, void*, void*);
 //	if (retSz <= 8){
@@ -564,7 +564,7 @@ void CCall10(const INT_PTR fn, void* ret, const int retSz, void* a1, void* a2, v
 //		((dlg2)fn)(ret, a1, a2, a3, a4, a5, a6);
 //	}
 //}
-//void CCall7(const INT_PTR fn, void* ret, const int retSz, void* a1, void* a2, void* a3, void* a4, void* a5, void* a6, void* a7){
+//void CCall7(INT_PTR fn, void* ret, int retSz, void* a1, void* a2, void* a3, void* a4, void* a5, void* a6, void* a7){
 //	typedef INT64(__cdecl *dlg1)(void*, void*, void*, void*, void*, void*, void*);
 //	typedef void(__cdecl *dlg2)(void*, void*, void*, void*, void*, void*, void*, void*);
 //	if (retSz <= 8){
@@ -574,7 +574,7 @@ void CCall10(const INT_PTR fn, void* ret, const int retSz, void* a1, void* a2, v
 //		((dlg2)fn)(ret, a1, a2, a3, a4, a5, a6, a7);
 //	}
 //}
-//void CCall8(const INT_PTR fn, void* ret, const int retSz, void* a1, void* a2, void* a3, void* a4, void* a5, void* a6, void* a7, void* a8){
+//void CCall8(INT_PTR fn, void* ret, int retSz, void* a1, void* a2, void* a3, void* a4, void* a5, void* a6, void* a7, void* a8){
 //	typedef INT64(__cdecl *dlg1)(void*, void*, void*, void*, void*, void*, void*, void*);
 //	typedef void(__cdecl *dlg2)(void*, void*, void*, void*, void*, void*, void*, void*, void*);
 //	if (retSz <= 8){
@@ -584,7 +584,7 @@ void CCall10(const INT_PTR fn, void* ret, const int retSz, void* a1, void* a2, v
 //		((dlg2)fn)(ret, a1, a2, a3, a4, a5, a6, a7, a8);
 //	}
 //}
-//void CCall9(const INT_PTR fn, void* ret, const int retSz, void* a1, void* a2, void* a3, void* a4, void* a5, void* a6, void* a7, void* a8, void* a9){
+//void CCall9(INT_PTR fn, void* ret, int retSz, void* a1, void* a2, void* a3, void* a4, void* a5, void* a6, void* a7, void* a8, void* a9){
 //	typedef INT64(__cdecl *dlg1)(void*, void*, void*, void*, void*, void*, void*, void*, void*);
 //	typedef void(__cdecl *dlg2)(void*, void*, void*, void*, void*, void*, void*, void*, void*, void*);
 //	if (retSz <= 8){
@@ -594,7 +594,7 @@ void CCall10(const INT_PTR fn, void* ret, const int retSz, void* a1, void* a2, v
 //		((dlg2)fn)(ret, a1, a2, a3, a4, a5, a6, a7, a8, a9);
 //	}
 //}
-//void CCall10(const INT_PTR fn, void* ret, const int retSz, void* a1, void* a2, void* a3, void* a4, void* a5, void* a6, void* a7, void* a8, void* a9, void* a10){
+//void CCall10(INT_PTR fn, void* ret, int retSz, void* a1, void* a2, void* a3, void* a4, void* a5, void* a6, void* a7, void* a8, void* a9, void* a10){
 //	typedef INT64(__cdecl *dlg1)(void*, void*, void*, void*, void*, void*, void*, void*, void*, void*);
 //	typedef void(__cdecl *dlg2)(void*, void*, void*, void*, void*, void*, void*, void*, void*, void*, void*);
 //	if (retSz <= 8){
@@ -636,7 +636,7 @@ INT_PTR CCall5(void* fn, void* arg1, void* arg2, void* arg3, void* arg4, void* a
 	return ((c_func)fn)(arg1, arg2, arg3, arg4, arg5);
 }*/
 
-//void Call2(const INT_PTR fn, void* ret, const int retSz, void* arg1, void* arg2){
+//void Call2(INT_PTR fn, void* ret, int retSz, void* arg1, void* arg2){
 //	typedef INT64(__stdcall *dlg1)(void*, void*);
 //	typedef void(__stdcall *dlg2)(void*, void*, void*);
 //	if (retSz <= 8){

@@ -30,58 +30,12 @@
   ocidl.acf
   ArrHelp.c
   CallHelp.c
-f:\vsprojects\atlvba\atlvba\callhelp.c(59): warning C4028: формальный параметр 1 отличается от объявления
-f:\vsprojects\atlvba\atlvba\callhelp.c(59): warning C4028: формальный параметр 3 отличается от объявления
-f:\vsprojects\atlvba\atlvba\callhelp.c(71): warning C4028: формальный параметр 1 отличается от объявления
-f:\vsprojects\atlvba\atlvba\callhelp.c(71): warning C4028: формальный параметр 3 отличается от объявления
-f:\vsprojects\atlvba\atlvba\callhelp.c(111): warning C4028: формальный параметр 1 отличается от объявления
-f:\vsprojects\atlvba\atlvba\callhelp.c(111): warning C4028: формальный параметр 3 отличается от объявления
 f:\vsprojects\atlvba\atlvba\callhelp.c(116): warning C4022: copyFnArr: несоответствие указателя для фактического параметра 2
-f:\vsprojects\atlvba\atlvba\callhelp.c(124): warning C4028: формальный параметр 1 отличается от объявления
-f:\vsprojects\atlvba\atlvba\callhelp.c(124): warning C4028: формальный параметр 3 отличается от объявления
-f:\vsprojects\atlvba\atlvba\callhelp.c(136): warning C4028: формальный параметр 1 отличается от объявления
-f:\vsprojects\atlvba\atlvba\callhelp.c(136): warning C4028: формальный параметр 3 отличается от объявления
-f:\vsprojects\atlvba\atlvba\callhelp.c(148): warning C4028: формальный параметр 1 отличается от объявления
-f:\vsprojects\atlvba\atlvba\callhelp.c(148): warning C4028: формальный параметр 3 отличается от объявления
-f:\vsprojects\atlvba\atlvba\callhelp.c(160): warning C4028: формальный параметр 1 отличается от объявления
-f:\vsprojects\atlvba\atlvba\callhelp.c(160): warning C4028: формальный параметр 3 отличается от объявления
-f:\vsprojects\atlvba\atlvba\callhelp.c(172): warning C4028: формальный параметр 1 отличается от объявления
-f:\vsprojects\atlvba\atlvba\callhelp.c(172): warning C4028: формальный параметр 3 отличается от объявления
-f:\vsprojects\atlvba\atlvba\callhelp.c(184): warning C4028: формальный параметр 1 отличается от объявления
-f:\vsprojects\atlvba\atlvba\callhelp.c(184): warning C4028: формальный параметр 3 отличается от объявления
-f:\vsprojects\atlvba\atlvba\callhelp.c(196): warning C4028: формальный параметр 1 отличается от объявления
-f:\vsprojects\atlvba\atlvba\callhelp.c(196): warning C4028: формальный параметр 3 отличается от объявления
-f:\vsprojects\atlvba\atlvba\callhelp.c(208): warning C4028: формальный параметр 1 отличается от объявления
-f:\vsprojects\atlvba\atlvba\callhelp.c(208): warning C4028: формальный параметр 3 отличается от объявления
-f:\vsprojects\atlvba\atlvba\callhelp.c(220): warning C4028: формальный параметр 1 отличается от объявления
-f:\vsprojects\atlvba\atlvba\callhelp.c(220): warning C4028: формальный параметр 3 отличается от объявления
-f:\vsprojects\atlvba\atlvba\callhelp.c(233): warning C4028: формальный параметр 1 отличается от объявления
-f:\vsprojects\atlvba\atlvba\callhelp.c(233): warning C4028: формальный параметр 3 отличается от объявления
-f:\vsprojects\atlvba\atlvba\callhelp.c(245): warning C4028: формальный параметр 1 отличается от объявления
-f:\vsprojects\atlvba\atlvba\callhelp.c(245): warning C4028: формальный параметр 3 отличается от объявления
-f:\vsprojects\atlvba\atlvba\callhelp.c(257): warning C4028: формальный параметр 1 отличается от объявления
-f:\vsprojects\atlvba\atlvba\callhelp.c(257): warning C4028: формальный параметр 3 отличается от объявления
-f:\vsprojects\atlvba\atlvba\callhelp.c(269): warning C4028: формальный параметр 1 отличается от объявления
-f:\vsprojects\atlvba\atlvba\callhelp.c(269): warning C4028: формальный параметр 3 отличается от объявления
-f:\vsprojects\atlvba\atlvba\callhelp.c(281): warning C4028: формальный параметр 1 отличается от объявления
-f:\vsprojects\atlvba\atlvba\callhelp.c(281): warning C4028: формальный параметр 3 отличается от объявления
-f:\vsprojects\atlvba\atlvba\callhelp.c(293): warning C4028: формальный параметр 1 отличается от объявления
-f:\vsprojects\atlvba\atlvba\callhelp.c(293): warning C4028: формальный параметр 3 отличается от объявления
-f:\vsprojects\atlvba\atlvba\callhelp.c(305): warning C4028: формальный параметр 1 отличается от объявления
-f:\vsprojects\atlvba\atlvba\callhelp.c(305): warning C4028: формальный параметр 3 отличается от объявления
-f:\vsprojects\atlvba\atlvba\callhelp.c(317): warning C4028: формальный параметр 1 отличается от объявления
-f:\vsprojects\atlvba\atlvba\callhelp.c(317): warning C4028: формальный параметр 3 отличается от объявления
-f:\vsprojects\atlvba\atlvba\callhelp.c(329): warning C4028: формальный параметр 1 отличается от объявления
-f:\vsprojects\atlvba\atlvba\callhelp.c(329): warning C4028: формальный параметр 3 отличается от объявления
-f:\vsprojects\atlvba\atlvba\callhelp.c(341): warning C4028: формальный параметр 1 отличается от объявления
-f:\vsprojects\atlvba\atlvba\callhelp.c(341): warning C4028: формальный параметр 3 отличается от объявления
-f:\vsprojects\atlvba\atlvba\callhelp.c(353): warning C4028: формальный параметр 1 отличается от объявления
-f:\vsprojects\atlvba\atlvba\callhelp.c(353): warning C4028: формальный параметр 3 отличается от объявления
   MemHelp.c
 f:\vsprojects\atlvba\atlvba\memhelp.c(22): warning C4028: формальный параметр 2 отличается от объявления
 f:\vsprojects\atlvba\atlvba\memhelp.c(28): warning C4047: return: "int" отличается по уровням косвенного обращения от "const void *"
 f:\vsprojects\atlvba\atlvba\memhelp.c(30): warning C4142: "memCmp": неопасное переопределение типа
-  f:\vsprojects\atlvba\atlvba\atlvba_i.h(240): note:  см. объявление "memCmp"
+  f:\vsprojects\atlvba\atlvba\atlvba_i.h(243): note:  см. объявление "memCmp"
 f:\vsprojects\atlvba\atlvba\memhelp.c(30): warning C4028: формальный параметр 3 отличается от объявления
 f:\vsprojects\atlvba\atlvba\memhelp.c(31): warning C4047: return: "int" отличается по уровням косвенного обращения от "void *"
 f:\vsprojects\atlvba\atlvba\memhelp.c(37): warning C4047: =: "INT_PTR" отличается по уровням косвенного обращения от "void *"
@@ -97,14 +51,23 @@ f:\vsprojects\atlvba\atlvba\memhelp.c(130): warning C4047: return: "int" отл�
 f:\vsprojects\atlvba\atlvba\memhelp.c(135): warning C4047: return: "int" отличается по уровням косвенного обращения от "void *"
 f:\vsprojects\atlvba\atlvba\memhelp.c(84): warning C4090: инициализация: разные квалификаторы "const"
   StrHelp.c
-f:\vsprojects\atlvba\atlvba\strhelp.c(40): warning C4047: return: "INT32" отличается по уровням косвенного обращения от "void *"
-f:\vsprojects\atlvba\atlvba\strhelp.c(49): warning C4047: return: "INT32" отличается по уровням косвенного обращения от "void *"
+f:\vsprojects\atlvba\atlvba\strhelp.c(6): warning C4028: формальный параметр 1 отличается от объявления
+f:\vsprojects\atlvba\atlvba\strhelp.c(23): warning C4028: формальный параметр 1 отличается от объявления
+f:\vsprojects\atlvba\atlvba\strhelp.c(39): warning C4028: формальный параметр 1 отличается от объявления
+f:\vsprojects\atlvba\atlvba\strhelp.c(43): warning C4028: формальный параметр 1 отличается от объявления
+f:\vsprojects\atlvba\atlvba\strhelp.c(48): warning C4028: формальный параметр 1 отличается от объявления
 f:\vsprojects\atlvba\atlvba\strhelp.c(107): warning C4028: формальный параметр 2 отличается от объявления
 f:\vsprojects\atlvba\atlvba\strhelp.c(107): warning C4028: формальный параметр 3 отличается от объявления
 f:\vsprojects\atlvba\atlvba\strhelp.c(120): warning C4028: формальный параметр 2 отличается от объявления
 f:\vsprojects\atlvba\atlvba\strhelp.c(120): warning C4028: формальный параметр 3 отличается от объявления
 f:\vsprojects\atlvba\atlvba\strhelp.c(129): warning C4028: формальный параметр 2 отличается от объявления
 f:\vsprojects\atlvba\atlvba\strhelp.c(129): warning C4028: формальный параметр 3 отличается от объявления
+f:\vsprojects\atlvba\atlvba\strhelp.c(138): warning C4028: формальный параметр 2 отличается от объявления
+f:\vsprojects\atlvba\atlvba\strhelp.c(138): warning C4028: формальный параметр 3 отличается от объявления
+f:\vsprojects\atlvba\atlvba\strhelp.c(165): warning C4028: формальный параметр 2 отличается от объявления
+f:\vsprojects\atlvba\atlvba\strhelp.c(165): warning C4028: формальный параметр 3 отличается от объявления
+f:\vsprojects\atlvba\atlvba\strhelp.c(175): warning C4028: формальный параметр 2 отличается от объявления
+f:\vsprojects\atlvba\atlvba\strhelp.c(175): warning C4028: формальный параметр 3 отличается от объявления
   Создание кода...
   ATLVBA.cpp
   ATLVBA_i.c
@@ -112,7 +75,7 @@ f:\vsprojects\atlvba\atlvba\strhelp.c(129): warning C4028: формальный 
   Functions.cpp
   xdlldata.c
      Создается библиотека F:\VSProjects\ATLVBA\Release\ATLVBA.lib и объект F:\VSProjects\ATLVBA\Release\ATLVBA.exp
-ATLVBA.exp : warning LNK4070: директива /OUT:ATLProjectLib.dll в .EXP отличается от имени выходного файла "F:\VSProjects\ATLVBA\Release\ATLVBA.dll"; директива игнорируется
+ATLVBA.exp : warning LNK4070: директива /OUT:ATLVBALib.dll в .EXP отличается от имени выходного файла "F:\VSProjects\ATLVBA\Release\ATLVBA.dll"; директива игнорируется
   ATLVBA.vcxproj -> F:\VSProjects\ATLVBA\Release\ATLVBA.dll
 F:\Microsoft Visual Studio\2017\Community\Common7\IDE\VC\VCTargets\Microsoft.CppCommon.targets(1840,5): warning MSB3075: команда "regsvr32 /s "F:\VSProjects\ATLVBA\Release\ATLVBA.dll"" завершила работу с кодом 5. Убедитесь в наличии достаточных прав для выполнения этой команды.
 F:\Microsoft Visual Studio\2017\Community\Common7\IDE\VC\VCTargets\Microsoft.CppCommon.targets(1852,5): error MSB8011: не удалось зарегистрировать выход. Попробуйте включить перенаправления регистраций пользователя или зарегистрировать компонент из командной строки, запущенной с повышенными разрешениями.

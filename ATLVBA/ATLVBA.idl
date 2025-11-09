@@ -29,11 +29,13 @@ library ATLVBALib
 	//};
 	[
 		uuid(9300AA31-2722-453F-9140-1082D95E486D),
-		dllname("ATLVBA.dll")
+		dllname("ATLVBA.dll"),
+		hidden
 	]
 	module MemHelp{
-		[entry("VarPtr")] __int3264 _p([in] const void* Var);
-		[entry("VarPtr")] __int3264 _ap([in] const SAFEARRAY(void)* Arr);
+		[entry("VarPtr")] __int3264 vp([in] void* Var);
+		[entry("VarPtr")] __int3264 ap([in] SAFEARRAY(void)* Arr);
+		[entry("VarPtr")] __int3264 ArrPtr([in] const SAFEARRAY(void)* Arr);
 		[entry("GetMemPtr")] void GetMemPtr(const void* src, void* dst);
 		[entry("GetMem1")] void GetMem1(const void* src, void* dst);
 		[entry("GetMem2")] void GetMem2(const void* src, void* dst);
@@ -97,9 +99,9 @@ library ATLVBALib
 		[entry("MovePtr")] void MovePtr(void* dst, void* src);
 		[entry("MovePtr"), helpstring("Перемещает только указатель SA, не заботясь о данных массива dst (предполагается, что он пустой)")] 
 		void MoveAryPtr(SAFEARRAY(void)* dst, SAFEARRAY(void)* src);
-		[entry("MoveAry")] void MoveAry(SAFEARRAY(void)* dst, SAFEARRAY(void)* src);
-		[entry("MoveStr")] void MoveStr(BSTR* dst, BSTR* src);
-		[entry("MoveVT")] void MoveVT(void* dst, void* src);
+		[entry("MoveAry"), helpstring("Безопасное перемещение массива, с освобождением массива назначения")] void MoveAry(SAFEARRAY(void)* dst, SAFEARRAY(void)* src);
+		[entry("MoveStr"), helpstring("Безопасное перемещение строки, с освобождением строки назначения")] void MoveStr(BSTR* dst, BSTR* src);
+		[entry("MoveVT"), helpstring("Безопасное перемещение варианта")] void MoveVT(void* dst, void* src);
 		
 		[entry("SwapPtr")] void SwapPtr(void* var1, void* var2);
 		[entry("SwapPtr")] void SwapAry(SAFEARRAY(void)* var1, SAFEARRAY(void)* var2);
@@ -107,7 +109,7 @@ library ATLVBALib
 
 		[entry("memCmp")] long __stdcall memCmp(const void* Buf1, void* Buf2, __int3264 Size);
 		[entry("memCpy")] __int3264 __stdcall memCpy(void* dst, void* src, __int3264 sz);
-		[entry(3)] __int3264 memmem([in] byte* pbTarget, [in] long cbTarget, [in] byte* pbPattern, [in] long cbPattern);
+		[entry(3)] __int3264 memmem([in] char* pbTarget, [in] long cbTarget, [in] char* pbPattern, [in] long cbPattern);
 	};
 	module StrHelp{
 		[entry("StrLen")] INT32 StrLen([in] BSTR str);
@@ -130,18 +132,40 @@ library ATLVBALib
 		[entry("ToUTF8")] BSTR ToUTF8([in] const BSTR sInp);
 		[entry("FromUTF8")] BSTR FromUTF8([in] const BSTR sInp);
 	};
-	module ArrHelp{
-		[entry("VarPtr")] __int3264 ArrPtr([in] const SAFEARRAY(void)* Arr);
-		[entry("isObjInit")] VARIANT_BOOL isArrayInit([in] SAFEARRAY(void)* Arr);
+	module ArrHelp{		
+		[entry("isObjInit")] VARIANT_BOOL isArrayInit([in] SAFEARRAY(void)* Arr);		
+		[entry("AssignVecV")]void AssignVecV(
+			[in, out] SAFEARRAY(VARIANT)* arDst,
+			[in] SAFEARRAY(VARIANT)* arSrc);
+		[entry("AssignVecV"), propput, vararg]
+		HRESULT __stdcall GroupAssigment(
+			[in, out] SAFEARRAY(VARIANT)* ArgList, 
+			[in, out] SAFEARRAY(VARIANT)* rhs);
 		[entry("GetRefList"), propget, vararg]
 		HRESULT __stdcall RefList(	
 			[in, out] SAFEARRAY(VARIANT)* ArgList, 
 			[out, retval] SAFEARRAY(VARIANT)* pOut);
-		[entry("PutRefList"), propput, vararg]
-		HRESULT __stdcall RefList(
-			[in] SAFEARRAY(VARIANT)* ArgList, 
-			[in] SAFEARRAY(VARIANT)* pInp);
+		/*interface _Class1 : IDispatch {
+			[id(0x68030001), propput, vararg]
+			HRESULT PutRefList(
+				[in, out] SAFEARRAY(VARIANT)* Dst,
+				[in, out] SAFEARRAY(VARIANT)* rhs);
+			[id(0x68030000), propget, vararg]
+			HRESULT GetRefList(
+				[in] long pAr,
+				[in, out] SAFEARRAY(VARIANT)* ArgList,
+				[out, retval] SAFEARRAY(VARIANT)*);
+		};*/
+		/*[entry("InitCallBack")] void InitCallBack(__int3264 pfn);
+		[entry("TestProp"), propput, vararg]
+		HRESULT __stdcall TestProp(
+			[in, out] SAFEARRAY(VARIANT)* ArgList,
+			[in, out] SAFEARRAY(VARIANT)* rhs);*/
 	}
+	[
+		//dllname("ATLVBA.dll"),
+		hidden
+	]
 	module CallHelp{
 		[entry("Call0")] void __stdcall Call0([in] __int3264 fn, [in, out] void* ret, [in] int retSz);
 		[entry("Call1")] void __stdcall Call1([in] __int3264 fn, [in, out] void* ret, [in] int retSz, void* a1);
@@ -173,9 +197,10 @@ library ATLVBALib
 
 	[
 		dllname("Kernel32.dll"),
-		helpstring("Library Functions")
+		helpstring("Library Functions"),
+		hidden
 	]
-	module LibHelp{
+	module kernel32{
 		[entry("LoadLibraryW")]
 		__int3264 __stdcall LoadLibW( [in] BSTR LibFileName );
 		[entry("FreeLibrary")]

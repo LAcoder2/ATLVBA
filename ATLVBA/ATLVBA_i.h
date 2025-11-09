@@ -77,12 +77,15 @@ EXTERN_C const IID LIBID_ATLVBALib;
 
 
 /* module MemHelp */
-/* [dllname][uuid] */ 
+/* [hidden][dllname][uuid] */ 
 
-/* [entry] */ __int3264 _p( 
-    /* [in] */ const void *Var);
+/* [entry] */ __int3264 vp( 
+    /* [in] */ void *Var);
 
-/* [entry] */ __int3264 _ap( 
+/* [entry] */ __int3264 ap( 
+    /* [in] */ SAFEARRAY * *Arr);
+
+/* [entry] */ __int3264 ArrPtr( 
     /* [in] */ SAFEARRAY * *Arr);
 
 /* [entry] */ void GetMemPtr( 
@@ -248,9 +251,9 @@ EXTERN_C const IID LIBID_ATLVBALib;
     __int3264 sz);
 
 /* [entry] */ __int3264 memmem( 
-    /* [in] */ byte *pbTarget,
+    /* [in] */ const unsigned char *pbTarget,
     /* [in] */ long cbTarget,
-    /* [in] */ byte *pbPattern,
+    /* [in] */ const unsigned char *pbPattern,
     /* [in] */ long cbPattern);
 
 #endif /* __MemHelp_MODULE_DEFINED__ */
@@ -328,19 +331,20 @@ EXTERN_C const IID LIBID_ATLVBALib;
 /* module ArrHelp */
 
 
-/* [entry] */ __int3264 ArrPtr( 
-    /* [in] */ SAFEARRAY * *Arr);
-
 /* [entry] */ VARIANT_BOOL isArrayInit( 
     /* [in] */ SAFEARRAY * *Arr);
+
+/* [entry] */ void AssignVecV( 
+    /* [out][in] */ SAFEARRAY * *arDst,
+    /* [in] */ SAFEARRAY * *arSrc);
+
+/* [vararg][propput][entry] */ HRESULT __stdcall put_GroupAssigment( 
+    /* [out][in] */ SAFEARRAY * *ArgList,
+    /* [out][in] */ SAFEARRAY * *rhs);
 
 /* [vararg][propget][entry] */ HRESULT __stdcall get_RefList( 
     /* [out][in] */ SAFEARRAY * *ArgList,
     /* [retval][out] */ SAFEARRAY * *pOut);
-
-/* [vararg][propput][entry] */ HRESULT __stdcall put_RefList( 
-    /* [in] */ SAFEARRAY * *ArgList,
-    /* [in] */ SAFEARRAY * *pInp);
 
 #endif /* __ArrHelp_MODULE_DEFINED__ */
 
@@ -350,7 +354,7 @@ EXTERN_C const IID LIBID_ATLVBALib;
 
 
 /* module CallHelp */
-
+/* [hidden] */ 
 
 /* [entry] */ void __stdcall Call0( 
     /* [in] */ __int3264 fn,
@@ -582,12 +586,12 @@ EXTERN_C const IID LIBID_ATLVBALib;
 #endif /* __CallHelp_MODULE_DEFINED__ */
 
 
-#ifndef __LibHelp_MODULE_DEFINED__
-#define __LibHelp_MODULE_DEFINED__
+#ifndef __kernel32_MODULE_DEFINED__
+#define __kernel32_MODULE_DEFINED__
 
 
-/* module LibHelp */
-/* [helpstring][dllname] */ 
+/* module kernel32 */
+/* [hidden][helpstring][dllname] */ 
 
 /* [entry] */ __int3264 __stdcall LoadLibW( 
     /* [in] */ BSTR LibFileName);
@@ -604,7 +608,7 @@ EXTERN_C const IID LIBID_ATLVBALib;
     /* [in] */ const void *src,
     __int3264 sz);
 
-#endif /* __LibHelp_MODULE_DEFINED__ */
+#endif /* __kernel32_MODULE_DEFINED__ */
 #endif /* __ATLVBALib_LIBRARY_DEFINED__ */
 
 /* Additional Prototypes for ALL interfaces */
