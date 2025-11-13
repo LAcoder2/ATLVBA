@@ -46,6 +46,7 @@ EXPORTS
 		InStrByt
 		InStrLenByt
 		InStrEndByt
+		InStrRevB
 		ToUTF8
 		FromUTF8
 	;=== CallHelp ===

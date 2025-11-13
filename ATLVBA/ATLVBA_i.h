@@ -68,6 +68,13 @@ typedef /* [public] */ void AnyType;
 
 #define	NullPtr	( 0 )
 
+typedef 
+enum tagCompareMethod
+    {
+        BinaryCompare	= 0,
+        TextCompare	= 1
+    } 	CompareMethod;
+
 
 EXTERN_C const IID LIBID_ATLVBALib;
 
@@ -176,11 +183,7 @@ EXTERN_C const IID LIBID_ATLVBALib;
     /* [in] */ void *Dst,
     /* [in] */ __int3264 pNewVal);
 
-/* [propget][entry] */ HRESULT __stdcall get_StringPtr( 
-    /* [in] */ BSTR *Src,
-    /* [retval][out] */ __int3264 *pRetVal);
-
-/* [propput][entry] */ HRESULT __stdcall put_StringPtr( 
+/* [propput][entry] */ HRESULT __stdcall put_PutStrPtr( 
     /* [in] */ BSTR *Src,
     /* [in] */ __int3264 pNewVal);
 
@@ -216,15 +219,15 @@ EXTERN_C const IID LIBID_ATLVBALib;
     SAFEARRAY * *dst,
     SAFEARRAY * *src);
 
-/* [entry] */ void MoveAry( 
+/* [helpstring][entry] */ void MoveAry( 
     SAFEARRAY * *dst,
     SAFEARRAY * *src);
 
-/* [entry] */ void MoveStr( 
+/* [helpstring][entry] */ void MoveStr( 
     BSTR *dst,
     BSTR *src);
 
-/* [entry] */ void MoveVT( 
+/* [helpstring][entry] */ void MoveVT( 
     void *dst,
     void *src);
 
@@ -251,9 +254,9 @@ EXTERN_C const IID LIBID_ATLVBALib;
     __int3264 sz);
 
 /* [entry] */ __int3264 memmem( 
-    /* [in] */ const unsigned char *pbTarget,
+    /* [in] */ unsigned char *pbTarget,
     /* [in] */ long cbTarget,
-    /* [in] */ const unsigned char *pbPattern,
+    /* [in] */ unsigned char *pbPattern,
     /* [in] */ long cbPattern);
 
 #endif /* __MemHelp_MODULE_DEFINED__ */
@@ -314,6 +317,12 @@ EXTERN_C const IID LIBID_ATLVBALib;
     /* [in] */ SAFEARRAY * *Where,
     /* [in] */ SAFEARRAY * *What,
     /* [in] */ int lStop);
+
+/* [entry] */ int InStrRevB( 
+    /* [in] */ BSTR psCheck,
+    /* [in] */ BSTR psMatch,
+    /* [defaultvalue][optional][in] */ long Start,
+    /* [defaultvalue][optional][in] */ CompareMethod Compare);
 
 /* [entry] */ BSTR ToUTF8( 
     /* [in] */ const BSTR sInp);

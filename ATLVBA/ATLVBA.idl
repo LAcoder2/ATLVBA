@@ -16,6 +16,12 @@ library ATLVBALib
 	importlib("stdole2.tlb");
 	typedef [public] void AnyType;
 	const __int3264 NullPtr = 0;
+	
+	typedef enum tagCompareMethod {
+		BinaryCompare = 0,
+		TextCompare = 1
+	} CompareMethod;
+
 	//[
 	//	uuid(DB8F8B36-848D-45D8-BF77-C6C1ADEABB1C), 
 	//	dllname("ATLVBA.dll"),
@@ -72,10 +78,12 @@ library ATLVBALib
 		[entry("PutMemPtr"), propput, ]
 		HRESULT __stdcall PutPtr([in] void* Dst, [in] __int3264 pNewVal);
 		
-		[entry("GetMemPtr"), propget]
-		HRESULT __stdcall StringPtr([in] BSTR* Src, [out, retval] __int3264* pRetVal);
+		//[entry("GetMemPtr"), propget]
+		//HRESULT __stdcall StringPtr([in] BSTR* Src, [out, retval] __int3264* pRetVal);
+		//[entry("VarPtr"), propget]
+		//HRESULT __stdcall SPtr([in] BSTR Src, [out, retval] __int3264 pRetVal);
 		[entry("PutMemPtr"), propput]
-		HRESULT __stdcall StringPtr([in] BSTR* Src, [in] __int3264 pNewVal);
+		HRESULT __stdcall PutStrPtr([in] BSTR* Src, [in] __int3264 pNewVal);
 		
 		[entry("GetMemPtr"), propget]
 		HRESULT __stdcall SAPtr([in] SAFEARRAY(void)* Array, [out, retval] __int3264* pRetVal);
@@ -129,6 +137,8 @@ library ATLVBALib
 		INT32 InStrLenByt([in] int Start, [in] SAFEARRAY(byte)* Where, [in] SAFEARRAY(byte)* What, [in] int Length);
 		[entry("InStrEndByt")] 
 		INT32 InStrEndByt([in] int Start, [in] SAFEARRAY(byte)* Where, [in] SAFEARRAY(byte)* What, [in] int lStop);
+		[entry("InStrRevB")]
+		int InStrRevB([in] BSTR psCheck, [in] BSTR psMatch, [in, optional, defaultvalue(0)] long Start, [in, optional, defaultvalue(BinaryCompare)] CompareMethod Compare);
 		[entry("ToUTF8")] BSTR ToUTF8([in] const BSTR sInp);
 		[entry("FromUTF8")] BSTR FromUTF8([in] const BSTR sInp);
 	};

@@ -1,6 +1,7 @@
 #include "ATLVBA_i.h"
 //#include <string.h>
 #include <windows.h>
+//#include "framework.h"
 
 BSTR ToAnsi(const BSTR str)
 {
@@ -181,6 +182,68 @@ int InStrEndByt(int Start, const SAFEARRAY** ppsaWhere, const SAFEARRAY** ppsaWh
 
 	return 0;
 }
+
+__inline LPSTR CreateUpperStringA(LPCSTR psInp, int szsInp) {
+	int szAlloc = szsInp + 1;
+	LPSTR psTmp1 = (LPSTR)malloc(szAlloc);
+	if (psTmp1 != NULL) {
+		memcpy(psTmp1, psInp, szAlloc);
+		CharUpperBuffA(psTmp1, szsInp);
+	}
+	return psTmp1;
+}
+#define CREATE_UPPER_STRING(psInp, szsInp) CreateUpperStringA((psInp), (szsInp))
+
+int InStrRevB(BSTR psCheck, BSTR psMatch, long Start, long Compare) {
+	int szCheck = *((int*)psCheck - 1);
+	int szMatch = *((int*)psMatch - 1);
+
+	if (Start > 0){
+		if (Start <= szCheck) {
+			Start--;
+		} else {
+			Start = szCheck - 1;		
+		}
+	} else if (Start == 0) {
+	} else {
+		Start += szCheck;
+		if (Start >= 0) {}
+		else return 0; //или генерация ошбики "недопустимый параметр"
+	}
+
+	INT_PTR pcCheck1;
+	char* pcMatch;
+	char *psTmp1= NULL, *psTmp2=NULL;
+	if (Compare == 0) {			//VbBibaryCompare
+		pcCheck1 = psCheck;
+		pcMatch = psMatch;
+	} else {
+		psTmp1 = CREATE_UPPER_STRING(psCheck, szCheck); //malloc(szCheck + 1); CharUpperBuffA(psCheck, szCheck)
+		psTmp2 = CREATE_UPPER_STRING(psMatch, szMatch); //malloc(szMatch + 1); CharUpperBuffA(psMatch, szMatch)
+		pcCheck1 = psTmp1;
+		pcMatch = psTmp2;
+	}
+	
+	char cMatch1 = *pcMatch;
+	char* pcMatch2 = pcMatch + 1;
+	char* pEndMatch = pcMatch + szMatch; //- 1;
+	for (char* pcCheck = pcCheck1 + szCheck - szMatch - Start; pcCheck >= pcCheck1; pcCheck--) {
+		if (*pcCheck != cMatch1) {}
+		else {
+			char* pcCheck_ = pcCheck + 1;
+			for (pcMatch = pcMatch2; pcMatch < pEndMatch; pcMatch++) {
+				if (*pcCheck_ == *pcMatch) {} else goto skip;
+				pcCheck_++;
+			}
+			if (Compare == 0) {} else { free(psTmp1); free(psTmp2); }
+			return (pcCheck - pcCheck1) + 1;
+		}
+	skip:;
+	}
+	if (Compare == 0) {} else { free(psTmp1); free(psTmp2); }
+	return 0;
+}
+		
 BSTR ToUTF8(const BSTR sInp){
 	if (sInp == NULL) return NULL;
 	int srcLen = *((int*)sInp - 1) / 2;
