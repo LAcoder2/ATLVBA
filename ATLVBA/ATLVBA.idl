@@ -17,7 +17,7 @@ library ATLVBALib
 	typedef [public] void AnyType;
 	const __int3264 NullPtr = 0;
 	
-	typedef enum tagCompareMethod {
+	typedef enum CompareMethod {
 		BinaryCompare = 0,
 		TextCompare = 1
 	} CompareMethod;
@@ -117,14 +117,18 @@ library ATLVBALib
 
 		[entry("memCmp")] long __stdcall memCmp(const void* Buf1, void* Buf2, __int3264 Size);
 		[entry("memCpy")] __int3264 __stdcall memCpy(void* dst, void* src, __int3264 sz);
-		[entry(3)] __int3264 memmem([in] char* pbTarget, [in] long cbTarget, [in] char* pbPattern, [in] long cbPattern);
+		[entry(3)] __int3264 memmem([in] void* pbTarget, [in] long cbTarget, [in] void* pbPattern, [in] long cbPattern);
+		[entry("MemFindRev")] __int3264 MemFindRev([in] void* pWhere, [in] int szWhere, [in] void* pWhat, [in] int szWhat);
+		[entry("MemFindRevW")] __int3264 MemFindRevW([in] void* pWhere, [in] int szWhere, [in] void* pWhat, [in] int szWhat);
 	};
 	module StrHelp{
 		[entry("StrLen")] INT32 StrLen([in] BSTR str);
 		[entry("StrLenB")] INT32 StrLenB([in] BSTR str);
 		[entry("ArrLen")] INT32 ArrLen([in] SAFEARRAY(void)* Arr);
 		[entry("ToAnsi")] BSTR ToAnsi([in] BSTR str);
+		[entry("ToAnsi"), helpstring("Alias ToAnsi")] BSTR toA([in] BSTR str);
 		[entry("FromAnsi")] BSTR FromAnsi([in] BSTR str);
+		[entry("FromAnsi"), helpstring("Alias FromAnsi")] BSTR fmA([in] BSTR str);
 		[entry("InStrB2")]
 		INT32 InStrB2([in] int Start, [in] BSTR Where, [in] BSTR What);
 		[entry("InStrLenB")] 
@@ -137,10 +141,20 @@ library ATLVBALib
 		INT32 InStrLenByt([in] int Start, [in] SAFEARRAY(byte)* Where, [in] SAFEARRAY(byte)* What, [in] int Length);
 		[entry("InStrEndByt")] 
 		INT32 InStrEndByt([in] int Start, [in] SAFEARRAY(byte)* Where, [in] SAFEARRAY(byte)* What, [in] int lStop);
-		[entry("InStrRevB")]
-		int InStrRevB([in] BSTR psCheck, [in] BSTR psMatch, [in, optional, defaultvalue(0)] long Start, [in, optional, defaultvalue(BinaryCompare)] CompareMethod Compare);
+		[entry("InStrRevB")] 
+		long InStrRevB([in] BSTR psCheck, [in] BSTR psMatch, 
+			[in, optional, defaultvalue(0)] long Start, 
+			[in, optional, defaultvalue(BinaryCompare)] CompareMethod Compare);
+		[entry("InStrLenRevB")] 
+		long InStrLenRevB([in] BSTR psCheck, [in] BSTR psMatch,
+			[in, optional, defaultvalue(0)] long Start, [in, optional, defaultvalue(0)] long Length, 
+			[in, optional, defaultvalue(BinaryCompare)] CompareMethod Compare);
 		[entry("ToUTF8")] BSTR ToUTF8([in] const BSTR sInp);
+		[entry("ToUTF8"), helpstring("Alias ToUTF8")] BSTR toU8([in] const BSTR sInp);
 		[entry("FromUTF8")] BSTR FromUTF8([in] const BSTR sInp);
+		[entry("FromUTF8"), helpstring("Alias FromUTF8")] BSTR fmU8([in] const BSTR sInp);
+		[entry("UCaseA")] BSTR UCaseA([in] const BSTR psInp);
+		[entry("LCaseA")] BSTR LCaseA([in] const BSTR psInp);
 	};
 	module ArrHelp{		
 		[entry("isObjInit")] VARIANT_BOOL isArrayInit([in] SAFEARRAY(void)* Arr);		

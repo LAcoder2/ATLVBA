@@ -182,68 +182,262 @@ int InStrEndByt(int Start, const SAFEARRAY** ppsaWhere, const SAFEARRAY** ppsaWh
 
 	return 0;
 }
-
-__inline LPSTR CreateUpperStringA(LPCSTR psInp, int szsInp) {
-	int szAlloc = szsInp + 1;
+BSTR UCaseA(const BSTR psInp) {
+	int szInp = *((int*)psInp-1);
+	BSTR psRet = SysAllocStringByteLen(psInp, szInp);
+	CharUpperBuffA(psRet, szInp);
+	return psRet;
+}
+BSTR LCaseA(const BSTR psInp) {
+	int szInp = *((int*)psInp - 1);
+	BSTR psRet = SysAllocStringByteLen(psInp, szInp);
+	CharLowerBuffA(psRet, szInp);
+	return psRet;
+}
+__inline LPSTR CreateUpperStringA(const LPCSTR psInp, int lenInp) {
+	int szAlloc = lenInp + 1;
 	LPSTR psTmp1 = (LPSTR)malloc(szAlloc);
 	if (psTmp1 != NULL) {
 		memcpy(psTmp1, psInp, szAlloc);
-		CharUpperBuffA(psTmp1, szsInp);
+		CharUpperBuffA(psTmp1, lenInp);
 	}
 	return psTmp1;
 }
-#define CREATE_UPPER_STRING(psInp, szsInp) CreateUpperStringA((psInp), (szsInp))
+#define CREATE_UPPER_STRING_A(psInp, szsInp) CreateUpperStringA((psInp), (szsInp))
 
-int InStrRevB(BSTR psCheck, BSTR psMatch, long Start, long Compare) {
-	int szCheck = *((int*)psCheck - 1);
-	int szMatch = *((int*)psMatch - 1);
-
-	if (Start > 0){
-		if (Start <= szCheck) {
-			Start--;
-		} else {
-			Start = szCheck - 1;		
-		}
-	} else if (Start == 0) {
-	} else {
-		Start += szCheck;
-		if (Start >= 0) {}
-		else return 0; //или генераци€ ошбики "недопустимый параметр"
+__inline LPSTR CreateUpperStringW(const LPCWSTR psInp, int lenInp) {
+	int szAlloc = lenInp * 2 + 2;
+	LPCWSTR psTmp1 = (LPSTR)malloc(szAlloc);
+	if (psTmp1 != NULL) {
+		memcpy(psTmp1, psInp, szAlloc);
+		CharUpperBuffW(psTmp1, lenInp);
 	}
-
-	INT_PTR pcCheck1;
-	char* pcMatch;
-	char *psTmp1= NULL, *psTmp2=NULL;
-	if (Compare == 0) {			//VbBibaryCompare
-		pcCheck1 = psCheck;
-		pcMatch = psMatch;
-	} else {
-		psTmp1 = CREATE_UPPER_STRING(psCheck, szCheck); //malloc(szCheck + 1); CharUpperBuffA(psCheck, szCheck)
-		psTmp2 = CREATE_UPPER_STRING(psMatch, szMatch); //malloc(szMatch + 1); CharUpperBuffA(psMatch, szMatch)
-		pcCheck1 = psTmp1;
-		pcMatch = psTmp2;
-	}
+	return psTmp1;
+}
+//typedef enum CompareMethod {
+//	BinaryCompare = 0,
+//	TextCompare = 1
+//};
+#define INSTRREVB_VAR_PREPARE_B \
+	const int szChr = 1; \
+	int szCheck = *((int*)psCheck - 1); \
+	int lnCheck = szCheck; \
+	int szMatch = *((int*)psMatch - 1); \
 	
-	char cMatch1 = *pcMatch;
-	char* pcMatch2 = pcMatch + 1;
-	char* pEndMatch = pcMatch + szMatch; //- 1;
-	for (char* pcCheck = pcCheck1 + szCheck - szMatch - Start; pcCheck >= pcCheck1; pcCheck--) {
-		if (*pcCheck != cMatch1) {}
+#define INSTRREV_VAR_PREPARE_W \
+	const int szChr = 2; \
+	int szCheck = *((int*)psCheck - 1); \
+	int lnCheck = szCheck/2; \
+	int szMatch = *((int*)psMatch - 1); \
+
+#define INSTRREV_START_VALIDATION /*”ниверсальный A/W*/\
+	if (Start > 0){ \
+		if (Start <= lnCheck) { \
+		} else { \
+			Start = lnCheck; \
+		} \
+	} else if (Start == 0) { \
+		Start = lnCheck; \
+	} else { \
+		Start += lnCheck + 1; \
+		if (Start >= 0) {} \
+		else return 0; /*или генераци€ ошбики "недопустимый параметр"*/ \
+	} \
+
+#define INSTRREVB_COMP_VALIDATION_B \
+	INT_PTR pcCheck; \
+	char* pcMatch;\
+	char *psTmp1 = NULL, *psTmp2 = NULL; \
+	if (Compare == BinaryCompare) { \
+		pcCheck = psCheck; \
+		pcMatch = psMatch; \
+	} \
+	else { \
+		psTmp1 = CreateUpperStringA(psCheck, szCheck); \
+		psTmp2 = CreateUpperStringA(psMatch, szMatch); \
+		pcCheck = psTmp1; \
+		pcMatch = psTmp2; \
+	} \
+
+#define INSTRREV_COMP_VALIDATION_W \
+	INT_PTR pcCheck; \
+	WCHAR* pcMatch;\
+	WCHAR *psTmp1 = NULL, *psTmp2 = NULL; \
+	if (Compare == BinaryCompare) { \
+		pcCheck = psCheck; \
+		pcMatch = psMatch; \
+	} \
+	else { \
+		psTmp1 = CreateUpperStringW(psCheck, szCheck); \
+		psTmp2 = CreateUpperStringW(psMatch, szMatch); \
+		pcCheck = psTmp1; \
+		pcMatch = psTmp2; \
+	} \
+
+#define INSTRREV_LENGTH_VALIDATION /*”ниверсальный A/W*/ \
+	if (Length > 0) { \
+		if (Length < Start) { \
+			int off = Start - Length; \
+			pcCheck += off; \
+			Start -=off; \
+		} \
+	} else if (Length = 0) { \
+	} else { \
+		return 0; /* или генераци€ ошбики "недопустимое значение Length"*/ \
+	}\
+
+#define INSTRREV_LOOP_RET_B \
+	INT_PTR lpret = _MemFindRev(pcCheck, Start, pcMatch, szMatch); \
+	 \
+	if (Compare == 0) {} else { free(psTmp1); free(psTmp2); } \
+	 \
+	if (lpret) return (lpret - (INT_PTR)psCheck) + 1; \
+	return 0; \
+
+#define INSTRREV_LOOP_RET_W \
+	INT_PTR lpret = _MemFindRevW(pcCheck, Start * szChr, pcMatch, szMatch); \
+	 \
+	if (Compare == 0) {} else { free(psTmp1); free(psTmp2); } \
+	 \
+	if (lpret) return (lpret - pcCheck)/2 + 1; \
+	return 0; \
+
+int InStrRevB(const BSTR psCheck, const BSTR psMatch, long Start, enum CompareMethod Compare) {		
+	//if (Start > 0){
+	//	if (Start <= szCheck) {
+	//	} else {
+	//		Start = szCheck;
+	//	}
+	//} else if (Start == 0) {
+	//	Start = szCheck;
+	//} else {
+	//	Start += szCheck + 1;
+	//	if (Start >= 0) {}
+	//	else return 0; //или генераци€ ошбики "недопустимый параметр"
+	//}	
+	//INT_PTR pcCheck;
+	//char* pcMatch;
+	//char *psTmp1=NULL, *psTmp2=NULL;
+	//if (Compare == BinaryCompare) {	
+	//	pcCheck = psCheck;
+	//	pcMatch = psMatch;
+	//} else {
+	//	psTmp1 = CreateUpperStringA(psCheck, szCheck); 
+	//	psTmp2 = CreateUpperStringA(psMatch, szMatch); 
+	//	pcCheck = psTmp1;
+	//	pcMatch = psTmp2;
+	//}	
+	//char cMatch1 = *pcMatch;
+	//char* pcMatch2 = pcMatch + 1;
+	//char* pEndMatch = pcMatch + szMatch; 
+	//for (char* pcCheck = pcCheck1 + Start - szMatch; pcCheck >= pcCheck1; pcCheck--) {
+	//	if (*pcCheck != cMatch1) {}
+	//	else {
+	//		char* pcCheck_ = pcCheck + 1;
+	//		for (pcMatch = pcMatch2; pcMatch < pEndMatch; pcMatch++, pcCheck_++) {
+	//			if (*pcCheck_ == *pcMatch) {} else goto skip;				
+	//		}
+	//		if (Compare == 0) {} else { free(psTmp1); free(psTmp2); }
+	//		return (pcCheck - pcCheck1) + 1;
+	//	}
+	//skip:;
+	//}	
+	INSTRREVB_VAR_PREPARE_B;
+	INSTRREV_START_VALIDATION;
+	INSTRREVB_COMP_VALIDATION_B;
+	INSTRREV_LOOP_RET_B;
+}
+
+int InStrLenRevB(BSTR psCheck, const BSTR psMatch, long Start, long Length, enum CompareMethod Compare) {
+	INSTRREVB_VAR_PREPARE_B;
+	INSTRREV_START_VALIDATION;
+	INSTRREVB_COMP_VALIDATION_B;
+	
+	INSTRREV_LENGTH_VALIDATION;
+	
+	INSTRREV_LOOP_RET_B;
+	
+	/*INT_PTR lpret = _MemFindRev(pcCheck, Start, pcMatch, szMatch);		
+	
+	if (Compare == 0) {}
+	else { free(psTmp1); free(psTmp2); }
+		
+	if (lpret) return (lpret - (INT_PTR)psCheck) + 1;
+	return 0*/;
+
+	//INT_PTR lpret = _MemFindRev(pcCheck, Start, pcMatch, szMatch);
+	//if (Compare == BinaryCompare) {} else { free(psTmp1); free(psTmp2); }
+	//if (lpret) return (lpret - pcCheck) + 1;
+	//return 0;	
+}
+
+INT_PTR MemFindRev(char* pcWhere, int szWhere, char* pcWhat, int szWhat) {
+	return _MemFindRevAuto(pcWhere, szWhere, pcWhat, szWhat);
+}
+__inline INT_PTR _MemFindRev(char* pcWhere, int szWhere, char* pcWhat, int szWhat) {
+	char* pcWhere1 = pcWhere;
+	char cWhat1 = *pcWhat;
+	char* pcWhat2 = pcWhat + 1;
+	char* pEndWhat = pcWhat + szWhat;
+	for (pcWhere = pcWhere1 + szWhere - szWhat; pcWhere >= pcWhere1; pcWhere--) {
+		if (*pcWhere != cWhat1) {}
 		else {
-			char* pcCheck_ = pcCheck + 1;
-			for (pcMatch = pcMatch2; pcMatch < pEndMatch; pcMatch++) {
-				if (*pcCheck_ == *pcMatch) {} else goto skip;
-				pcCheck_++;
+			char* pcWhere_ = pcWhere + 1;
+			for (pcWhat = pcWhat2; pcWhat < pEndWhat; pcWhat++, pcWhere_++) {
+				if (*pcWhere_ == *pcWhat) {}
+				else goto skip;
 			}
-			if (Compare == 0) {} else { free(psTmp1); free(psTmp2); }
-			return (pcCheck - pcCheck1) + 1;
+			return (INT_PTR)pcWhere;
 		}
 	skip:;
 	}
-	if (Compare == 0) {} else { free(psTmp1); free(psTmp2); }
-	return 0;
+	return NULL;
 }
-		
+
+INT_PTR MemFindRevW(const WCHAR* pcWhere, int szWhere, const WCHAR* pcWhat, int szWhat) {
+	return _MemFindRevAuto(pcWhere, szWhere, pcWhat, szWhat);
+}
+__inline INT_PTR _MemFindRevW(WCHAR* pcWhere, int lnWhere, WCHAR* pcWhat, int lnWhat) {
+	WCHAR* pcWhere1 = pcWhere;
+	WCHAR cWhat1 = *pcWhat;
+	WCHAR* pcWhat2 = pcWhat + 1;
+	WCHAR* pEndWhat = pcWhat + lnWhat;
+	for (pcWhere = pcWhere1 + lnWhere - lnWhat; pcWhere >= pcWhere1; pcWhere--) {
+		if (*pcWhere != cWhat1) {}
+		else {
+			WCHAR* pcWhere_ = pcWhere + 1;
+			for (pcWhat = pcWhat2; pcWhat < pEndWhat; pcWhat++, pcWhere_++) {
+				if (*pcWhere_ == *pcWhat) {}
+				else goto skip;
+			}
+			return (INT_PTR)pcWhere;
+		}
+	skip:;
+	}
+	return NULL;
+}
+
+__forceinline INT_PTR _MemFindRevAuto(auto* pcWhere, int lnWhere, auto* pcWhat, int lnWhat) {
+	auto* pcWhere1 = pcWhere;
+	auto cWhat1 = *pcWhat;
+	auto* pcWhat2 = pcWhat + 1;
+	auto* pEndWhat = pcWhat + lnWhat;
+	for (pcWhere = pcWhere1 + lnWhere - lnWhat; pcWhere >= pcWhere1; pcWhere--) {
+		if (*pcWhere != cWhat1) {}
+		else {
+			auto* pcWhere_ = pcWhere + 1;
+			for (pcWhat = pcWhat2; pcWhat < pEndWhat; pcWhat++, pcWhere_++) {
+				if (*pcWhere_ == *pcWhat) {}
+				else goto skip;
+			}
+			return (INT_PTR)pcWhere;
+		}
+	skip:;
+	}
+	return NULL;
+}
+
+
 BSTR ToUTF8(const BSTR sInp){
 	if (sInp == NULL) return NULL;
 	int srcLen = *((int*)sInp - 1) / 2;
@@ -272,6 +466,7 @@ BSTR FromUTF8(const BSTR sInp){
 	MultiByteToWideChar(CP_UTF8, 0, (char*)sInp, srcLen, result, wideLen);
 	return result;
 }
+
 //Private Function ToUTF8(sText As String) As String 
 //    Dim Ln As Long
 //    Ln = WideCharToMultiByte(CP_UTF8, 0, StrPtr(sText), Len(sText), 0, 0, 0, 0)

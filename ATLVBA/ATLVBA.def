@@ -29,6 +29,8 @@ EXPORTS
 		memCpy @1
 		memCmp @2
 		memmem @3
+		MemFindRev
+		MemFindRevW
     ;===ArrHelp===
 		VarPtr
 		isObjInit
@@ -47,8 +49,11 @@ EXPORTS
 		InStrLenByt
 		InStrEndByt
 		InStrRevB
+		InStrLenRevB
 		ToUTF8
 		FromUTF8
+		UCaseA
+		LCaseA
 	;=== CallHelp ===
 		Call0
 		Call1

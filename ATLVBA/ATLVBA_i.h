@@ -69,7 +69,7 @@ typedef /* [public] */ void AnyType;
 #define	NullPtr	( 0 )
 
 typedef 
-enum tagCompareMethod
+enum CompareMethod
     {
         BinaryCompare	= 0,
         TextCompare	= 1
@@ -254,10 +254,22 @@ EXTERN_C const IID LIBID_ATLVBALib;
     __int3264 sz);
 
 /* [entry] */ __int3264 memmem( 
-    /* [in] */ unsigned char *pbTarget,
+    /* [in] */ void *pbTarget,
     /* [in] */ long cbTarget,
-    /* [in] */ unsigned char *pbPattern,
+    /* [in] */ void *pbPattern,
     /* [in] */ long cbPattern);
+
+/* [entry] */ __int3264 MemFindRev( 
+    /* [in] */ void *pWhere,
+    /* [in] */ int szWhere,
+    /* [in] */ void *pWhat,
+    /* [in] */ int szWhat);
+
+/* [entry] */ __int3264 MemFindRevW( 
+    /* [in] */ void *pWhere,
+    /* [in] */ int szWhere,
+    /* [in] */ void *pWhat,
+    /* [in] */ int szWhat);
 
 #endif /* __MemHelp_MODULE_DEFINED__ */
 
@@ -281,7 +293,13 @@ EXTERN_C const IID LIBID_ATLVBALib;
 /* [entry] */ BSTR ToAnsi( 
     /* [in] */ BSTR str);
 
+/* [helpstring][entry] */ BSTR toA( 
+    /* [in] */ BSTR str);
+
 /* [entry] */ BSTR FromAnsi( 
+    /* [in] */ BSTR str);
+
+/* [helpstring][entry] */ BSTR fmA( 
     /* [in] */ BSTR str);
 
 /* [entry] */ INT32 InStrB2( 
@@ -318,17 +336,36 @@ EXTERN_C const IID LIBID_ATLVBALib;
     /* [in] */ SAFEARRAY * *What,
     /* [in] */ int lStop);
 
-/* [entry] */ int InStrRevB( 
+/* [entry] */ long InStrRevB( 
     /* [in] */ BSTR psCheck,
     /* [in] */ BSTR psMatch,
     /* [defaultvalue][optional][in] */ long Start,
     /* [defaultvalue][optional][in] */ CompareMethod Compare);
 
+/* [entry] */ long InStrLenRevB( 
+    /* [in] */ BSTR psCheck,
+    /* [in] */ BSTR psMatch,
+    /* [defaultvalue][optional][in] */ long Start,
+    /* [defaultvalue][optional][in] */ long Length,
+    /* [defaultvalue][optional][in] */ CompareMethod Compare);
+
 /* [entry] */ BSTR ToUTF8( 
+    /* [in] */ const BSTR sInp);
+
+/* [helpstring][entry] */ BSTR toU8( 
     /* [in] */ const BSTR sInp);
 
 /* [entry] */ BSTR FromUTF8( 
     /* [in] */ const BSTR sInp);
+
+/* [helpstring][entry] */ BSTR fmU8( 
+    /* [in] */ const BSTR sInp);
+
+/* [entry] */ BSTR UCaseA( 
+    /* [in] */ const BSTR psInp);
+
+/* [entry] */ BSTR LCaseA( 
+    /* [in] */ const BSTR psInp);
 
 #endif /* __StrHelp_MODULE_DEFINED__ */
 

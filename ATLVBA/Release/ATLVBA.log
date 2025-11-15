@@ -28,8 +28,11 @@
   oaidl.acf
   Processing C:\Program Files (x86)\Windows Kits\10\Include\10.0.26100.0\um\ocidl.acf
   ocidl.acf
-.\ATLVBA.idl(141): warning MIDL2401: [defaultvalue] is applied to a non-VARIANT and [optional]. Please remove [optional] : [ Parameter 'Start' of Procedure 'InStrRevB' ( Module 'StrHelp' ) ]
-.\ATLVBA.idl(141): warning MIDL2401: [defaultvalue] is applied to a non-VARIANT and [optional]. Please remove [optional] : [ Parameter 'Compare' of Procedure 'InStrRevB' ( Module 'StrHelp' ) ]
+.\ATLVBA.idl(147): warning MIDL2401: [defaultvalue] is applied to a non-VARIANT and [optional]. Please remove [optional] : [ Parameter 'Start' of Procedure 'InStrRevB' ( Module 'StrHelp' ) ]
+.\ATLVBA.idl(147): warning MIDL2401: [defaultvalue] is applied to a non-VARIANT and [optional]. Please remove [optional] : [ Parameter 'Compare' of Procedure 'InStrRevB' ( Module 'StrHelp' ) ]
+.\ATLVBA.idl(151): warning MIDL2401: [defaultvalue] is applied to a non-VARIANT and [optional]. Please remove [optional] : [ Parameter 'Start' of Procedure 'InStrLenRevB' ( Module 'StrHelp' ) ]
+.\ATLVBA.idl(151): warning MIDL2401: [defaultvalue] is applied to a non-VARIANT and [optional]. Please remove [optional] : [ Parameter 'Length' of Procedure 'InStrLenRevB' ( Module 'StrHelp' ) ]
+.\ATLVBA.idl(151): warning MIDL2401: [defaultvalue] is applied to a non-VARIANT and [optional]. Please remove [optional] : [ Parameter 'Compare' of Procedure 'InStrLenRevB' ( Module 'StrHelp' ) ]
   ArrHelp.c
   CallHelp.c
 f:\vsprojects\atlvba\atlvba\callhelp.c(116): warning C4022: copyFnArr: несоответствие указателя для фактического параметра 2
@@ -41,8 +44,6 @@ f:\vsprojects\atlvba\atlvba\memhelp.c(30): warning C4142: "memCmp": неопас
 f:\vsprojects\atlvba\atlvba\memhelp.c(30): warning C4028: формальный параметр 3 отличается от объявления
 f:\vsprojects\atlvba\atlvba\memhelp.c(31): warning C4047: return: "int" отличается по уровням косвенного обращения от "void *"
 f:\vsprojects\atlvba\atlvba\memhelp.c(37): warning C4047: =: "INT_PTR" отличается по уровням косвенного обращения от "void *"
-f:\vsprojects\atlvba\atlvba\memhelp.c(83): warning C4028: формальный параметр 1 отличается от объявления
-f:\vsprojects\atlvba\atlvba\memhelp.c(83): warning C4028: формальный параметр 3 отличается от объявления
 f:\vsprojects\atlvba\atlvba\memhelp.c(89): warning C4047: return: "int" отличается по уровням косвенного обращения от "void *"
 f:\vsprojects\atlvba\atlvba\memhelp.c(95): warning C4047: return: "int" отличается по уровням косвенного обращения от "const char *"
 f:\vsprojects\atlvba\atlvba\memhelp.c(97): warning C4047: return: "int" отличается по уровням косвенного обращения от "const char *"
@@ -70,14 +71,37 @@ f:\vsprojects\atlvba\atlvba\strhelp.c(166): warning C4028: формальный 
 f:\vsprojects\atlvba\atlvba\strhelp.c(166): warning C4028: формальный параметр 3 отличается от объявления
 f:\vsprojects\atlvba\atlvba\strhelp.c(176): warning C4028: формальный параметр 2 отличается от объявления
 f:\vsprojects\atlvba\atlvba\strhelp.c(176): warning C4028: формальный параметр 3 отличается от объявления
-f:\vsprojects\atlvba\atlvba\strhelp.c(218): warning C4047: =: "INT_PTR" отличается по уровням косвенного обращения от "BSTR"
-f:\vsprojects\atlvba\atlvba\strhelp.c(219): warning C4133: =: несовместимые типы - из "BSTR" в "char *"
-f:\vsprojects\atlvba\atlvba\strhelp.c(221): warning C4133: функция: несовместимые типы - из "BSTR" в "LPCSTR"
-f:\vsprojects\atlvba\atlvba\strhelp.c(222): warning C4133: функция: несовместимые типы - из "BSTR" в "LPCSTR"
-f:\vsprojects\atlvba\atlvba\strhelp.c(223): warning C4047: =: "INT_PTR" отличается по уровням косвенного обращения от "char *"
-f:\vsprojects\atlvba\atlvba\strhelp.c(230): warning C4047: >=: "char *" отличается по уровням косвенного обращения от "INT_PTR"
-f:\vsprojects\atlvba\atlvba\strhelp.c(239): warning C4047: return: "int" отличается по уровням косвенного обращения от "char *"
-f:\vsprojects\atlvba\atlvba\strhelp.c(230): warning C4047: инициализация: "char *" отличается по уровням косвенного обращения от "long"
+f:\vsprojects\atlvba\atlvba\strhelp.c(187): warning C4133: функция: несовместимые типы - из "const BSTR" в "LPCSTR"
+f:\vsprojects\atlvba\atlvba\strhelp.c(188): warning C4133: функция: несовместимые типы - из "BSTR" в "LPSTR"
+f:\vsprojects\atlvba\atlvba\strhelp.c(193): warning C4133: функция: несовместимые типы - из "const BSTR" в "LPCSTR"
+f:\vsprojects\atlvba\atlvba\strhelp.c(194): warning C4133: функция: несовместимые типы - из "BSTR" в "LPSTR"
+f:\vsprojects\atlvba\atlvba\strhelp.c(212): warning C4090: функция: разные квалификаторы "const"
+f:\vsprojects\atlvba\atlvba\strhelp.c(213): warning C4090: функция: разные квалификаторы "const"
+f:\vsprojects\atlvba\atlvba\strhelp.c(215): warning C4090: return: разные квалификаторы "const"
+f:\vsprojects\atlvba\atlvba\strhelp.c(210): warning C4133: инициализация: несовместимые типы - из "LPSTR" в "LPCWSTR"
+f:\vsprojects\atlvba\atlvba\strhelp.c(305): warning C4142: "InStrRevB": неопасное переопределение типа
+  f:\vsprojects\atlvba\atlvba\atlvba_i.h(339): note:  см. объявление "InStrRevB"
+f:\vsprojects\atlvba\atlvba\strhelp.c(305): warning C4028: формальный параметр 1 отличается от объявления
+f:\vsprojects\atlvba\atlvba\strhelp.c(305): warning C4028: формальный параметр 2 отличается от объявления
+f:\vsprojects\atlvba\atlvba\strhelp.c(347): warning C4047: =: "INT_PTR" отличается по уровням косвенного обращения от "const BSTR"
+f:\vsprojects\atlvba\atlvba\strhelp.c(347): warning C4133: =: несовместимые типы - из "const BSTR" в "char *"
+f:\vsprojects\atlvba\atlvba\strhelp.c(347): warning C4133: функция: несовместимые типы - из "const BSTR" в "const LPCSTR"
+f:\vsprojects\atlvba\atlvba\strhelp.c(347): warning C4047: =: "INT_PTR" отличается по уровням косвенного обращения от "char *"
+f:\vsprojects\atlvba\atlvba\strhelp.c(348): warning C4013: _MemFindRev: нет определения; предполагается "extern" с возвратом типа "int"
+f:\vsprojects\atlvba\atlvba\strhelp.c(351): warning C4142: "InStrLenRevB": неопасное переопределение типа
+  f:\vsprojects\atlvba\atlvba\atlvba_i.h(345): note:  см. объявление "InStrLenRevB"
+f:\vsprojects\atlvba\atlvba\strhelp.c(351): warning C4028: формальный параметр 2 отличается от объявления
+f:\vsprojects\atlvba\atlvba\strhelp.c(354): warning C4047: =: "INT_PTR" отличается по уровням косвенного обращения от "BSTR"
+f:\vsprojects\atlvba\atlvba\strhelp.c(354): warning C4133: =: несовместимые типы - из "const BSTR" в "char *"
+f:\vsprojects\atlvba\atlvba\strhelp.c(354): warning C4133: функция: несовместимые типы - из "BSTR" в "const LPCSTR"
+f:\vsprojects\atlvba\atlvba\strhelp.c(354): warning C4133: функция: несовместимые типы - из "const BSTR" в "const LPCSTR"
+f:\vsprojects\atlvba\atlvba\strhelp.c(354): warning C4047: =: "INT_PTR" отличается по уровням косвенного обращения от "char *"
+f:\vsprojects\atlvba\atlvba\strhelp.c(375): warning C4013: _MemFindRevAuto: нет определения; предполагается "extern" с возвратом типа "int"
+f:\vsprojects\atlvba\atlvba\strhelp.c(394): warning C4047: return: "INT_PTR" отличается по уровням косвенного обращения от "void *"
+f:\vsprojects\atlvba\atlvba\strhelp.c(417): warning C4047: return: "INT_PTR" отличается по уровням косвенного обращения от "void *"
+f:\vsprojects\atlvba\atlvba\strhelp.c(420): warning C4042: pcWhere: имеет недопустимый класс хранения
+f:\vsprojects\atlvba\atlvba\strhelp.c(420): warning C4042: pcWhat: имеет недопустимый класс хранения
+f:\vsprojects\atlvba\atlvba\strhelp.c(437): warning C4047: return: "INT_PTR" отличается по уровням косвенного обращения от "void *"
   Создание кода...
   ATLVBA.cpp
   ATLVBA_i.c
