@@ -129,25 +129,29 @@ library ATLVBALib
 		[entry("ToAnsi"), helpstring("Alias ToAnsi")] BSTR toA([in] BSTR str);
 		[entry("FromAnsi")] BSTR FromAnsi([in] BSTR str);
 		[entry("FromAnsi"), helpstring("Alias FromAnsi")] BSTR fmA([in] BSTR str);
-		[entry("InStrB2")]
-		INT32 InStrB2([in] int Start, [in] BSTR Where, [in] BSTR What);
-		[entry("InStrLenB")] 
-		INT32 InStrLenB([in] int Start, [in] BSTR Where, [in] BSTR What, [in] int Length);
-		[entry("InStrEndB")] 
-		INT32 InStrEndB([in] int Start, [in] BSTR Where, [in] BSTR What, [in] int lStop);
+		[entry("InStrB_")]
+		INT32 InStrB_([in] int Start, [in] BSTR Where, [in] BSTR What);
+		[entry("InStrB2")] 
+		INT32 InStrB2([in] int Start, [in] BSTR Where, [in] BSTR What, [in] int Length);
+		[entry("InStrB3")] 
+		INT32 InStrB3([in] int Start, [in] BSTR Where, [in] BSTR What, [in] int lStop);
 		[entry("InStrByt"), helpstring("Analogue of the InStrB function for byte arrays")]
 		INT32 InStrByt([in] int Start, [in] SAFEARRAY(byte)* Where, [in] SAFEARRAY(byte)* What);
-		[entry("InStrLenByt")] 
-		INT32 InStrLenByt([in] int Start, [in] SAFEARRAY(byte)* Where, [in] SAFEARRAY(byte)* What, [in] int Length);
-		[entry("InStrEndByt")] 
-		INT32 InStrEndByt([in] int Start, [in] SAFEARRAY(byte)* Where, [in] SAFEARRAY(byte)* What, [in] int lStop);
+		[entry("InStrByt2")] 
+		INT32 InStrByt2([in] int Start, [in] SAFEARRAY(byte)* Where, [in] SAFEARRAY(byte)* What, [in] int Length);
+		[entry("InStrByt3")] 
+		INT32 InStrByt3([in] int Start, [in] SAFEARRAY(byte)* Where, [in] SAFEARRAY(byte)* What, [in] int lStop);
 		[entry("InStrRevB")] 
 		long InStrRevB([in] BSTR psCheck, [in] BSTR psMatch, 
 			[in, optional, defaultvalue(0)] long Start, 
 			[in, optional, defaultvalue(BinaryCompare)] CompareMethod Compare);
-		[entry("InStrLenRevB")] 
-		long InStrLenRevB([in] BSTR psCheck, [in] BSTR psMatch,
+		[entry("InStrRevB2")] 
+		long InStrRevB2([in] BSTR psCheck, [in] BSTR psMatch,
 			[in, optional, defaultvalue(0)] long Start, [in, optional, defaultvalue(0)] long Length, 
+			[in, optional, defaultvalue(BinaryCompare)] CompareMethod Compare);
+		[entry("InStrRevB3")]
+		long InStrRevB3([in] BSTR psCheck, [in] BSTR psMatch,
+			[in, optional, defaultvalue(0)] long Start, [in, optional, defaultvalue(0)] long EndFind,
 			[in, optional, defaultvalue(BinaryCompare)] CompareMethod Compare);
 		[entry("ToUTF8")] BSTR ToUTF8([in] const BSTR sInp);
 		[entry("ToUTF8"), helpstring("Alias ToUTF8")] BSTR toU8([in] const BSTR sInp);
@@ -155,6 +159,12 @@ library ATLVBALib
 		[entry("FromUTF8"), helpstring("Alias FromUTF8")] BSTR fmU8([in] const BSTR sInp);
 		[entry("UCaseA")] BSTR UCaseA([in] const BSTR psInp);
 		[entry("LCaseA")] BSTR LCaseA([in] const BSTR psInp);
+		[entry("StartsWith")] VARIANT_BOOL StartsWith(BSTR sWhere, BSTR sWhat);
+		[entry("EndsWith")] VARIANT_BOOL EndsWith(BSTR sWhere, BSTR sWhat);
+		[entry("StartsWithAry")] VARIANT_BOOL StartsWithByt(SAFEARRAY(byte)* Where, SAFEARRAY(byte)* What);
+		[entry("EndsWithAry")] VARIANT_BOOL EndsWithByt(SAFEARRAY(byte)* Where, SAFEARRAY(byte)* What);
+		[entry("StartsWithAry")] VARIANT_BOOL StartsWithInt(SAFEARRAY(short)* Where, SAFEARRAY(short)* What);
+		[entry("EndsWithAry")] VARIANT_BOOL EndsWithInt(SAFEARRAY(short)* Where, SAFEARRAY(short)* What);
 	};
 	module ArrHelp{		
 		[entry("isObjInit")] VARIANT_BOOL isArrayInit([in] SAFEARRAY(void)* Arr);		
@@ -187,7 +197,6 @@ library ATLVBALib
 			[in, out] SAFEARRAY(VARIANT)* rhs);*/
 	}
 	[
-		//dllname("ATLVBA.dll"),
 		hidden
 	]
 	module CallHelp{

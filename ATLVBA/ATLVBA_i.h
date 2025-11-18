@@ -302,18 +302,18 @@ EXTERN_C const IID LIBID_ATLVBALib;
 /* [helpstring][entry] */ BSTR fmA( 
     /* [in] */ BSTR str);
 
-/* [entry] */ INT32 InStrB2( 
+/* [entry] */ INT32 InStrB_( 
     /* [in] */ int Start,
     /* [in] */ BSTR Where,
     /* [in] */ BSTR What);
 
-/* [entry] */ INT32 InStrLenB( 
+/* [entry] */ INT32 InStrB2( 
     /* [in] */ int Start,
     /* [in] */ BSTR Where,
     /* [in] */ BSTR What,
     /* [in] */ int Length);
 
-/* [entry] */ INT32 InStrEndB( 
+/* [entry] */ INT32 InStrB3( 
     /* [in] */ int Start,
     /* [in] */ BSTR Where,
     /* [in] */ BSTR What,
@@ -324,13 +324,13 @@ EXTERN_C const IID LIBID_ATLVBALib;
     /* [in] */ SAFEARRAY * *Where,
     /* [in] */ SAFEARRAY * *What);
 
-/* [entry] */ INT32 InStrLenByt( 
+/* [entry] */ INT32 InStrByt2( 
     /* [in] */ int Start,
     /* [in] */ SAFEARRAY * *Where,
     /* [in] */ SAFEARRAY * *What,
     /* [in] */ int Length);
 
-/* [entry] */ INT32 InStrEndByt( 
+/* [entry] */ INT32 InStrByt3( 
     /* [in] */ int Start,
     /* [in] */ SAFEARRAY * *Where,
     /* [in] */ SAFEARRAY * *What,
@@ -342,11 +342,18 @@ EXTERN_C const IID LIBID_ATLVBALib;
     /* [defaultvalue][optional][in] */ long Start,
     /* [defaultvalue][optional][in] */ CompareMethod Compare);
 
-/* [entry] */ long InStrLenRevB( 
+/* [entry] */ long InStrRevB2( 
     /* [in] */ BSTR psCheck,
     /* [in] */ BSTR psMatch,
     /* [defaultvalue][optional][in] */ long Start,
     /* [defaultvalue][optional][in] */ long Length,
+    /* [defaultvalue][optional][in] */ CompareMethod Compare);
+
+/* [entry] */ long InStrRevB3( 
+    /* [in] */ BSTR psCheck,
+    /* [in] */ BSTR psMatch,
+    /* [defaultvalue][optional][in] */ long Start,
+    /* [defaultvalue][optional][in] */ long EndFind,
     /* [defaultvalue][optional][in] */ CompareMethod Compare);
 
 /* [entry] */ BSTR ToUTF8( 
@@ -366,6 +373,30 @@ EXTERN_C const IID LIBID_ATLVBALib;
 
 /* [entry] */ BSTR LCaseA( 
     /* [in] */ const BSTR psInp);
+
+/* [entry] */ VARIANT_BOOL StartsWith( 
+    BSTR sWhere,
+    BSTR sWhat);
+
+/* [entry] */ VARIANT_BOOL EndsWith( 
+    BSTR sWhere,
+    BSTR sWhat);
+
+/* [entry] */ VARIANT_BOOL StartsWithByt( 
+    SAFEARRAY * *Where,
+    SAFEARRAY * *What);
+
+/* [entry] */ VARIANT_BOOL EndsWithByt( 
+    SAFEARRAY * *Where,
+    SAFEARRAY * *What);
+
+/* [entry] */ VARIANT_BOOL StartsWithInt( 
+    SAFEARRAY * *Where,
+    SAFEARRAY * *What);
+
+/* [entry] */ VARIANT_BOOL EndsWithInt( 
+    SAFEARRAY * *Where,
+    SAFEARRAY * *What);
 
 #endif /* __StrHelp_MODULE_DEFINED__ */
 

@@ -30,9 +30,12 @@
   ocidl.acf
 .\ATLVBA.idl(147): warning MIDL2401: [defaultvalue] is applied to a non-VARIANT and [optional]. Please remove [optional] : [ Parameter 'Start' of Procedure 'InStrRevB' ( Module 'StrHelp' ) ]
 .\ATLVBA.idl(147): warning MIDL2401: [defaultvalue] is applied to a non-VARIANT and [optional]. Please remove [optional] : [ Parameter 'Compare' of Procedure 'InStrRevB' ( Module 'StrHelp' ) ]
-.\ATLVBA.idl(151): warning MIDL2401: [defaultvalue] is applied to a non-VARIANT and [optional]. Please remove [optional] : [ Parameter 'Start' of Procedure 'InStrLenRevB' ( Module 'StrHelp' ) ]
-.\ATLVBA.idl(151): warning MIDL2401: [defaultvalue] is applied to a non-VARIANT and [optional]. Please remove [optional] : [ Parameter 'Length' of Procedure 'InStrLenRevB' ( Module 'StrHelp' ) ]
-.\ATLVBA.idl(151): warning MIDL2401: [defaultvalue] is applied to a non-VARIANT and [optional]. Please remove [optional] : [ Parameter 'Compare' of Procedure 'InStrLenRevB' ( Module 'StrHelp' ) ]
+.\ATLVBA.idl(151): warning MIDL2401: [defaultvalue] is applied to a non-VARIANT and [optional]. Please remove [optional] : [ Parameter 'Start' of Procedure 'InStrRevB2' ( Module 'StrHelp' ) ]
+.\ATLVBA.idl(151): warning MIDL2401: [defaultvalue] is applied to a non-VARIANT and [optional]. Please remove [optional] : [ Parameter 'Length' of Procedure 'InStrRevB2' ( Module 'StrHelp' ) ]
+.\ATLVBA.idl(151): warning MIDL2401: [defaultvalue] is applied to a non-VARIANT and [optional]. Please remove [optional] : [ Parameter 'Compare' of Procedure 'InStrRevB2' ( Module 'StrHelp' ) ]
+.\ATLVBA.idl(155): warning MIDL2401: [defaultvalue] is applied to a non-VARIANT and [optional]. Please remove [optional] : [ Parameter 'Start' of Procedure 'InStrRevB3' ( Module 'StrHelp' ) ]
+.\ATLVBA.idl(155): warning MIDL2401: [defaultvalue] is applied to a non-VARIANT and [optional]. Please remove [optional] : [ Parameter 'EndFind' of Procedure 'InStrRevB3' ( Module 'StrHelp' ) ]
+.\ATLVBA.idl(155): warning MIDL2401: [defaultvalue] is applied to a non-VARIANT and [optional]. Please remove [optional] : [ Parameter 'Compare' of Procedure 'InStrRevB3' ( Module 'StrHelp' ) ]
   ArrHelp.c
   CallHelp.c
 f:\vsprojects\atlvba\atlvba\callhelp.c(116): warning C4022: copyFnArr: несоответствие указателя для фактического параметра 2
@@ -54,59 +57,66 @@ f:\vsprojects\atlvba\atlvba\memhelp.c(130): warning C4047: return: "int" отл�
 f:\vsprojects\atlvba\atlvba\memhelp.c(135): warning C4047: return: "int" отличается по уровням косвенного обращения от "void *"
 f:\vsprojects\atlvba\atlvba\memhelp.c(84): warning C4090: инициализация: разные квалификаторы "const"
   StrHelp.c
-f:\vsprojects\atlvba\atlvba\strhelp.c(7): warning C4028: формальный параметр 1 отличается от объявления
-f:\vsprojects\atlvba\atlvba\strhelp.c(24): warning C4028: формальный параметр 1 отличается от объявления
-f:\vsprojects\atlvba\atlvba\strhelp.c(40): warning C4028: формальный параметр 1 отличается от объявления
-f:\vsprojects\atlvba\atlvba\strhelp.c(44): warning C4028: формальный параметр 1 отличается от объявления
+f:\vsprojects\atlvba\atlvba\strhelp.c(8): warning C4028: формальный параметр 1 отличается от объявления
+f:\vsprojects\atlvba\atlvba\strhelp.c(25): warning C4028: формальный параметр 1 отличается от объявления
+f:\vsprojects\atlvba\atlvba\strhelp.c(41): warning C4028: формальный параметр 1 отличается от объявления
+f:\vsprojects\atlvba\atlvba\strhelp.c(45): warning C4028: формальный параметр 1 отличается от объявления
 f:\vsprojects\atlvba\atlvba\strhelp.c(49): warning C4028: формальный параметр 1 отличается от объявления
-f:\vsprojects\atlvba\atlvba\strhelp.c(108): warning C4028: формальный параметр 2 отличается от объявления
-f:\vsprojects\atlvba\atlvba\strhelp.c(108): warning C4028: формальный параметр 3 отличается от объявления
-f:\vsprojects\atlvba\atlvba\strhelp.c(121): warning C4028: формальный параметр 2 отличается от объявления
-f:\vsprojects\atlvba\atlvba\strhelp.c(121): warning C4028: формальный параметр 3 отличается от объявления
-f:\vsprojects\atlvba\atlvba\strhelp.c(130): warning C4028: формальный параметр 2 отличается от объявления
-f:\vsprojects\atlvba\atlvba\strhelp.c(130): warning C4028: формальный параметр 3 отличается от объявления
-f:\vsprojects\atlvba\atlvba\strhelp.c(139): warning C4028: формальный параметр 2 отличается от объявления
-f:\vsprojects\atlvba\atlvba\strhelp.c(139): warning C4028: формальный параметр 3 отличается от объявления
-f:\vsprojects\atlvba\atlvba\strhelp.c(166): warning C4028: формальный параметр 2 отличается от объявления
-f:\vsprojects\atlvba\atlvba\strhelp.c(166): warning C4028: формальный параметр 3 отличается от объявления
+f:\vsprojects\atlvba\atlvba\strhelp.c(110): warning C4028: формальный параметр 2 отличается от объявления
+f:\vsprojects\atlvba\atlvba\strhelp.c(110): warning C4028: формальный параметр 3 отличается от объявления
+f:\vsprojects\atlvba\atlvba\strhelp.c(123): warning C4028: формальный параметр 2 отличается от объявления
+f:\vsprojects\atlvba\atlvba\strhelp.c(123): warning C4028: формальный параметр 3 отличается от объявления
+f:\vsprojects\atlvba\atlvba\strhelp.c(132): warning C4028: формальный параметр 2 отличается от объявления
+f:\vsprojects\atlvba\atlvba\strhelp.c(132): warning C4028: формальный параметр 3 отличается от объявления
+f:\vsprojects\atlvba\atlvba\strhelp.c(141): warning C4028: формальный параметр 2 отличается от объявления
+f:\vsprojects\atlvba\atlvba\strhelp.c(141): warning C4028: формальный параметр 3 отличается от объявления
+f:\vsprojects\atlvba\atlvba\strhelp.c(167): warning C4028: формальный параметр 2 отличается от объявления
+f:\vsprojects\atlvba\atlvba\strhelp.c(167): warning C4028: формальный параметр 3 отличается от объявления
 f:\vsprojects\atlvba\atlvba\strhelp.c(176): warning C4028: формальный параметр 2 отличается от объявления
 f:\vsprojects\atlvba\atlvba\strhelp.c(176): warning C4028: формальный параметр 3 отличается от объявления
-f:\vsprojects\atlvba\atlvba\strhelp.c(187): warning C4133: функция: несовместимые типы - из "const BSTR" в "LPCSTR"
-f:\vsprojects\atlvba\atlvba\strhelp.c(188): warning C4133: функция: несовместимые типы - из "BSTR" в "LPSTR"
-f:\vsprojects\atlvba\atlvba\strhelp.c(193): warning C4133: функция: несовместимые типы - из "const BSTR" в "LPCSTR"
-f:\vsprojects\atlvba\atlvba\strhelp.c(194): warning C4133: функция: несовместимые типы - из "BSTR" в "LPSTR"
+f:\vsprojects\atlvba\atlvba\strhelp.c(188): warning C4133: функция: несовместимые типы - из "const BSTR" в "LPCSTR"
+f:\vsprojects\atlvba\atlvba\strhelp.c(189): warning C4133: функция: несовместимые типы - из "BSTR" в "LPSTR"
+f:\vsprojects\atlvba\atlvba\strhelp.c(194): warning C4133: функция: несовместимые типы - из "const BSTR" в "LPCSTR"
+f:\vsprojects\atlvba\atlvba\strhelp.c(195): warning C4133: функция: несовместимые типы - из "BSTR" в "LPSTR"
 f:\vsprojects\atlvba\atlvba\strhelp.c(212): warning C4090: функция: разные квалификаторы "const"
 f:\vsprojects\atlvba\atlvba\strhelp.c(213): warning C4090: функция: разные квалификаторы "const"
 f:\vsprojects\atlvba\atlvba\strhelp.c(215): warning C4090: return: разные квалификаторы "const"
-f:\vsprojects\atlvba\atlvba\strhelp.c(210): warning C4133: инициализация: несовместимые типы - из "LPSTR" в "LPCWSTR"
-f:\vsprojects\atlvba\atlvba\strhelp.c(305): warning C4142: "InStrRevB": неопасное переопределение типа
+f:\vsprojects\atlvba\atlvba\strhelp.c(313): warning C4142: "InStrRevB": неопасное переопределение типа
   f:\vsprojects\atlvba\atlvba\atlvba_i.h(339): note:  см. объявление "InStrRevB"
-f:\vsprojects\atlvba\atlvba\strhelp.c(305): warning C4028: формальный параметр 1 отличается от объявления
-f:\vsprojects\atlvba\atlvba\strhelp.c(305): warning C4028: формальный параметр 2 отличается от объявления
-f:\vsprojects\atlvba\atlvba\strhelp.c(347): warning C4047: =: "INT_PTR" отличается по уровням косвенного обращения от "const BSTR"
-f:\vsprojects\atlvba\atlvba\strhelp.c(347): warning C4133: =: несовместимые типы - из "const BSTR" в "char *"
-f:\vsprojects\atlvba\atlvba\strhelp.c(347): warning C4133: функция: несовместимые типы - из "const BSTR" в "const LPCSTR"
-f:\vsprojects\atlvba\atlvba\strhelp.c(347): warning C4047: =: "INT_PTR" отличается по уровням косвенного обращения от "char *"
-f:\vsprojects\atlvba\atlvba\strhelp.c(348): warning C4013: _MemFindRev: нет определения; предполагается "extern" с возвратом типа "int"
-f:\vsprojects\atlvba\atlvba\strhelp.c(351): warning C4142: "InStrLenRevB": неопасное переопределение типа
-  f:\vsprojects\atlvba\atlvba\atlvba_i.h(345): note:  см. объявление "InStrLenRevB"
-f:\vsprojects\atlvba\atlvba\strhelp.c(351): warning C4028: формальный параметр 2 отличается от объявления
-f:\vsprojects\atlvba\atlvba\strhelp.c(354): warning C4047: =: "INT_PTR" отличается по уровням косвенного обращения от "BSTR"
-f:\vsprojects\atlvba\atlvba\strhelp.c(354): warning C4133: =: несовместимые типы - из "const BSTR" в "char *"
-f:\vsprojects\atlvba\atlvba\strhelp.c(354): warning C4133: функция: несовместимые типы - из "BSTR" в "const LPCSTR"
-f:\vsprojects\atlvba\atlvba\strhelp.c(354): warning C4133: функция: несовместимые типы - из "const BSTR" в "const LPCSTR"
-f:\vsprojects\atlvba\atlvba\strhelp.c(354): warning C4047: =: "INT_PTR" отличается по уровням косвенного обращения от "char *"
-f:\vsprojects\atlvba\atlvba\strhelp.c(375): warning C4013: _MemFindRevAuto: нет определения; предполагается "extern" с возвратом типа "int"
-f:\vsprojects\atlvba\atlvba\strhelp.c(394): warning C4047: return: "INT_PTR" отличается по уровням косвенного обращения от "void *"
-f:\vsprojects\atlvba\atlvba\strhelp.c(417): warning C4047: return: "INT_PTR" отличается по уровням косвенного обращения от "void *"
-f:\vsprojects\atlvba\atlvba\strhelp.c(420): warning C4042: pcWhere: имеет недопустимый класс хранения
-f:\vsprojects\atlvba\atlvba\strhelp.c(420): warning C4042: pcWhat: имеет недопустимый класс хранения
-f:\vsprojects\atlvba\atlvba\strhelp.c(437): warning C4047: return: "INT_PTR" отличается по уровням косвенного обращения от "void *"
+f:\vsprojects\atlvba\atlvba\strhelp.c(313): warning C4028: формальный параметр 1 отличается от объявления
+f:\vsprojects\atlvba\atlvba\strhelp.c(313): warning C4028: формальный параметр 2 отличается от объявления
+f:\vsprojects\atlvba\atlvba\strhelp.c(316): warning C4047: =: "INT_PTR" отличается по уровням косвенного обращения от "const BSTR"
+f:\vsprojects\atlvba\atlvba\strhelp.c(316): warning C4133: =: несовместимые типы - из "const BSTR" в "char *"
+f:\vsprojects\atlvba\atlvba\strhelp.c(316): warning C4133: функция: несовместимые типы - из "const BSTR" в "const LPCSTR"
+f:\vsprojects\atlvba\atlvba\strhelp.c(316): warning C4047: =: "INT_PTR" отличается по уровням косвенного обращения от "char *"
+f:\vsprojects\atlvba\atlvba\strhelp.c(317): warning C4013: _MemFindRev: нет определения; предполагается "extern" с возвратом типа "int"
+f:\vsprojects\atlvba\atlvba\strhelp.c(319): warning C4142: "InStrRevB2": неопасное переопределение типа
+  f:\vsprojects\atlvba\atlvba\atlvba_i.h(345): note:  см. объявление "InStrRevB2"
+f:\vsprojects\atlvba\atlvba\strhelp.c(319): warning C4028: формальный параметр 2 отличается от объявления
+f:\vsprojects\atlvba\atlvba\strhelp.c(322): warning C4047: =: "INT_PTR" отличается по уровням косвенного обращения от "BSTR"
+f:\vsprojects\atlvba\atlvba\strhelp.c(322): warning C4133: =: несовместимые типы - из "const BSTR" в "char *"
+f:\vsprojects\atlvba\atlvba\strhelp.c(322): warning C4133: функция: несовместимые типы - из "BSTR" в "const LPCSTR"
+f:\vsprojects\atlvba\atlvba\strhelp.c(322): warning C4133: функция: несовместимые типы - из "const BSTR" в "const LPCSTR"
+f:\vsprojects\atlvba\atlvba\strhelp.c(322): warning C4047: =: "INT_PTR" отличается по уровням косвенного обращения от "char *"
+f:\vsprojects\atlvba\atlvba\strhelp.c(328): warning C4142: "InStrRevB3": неопасное переопределение типа
+  f:\vsprojects\atlvba\atlvba\atlvba_i.h(352): note:  см. объявление "InStrRevB3"
+f:\vsprojects\atlvba\atlvba\strhelp.c(328): warning C4028: формальный параметр 2 отличается от объявления
+f:\vsprojects\atlvba\atlvba\strhelp.c(331): warning C4047: =: "INT_PTR" отличается по уровням косвенного обращения от "BSTR"
+f:\vsprojects\atlvba\atlvba\strhelp.c(331): warning C4133: =: несовместимые типы - из "const BSTR" в "char *"
+f:\vsprojects\atlvba\atlvba\strhelp.c(331): warning C4133: функция: несовместимые типы - из "BSTR" в "const LPCSTR"
+f:\vsprojects\atlvba\atlvba\strhelp.c(331): warning C4133: функция: несовместимые типы - из "const BSTR" в "const LPCSTR"
+f:\vsprojects\atlvba\atlvba\strhelp.c(331): warning C4047: =: "INT_PTR" отличается по уровням косвенного обращения от "char *"
+f:\vsprojects\atlvba\atlvba\strhelp.c(357): warning C4047: return: "INT_PTR" отличается по уровням косвенного обращения от "void *"
+f:\vsprojects\atlvba\atlvba\strhelp.c(360): warning C4013: _MemFindRevW: нет определения; предполагается "extern" с возвратом типа "int"
+f:\vsprojects\atlvba\atlvba\strhelp.c(379): warning C4047: return: "INT_PTR" отличается по уровням косвенного обращения от "void *"
   Создание кода...
   ATLVBA.cpp
   ATLVBA_i.c
   dllmain.cpp
   Functions.cpp
+  Test.cpp
+  Создание кода...
+f:\vsprojects\atlvba\atlvba\test.cpp(18): warning C4715: CreateStdRegexA: значение возвращается не при всех путях выполнения
   xdlldata.c
      Создается библиотека F:\VSProjects\ATLVBA\Release\ATLVBA.lib и объект F:\VSProjects\ATLVBA\Release\ATLVBA.exp
 ATLVBA.exp : warning LNK4070: директива /OUT:ATLVBALib.dll в .EXP отличается от имени выходного файла "F:\VSProjects\ATLVBA\Release\ATLVBA.dll"; директива игнорируется

@@ -42,18 +42,23 @@ EXPORTS
 		ArrLen
 		ToAnsi
 		FromAnsi
+		InStrB_
 		InStrB2
-		InStrLenB
-		InStrEndB
+		InStrB3
 		InStrByt
-		InStrLenByt
-		InStrEndByt
+		InStrByt2
+		InStrByt3
 		InStrRevB
-		InStrLenRevB
+		InStrRevB2
+		InStrRevB3
 		ToUTF8
 		FromUTF8
 		UCaseA
 		LCaseA
+		StartsWith
+		EndsWith
+		StartsWithAry
+		EndsWithAry
 	;=== CallHelp ===
 		Call0
 		Call1
@@ -79,6 +84,11 @@ EXPORTS
 		CCall9
 		CCall10
 	;===Tests===
+		CreateStdRegexA
+		DestroyStdRegex
+		StdRE_ExtractPositionsA
+		TestSub
+		DeleteStdString
 	;	InitCallBack
 	;	TestProp
 	; Standart Eports

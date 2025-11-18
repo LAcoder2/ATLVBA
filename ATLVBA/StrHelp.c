@@ -2,6 +2,7 @@
 //#include <string.h>
 #include <windows.h>
 //#include "framework.h"
+//#include <hash_map>
 
 BSTR ToAnsi(const BSTR str)
 {
@@ -44,13 +45,14 @@ INT32 StrLenB(const BSTR str) {
 INT32 ArrLen(const SAFEARRAY** ppsaAry) {
 	return (*ppsaAry)->rgsabound[0].cElements;
 }
-
 //[ComExport]
 INT32 StrLen(const BSTR str) {
 	if (str == NULL) return 0;
 	return *((INT32*)str - 1) / 2;	
 }
 
+		// region InStrMacroses
+#if 1 
 #define INSTRBYT_VARPREP \
 	int cntWhere = (*ppsaWhere)->rgsabound[0].cElements; \
 	int cntWhat = (*ppsaWhat)->rgsabound[0].cElements; \
@@ -104,8 +106,8 @@ INT32 StrLen(const BSTR str) {
 	if (Stop < cntWhere) { cntWhere = Stop; } \
 	}
 	//else if (Stop < 0) { return 0; } //или генераци€ ошибки
-
-int InStrB2(int Start, const BSTR psWhere, const BSTR psWhat) {
+#endif	// region InStrMacroses
+int InStrB_(int Start, const BSTR psWhere, const BSTR psWhat) {
 	//int cntWhere = *((int*)psWhere - 1);
 	//int cntWhat = *((int*)psWhat - 1);
 	//char *pcWhere1 = (char*)psWhere;
@@ -118,7 +120,7 @@ int InStrB2(int Start, const BSTR psWhere, const BSTR psWhat) {
 
 	return 0;
 }
-int InStrLenB(int Start, const BSTR psWhere, const BSTR psWhat, int Length) {
+int InStrB2(int Start, const BSTR psWhere, const BSTR psWhat, int Length) {
 	INSTRB_VARPREP;
 	INSTR_START_VALIDATION;
 	INSTR_LEN_VALIDATION;
@@ -127,7 +129,7 @@ int InStrLenB(int Start, const BSTR psWhere, const BSTR psWhat, int Length) {
 
 	return 0;
 }
-int InStrEndB(int Start, const BSTR psWhere, const BSTR psWhat, int Stop) {
+int InStrB3(int Start, const BSTR psWhere, const BSTR psWhat, int Stop) {
 	INSTRB_VARPREP;
 	INSTR_START_VALIDATION;
 	INSTR_STOP_VALIDATION;
@@ -162,8 +164,7 @@ int InStrByt(int Start, const SAFEARRAY** ppsaWhere, const SAFEARRAY** ppsaWhat)
 
 	return 0;
 }
-
-int InStrLenByt(int Start, const SAFEARRAY** ppsaWhere, const SAFEARRAY** ppsaWhat, int Length) {
+int InStrByt2(int Start, const SAFEARRAY** ppsaWhere, const SAFEARRAY** ppsaWhat, int Length) {
 	INSTRBYT_VARPREP;
 	INSTR_START_VALIDATION;
 	INSTR_LEN_VALIDATION;
@@ -172,8 +173,7 @@ int InStrLenByt(int Start, const SAFEARRAY** ppsaWhere, const SAFEARRAY** ppsaWh
 
 	return 0;
 }
-
-int InStrEndByt(int Start, const SAFEARRAY** ppsaWhere, const SAFEARRAY** ppsaWhat, int Stop) {	
+int InStrByt3(int Start, const SAFEARRAY** ppsaWhere, const SAFEARRAY** ppsaWhat, int Stop) {	
 	INSTRBYT_VARPREP;
 	INSTR_START_VALIDATION;
 	INSTR_STOP_VALIDATION;
@@ -182,6 +182,7 @@ int InStrEndByt(int Start, const SAFEARRAY** ppsaWhere, const SAFEARRAY** ppsaWh
 
 	return 0;
 }
+
 BSTR UCaseA(const BSTR psInp) {
 	int szInp = *((int*)psInp-1);
 	BSTR psRet = SysAllocStringByteLen(psInp, szInp);
@@ -204,151 +205,118 @@ __inline LPSTR CreateUpperStringA(const LPCSTR psInp, int lenInp) {
 	return psTmp1;
 }
 #define CREATE_UPPER_STRING_A(psInp, szsInp) CreateUpperStringA((psInp), (szsInp))
-
-__inline LPSTR CreateUpperStringW(const LPCWSTR psInp, int lenInp) {
+__inline LPWSTR CreateUpperStringW(const LPCWSTR psInp, int lenInp) {
 	int szAlloc = lenInp * 2 + 2;
-	LPCWSTR psTmp1 = (LPSTR)malloc(szAlloc);
+	LPCWSTR psTmp1 = (LPWSTR)malloc(szAlloc);
 	if (psTmp1 != NULL) {
 		memcpy(psTmp1, psInp, szAlloc);
 		CharUpperBuffW(psTmp1, lenInp);
 	}
 	return psTmp1;
 }
-//typedef enum CompareMethod {
-//	BinaryCompare = 0,
-//	TextCompare = 1
-//};
-#define INSTRREVB_VAR_PREPARE_B \
-	const int szChr = 1; \
-	int szCheck = *((int*)psCheck - 1); \
-	int lnCheck = szCheck; \
-	int szMatch = *((int*)psMatch - 1); \
+
+// region InStrRevMacroses
+#if 1
+ 	#define INSTRREVB_VAR_PREPARE_B \
+		const int szChr = 1; \
+		int szCheck = *((int*)psCheck - 1); \
+		int lnCheck = szCheck; \
+		int szMatch = *((int*)psMatch - 1); \
 	
-#define INSTRREV_VAR_PREPARE_W \
-	const int szChr = 2; \
-	int szCheck = *((int*)psCheck - 1); \
-	int lnCheck = szCheck/2; \
-	int szMatch = *((int*)psMatch - 1); \
+	#define INSTRREV_VAR_PREPARE_W \
+		const int szChr = 2; \
+		int szCheck = *((int*)psCheck - 1); \
+		int lnCheck = szCheck/2; \
+		int szMatch = *((int*)psMatch - 1); \
 
-#define INSTRREV_START_VALIDATION /*”ниверсальный A/W*/\
-	if (Start > 0){ \
-		if (Start <= lnCheck) { \
-		} else { \
+	#define INSTRREV_START_VALIDATION /*”ниверсальный A/W*/\
+		if (Start > 0){ \
+			if (Start <= lnCheck) { \
+			} else { \
+				Start = lnCheck; \
+			} \
+		} else if (Start == 0) { \
 			Start = lnCheck; \
+		} else { \
+			Start += lnCheck + 1; \
+			if (Start >= 0) {} \
+			else return 0; /*или генераци€ ошбики "недопустимый параметр"*/ \
 		} \
-	} else if (Start == 0) { \
-		Start = lnCheck; \
-	} else { \
-		Start += lnCheck + 1; \
-		if (Start >= 0) {} \
-		else return 0; /*или генераци€ ошбики "недопустимый параметр"*/ \
-	} \
 
-#define INSTRREVB_COMP_VALIDATION_B \
-	INT_PTR pcCheck; \
-	char* pcMatch;\
-	char *psTmp1 = NULL, *psTmp2 = NULL; \
-	if (Compare == BinaryCompare) { \
-		pcCheck = psCheck; \
-		pcMatch = psMatch; \
-	} \
-	else { \
-		psTmp1 = CreateUpperStringA(psCheck, szCheck); \
-		psTmp2 = CreateUpperStringA(psMatch, szMatch); \
-		pcCheck = psTmp1; \
-		pcMatch = psTmp2; \
-	} \
-
-#define INSTRREV_COMP_VALIDATION_W \
-	INT_PTR pcCheck; \
-	WCHAR* pcMatch;\
-	WCHAR *psTmp1 = NULL, *psTmp2 = NULL; \
-	if (Compare == BinaryCompare) { \
-		pcCheck = psCheck; \
-		pcMatch = psMatch; \
-	} \
-	else { \
-		psTmp1 = CreateUpperStringW(psCheck, szCheck); \
-		psTmp2 = CreateUpperStringW(psMatch, szMatch); \
-		pcCheck = psTmp1; \
-		pcMatch = psTmp2; \
-	} \
-
-#define INSTRREV_LENGTH_VALIDATION /*”ниверсальный A/W*/ \
-	if (Length > 0) { \
-		if (Length < Start) { \
-			int off = Start - Length; \
-			pcCheck += off; \
-			Start -=off; \
+	#define INSTRREVB_COMP_VALIDATION_B \
+		INT_PTR pcCheck; \
+		char* pcMatch;\
+		char *psTmp1 = NULL, *psTmp2 = NULL; \
+		if (Compare == BinaryCompare) { \
+			pcCheck = psCheck; \
+			pcMatch = psMatch; \
 		} \
-	} else if (Length = 0) { \
-	} else { \
-		return 0; /* или генераци€ ошбики "недопустимое значение Length"*/ \
-	}\
+		else { \
+			psTmp1 = CreateUpperStringA(psCheck, szCheck); \
+			psTmp2 = CreateUpperStringA(psMatch, szMatch); \
+			pcCheck = psTmp1; \
+			pcMatch = psTmp2; \
+		} \
 
-#define INSTRREV_LOOP_RET_B \
-	INT_PTR lpret = _MemFindRev(pcCheck, Start, pcMatch, szMatch); \
-	 \
-	if (Compare == 0) {} else { free(psTmp1); free(psTmp2); } \
-	 \
-	if (lpret) return (lpret - (INT_PTR)psCheck) + 1; \
-	return 0; \
+	#define INSTRREV_COMP_VALIDATION_W \
+		INT_PTR pcCheck; \
+		WCHAR* pcMatch;\
+		WCHAR *psTmp1 = NULL, *psTmp2 = NULL; \
+		if (Compare == BinaryCompare) { \
+			pcCheck = psCheck; \
+			pcMatch = psMatch; \
+		} \
+		else { \
+			psTmp1 = CreateUpperStringW(psCheck, szCheck); \
+			psTmp2 = CreateUpperStringW(psMatch, szMatch); \
+			pcCheck = psTmp1; \
+			pcMatch = psTmp2; \
+		} \
 
-#define INSTRREV_LOOP_RET_W \
-	INT_PTR lpret = _MemFindRevW(pcCheck, Start * szChr, pcMatch, szMatch); \
-	 \
-	if (Compare == 0) {} else { free(psTmp1); free(psTmp2); } \
-	 \
-	if (lpret) return (lpret - pcCheck)/2 + 1; \
-	return 0; \
+	#define INSTRREV_LENGTH_VALIDATION /*”ниверсальный A/W*/ \
+		if (Length > 0) { \
+			if (Length < Start) { \
+				int off = Start - Length; \
+				pcCheck += off; \
+				Start -= off; \
+			} \
+		} else if (Length = 0) { \
+		} else { \
+			return 0; /* или генераци€ ошбики "недопустимое значение Length"*/ \
+		}\
 
+	#define INSTRREV_ENDFIND_VALIDATION \
+		if (EndFind > 0) { \
+			if (EndFind < Start) { \
+				EndFind--; \
+				pcCheck += EndFind; \
+				Start -= EndFind; \
+			}  \
+		} else if (EndFind = 0) { \
+		} else {  \
+			return 0; /* или генераци€ ошбики "недопустимое значение EndFind"*/  \
+		} \
+
+	#define INSTRREV_LOOP_RET_B \
+		INT_PTR lpret = _MemFindRev(pcCheck, Start, pcMatch, szMatch); \
+		if (Compare == 0) {} else { free(psTmp1); free(psTmp2); } \
+		if (lpret) return (lpret - (INT_PTR)psCheck) + 1; \
+		return 0; \
+
+	#define INSTRREV_LOOP_RET_W \
+		INT_PTR lpret = _MemFindRevW(pcCheck, Start * szChr, pcMatch, szMatch); \
+		if (Compare == 0) {} else { free(psTmp1); free(psTmp2); } \
+		if (lpret) return (lpret - pcCheck)/2 + 1; \
+		return 0; \
+
+#endif	// region InStrRevMacroses
 int InStrRevB(const BSTR psCheck, const BSTR psMatch, long Start, enum CompareMethod Compare) {		
-	//if (Start > 0){
-	//	if (Start <= szCheck) {
-	//	} else {
-	//		Start = szCheck;
-	//	}
-	//} else if (Start == 0) {
-	//	Start = szCheck;
-	//} else {
-	//	Start += szCheck + 1;
-	//	if (Start >= 0) {}
-	//	else return 0; //или генераци€ ошбики "недопустимый параметр"
-	//}	
-	//INT_PTR pcCheck;
-	//char* pcMatch;
-	//char *psTmp1=NULL, *psTmp2=NULL;
-	//if (Compare == BinaryCompare) {	
-	//	pcCheck = psCheck;
-	//	pcMatch = psMatch;
-	//} else {
-	//	psTmp1 = CreateUpperStringA(psCheck, szCheck); 
-	//	psTmp2 = CreateUpperStringA(psMatch, szMatch); 
-	//	pcCheck = psTmp1;
-	//	pcMatch = psTmp2;
-	//}	
-	//char cMatch1 = *pcMatch;
-	//char* pcMatch2 = pcMatch + 1;
-	//char* pEndMatch = pcMatch + szMatch; 
-	//for (char* pcCheck = pcCheck1 + Start - szMatch; pcCheck >= pcCheck1; pcCheck--) {
-	//	if (*pcCheck != cMatch1) {}
-	//	else {
-	//		char* pcCheck_ = pcCheck + 1;
-	//		for (pcMatch = pcMatch2; pcMatch < pEndMatch; pcMatch++, pcCheck_++) {
-	//			if (*pcCheck_ == *pcMatch) {} else goto skip;				
-	//		}
-	//		if (Compare == 0) {} else { free(psTmp1); free(psTmp2); }
-	//		return (pcCheck - pcCheck1) + 1;
-	//	}
-	//skip:;
-	//}	
 	INSTRREVB_VAR_PREPARE_B;
 	INSTRREV_START_VALIDATION;
 	INSTRREVB_COMP_VALIDATION_B;
 	INSTRREV_LOOP_RET_B;
 }
-
-int InStrLenRevB(BSTR psCheck, const BSTR psMatch, long Start, long Length, enum CompareMethod Compare) {
+int InStrRevB2(BSTR psCheck, const BSTR psMatch, long Start, long Length, enum CompareMethod Compare) {
 	INSTRREVB_VAR_PREPARE_B;
 	INSTRREV_START_VALIDATION;
 	INSTRREVB_COMP_VALIDATION_B;
@@ -356,23 +324,18 @@ int InStrLenRevB(BSTR psCheck, const BSTR psMatch, long Start, long Length, enum
 	INSTRREV_LENGTH_VALIDATION;
 	
 	INSTRREV_LOOP_RET_B;
-	
-	/*INT_PTR lpret = _MemFindRev(pcCheck, Start, pcMatch, szMatch);		
-	
-	if (Compare == 0) {}
-	else { free(psTmp1); free(psTmp2); }
-		
-	if (lpret) return (lpret - (INT_PTR)psCheck) + 1;
-	return 0*/;
-
-	//INT_PTR lpret = _MemFindRev(pcCheck, Start, pcMatch, szMatch);
-	//if (Compare == BinaryCompare) {} else { free(psTmp1); free(psTmp2); }
-	//if (lpret) return (lpret - pcCheck) + 1;
-	//return 0;	
 }
+int InStrRevB3(BSTR psCheck, const BSTR psMatch, long Start, long EndFind, enum CompareMethod Compare) {
+	INSTRREVB_VAR_PREPARE_B;
+	INSTRREV_START_VALIDATION;
+	INSTRREVB_COMP_VALIDATION_B;
 
+	INSTRREV_ENDFIND_VALIDATION;
+
+	INSTRREV_LOOP_RET_B;
+}
 INT_PTR MemFindRev(char* pcWhere, int szWhere, char* pcWhat, int szWhat) {
-	return _MemFindRevAuto(pcWhere, szWhere, pcWhat, szWhat);
+	return _MemFindRev(pcWhere, szWhere, pcWhat, szWhat);
 }
 __inline INT_PTR _MemFindRev(char* pcWhere, int szWhere, char* pcWhat, int szWhat) {
 	char* pcWhere1 = pcWhere;
@@ -393,9 +356,8 @@ __inline INT_PTR _MemFindRev(char* pcWhere, int szWhere, char* pcWhat, int szWha
 	}
 	return NULL;
 }
-
 INT_PTR MemFindRevW(const WCHAR* pcWhere, int szWhere, const WCHAR* pcWhat, int szWhat) {
-	return _MemFindRevAuto(pcWhere, szWhere, pcWhat, szWhat);
+	return _MemFindRevW(pcWhere, szWhere, pcWhat, szWhat);
 }
 __inline INT_PTR _MemFindRevW(WCHAR* pcWhere, int lnWhere, WCHAR* pcWhat, int lnWhat) {
 	WCHAR* pcWhere1 = pcWhere;
@@ -416,27 +378,6 @@ __inline INT_PTR _MemFindRevW(WCHAR* pcWhere, int lnWhere, WCHAR* pcWhat, int ln
 	}
 	return NULL;
 }
-
-__forceinline INT_PTR _MemFindRevAuto(auto* pcWhere, int lnWhere, auto* pcWhat, int lnWhat) {
-	auto* pcWhere1 = pcWhere;
-	auto cWhat1 = *pcWhat;
-	auto* pcWhat2 = pcWhat + 1;
-	auto* pEndWhat = pcWhat + lnWhat;
-	for (pcWhere = pcWhere1 + lnWhere - lnWhat; pcWhere >= pcWhere1; pcWhere--) {
-		if (*pcWhere != cWhat1) {}
-		else {
-			auto* pcWhere_ = pcWhere + 1;
-			for (pcWhat = pcWhat2; pcWhat < pEndWhat; pcWhat++, pcWhere_++) {
-				if (*pcWhere_ == *pcWhat) {}
-				else goto skip;
-			}
-			return (INT_PTR)pcWhere;
-		}
-	skip:;
-	}
-	return NULL;
-}
-
 
 BSTR ToUTF8(const BSTR sInp){
 	if (sInp == NULL) return NULL;
@@ -467,6 +408,65 @@ BSTR FromUTF8(const BSTR sInp){
 	return result;
 }
 
+__inline VARIANT_BOOL _EndsWith(char* pcWhere, int szWhere, char* pcWhat, int szWhat) {
+	if (szWhere < szWhat) return VARIANT_FALSE;
+	//if (pcWhere = pcWhat) return VARIANT_TRUE;
+	pcWhere += szWhere - szWhat;
+	while (szWhat--) {
+		if (*pcWhere == *pcWhat) {} else return VARIANT_FALSE;
+		pcWhere++; pcWhat++;
+	}
+	return VARIANT_TRUE;
+}	
+VARIANT_BOOL EndsWith(BSTR psWhere, BSTR psWhat) {
+	if (psWhere != NULL && psWhat != NULL) {} else return 0;
+	int szWhere = *((int*)psWhere - 1); 
+	int szWhat = *((int*)psWhat - 1);
+	
+	return _EndsWith((char*)psWhere, szWhere, (char*)psWhat, szWhat);
+}
+VARIANT_BOOL EndsWithAry(SAFEARRAY** ppsaWhere, SAFEARRAY** ppsaWhat) {
+	LPSAFEARRAY psaWhere = *ppsaWhere;
+	LPSAFEARRAY psaWhat = *ppsaWhat;
+	if (psaWhere != NULL && psaWhat != NULL) {} else return 0;
+	//if (psaWhere->cbElements = psaWhat->cbElements) {} else return 0; //разный размер элементов
+	int szWhere = psaWhere->cbElements * psaWhere->rgsabound[0].cElements;
+	int szWhat = psaWhat->cbElements * psaWhat->rgsabound[0].cElements;
+
+	return _EndsWith((char*)psaWhere->pvData, szWhere, (char*)psaWhat->pvData, szWhat);
+}
+
+__inline VARIANT_BOOL _StartsWith(char* pcWhere, int szWhere, char* pcWhat, int szWhat) {
+	if (szWhere < szWhat) return VARIANT_FALSE;
+	//if (pcWhere = pcWhat) return VARIANT_TRUE;
+	while (szWhat--) {
+		if (*pcWhere == *pcWhat) {}
+		else return VARIANT_FALSE;
+		pcWhere++; pcWhat++;
+	}
+	return VARIANT_TRUE;
+}
+VARIANT_BOOL StartsWith(BSTR psWhere, BSTR psWhat) {
+	if (psWhere != NULL && psWhat != NULL) {} else return VARIANT_FALSE;
+	int szWhere = *((int*)psWhere - 1); //*((int*)sInp - 1)
+	int szWhat = *((int*)psWhat - 1);
+
+	return _StartsWith((char*)psWhere, szWhere, (char*)psWhat, szWhat);
+}
+VARIANT_BOOL StartsWithAry(SAFEARRAY** ppsaWhere, SAFEARRAY** ppsaWhat) {
+	LPSAFEARRAY psaWhere = *ppsaWhere;
+	LPSAFEARRAY psaWhat = *ppsaWhat;
+	if (psaWhere != NULL && psaWhat != NULL) {}
+	else return 0;
+	int szWhere = psaWhere->cbElements * psaWhere->rgsabound[0].cElements;
+	int szWhat = psaWhat->cbElements * psaWhat->rgsabound[0].cElements;
+
+	return _StartsWith((char*)psaWhere->pvData, szWhere, (char*)psaWhat->pvData, szWhat);
+}
+
+void HTableTest() {
+	//HashTableCreate( ;
+}
 //Private Function ToUTF8(sText As String) As String 
 //    Dim Ln As Long
 //    Ln = WideCharToMultiByte(CP_UTF8, 0, StrPtr(sText), Len(sText), 0, 0, 0, 0)
@@ -483,7 +483,6 @@ BSTR FromUTF8(const BSTR sInp){
 //        MultiByteToWideChar CP_UTF8, 0, StrPtr(sText), LenB(sText), StrPtr(FromUTF8), Ln
 //    End If
 //End Function
-
 //int InStrByt(int Start, SAFEARRAY** ppsaWhere, SAFEARRAY** ppsaWhat) {
 //	int cntWhere = (*ppsaWhere)->rgsabound[0].cElements;
 //	int cntWhat = (*ppsaWhat)->rgsabound[0].cElements;
