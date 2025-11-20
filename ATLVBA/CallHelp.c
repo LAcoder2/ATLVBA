@@ -57,7 +57,7 @@ typedef void(__cdecl *csub11)(void*, void*, void*, void*, void*, void*, void*, v
 
 
 void Call0(INT_PTR fn, void* ret, int retSz){
-	if (ret != NULL){
+	if (ret != NULL || retSz != 0){
 		if (retSz <= 8){
 			INT64 ret64 = ((fun0)fn)();
 			memcpy(ret, &ret64, retSz);
@@ -69,7 +69,7 @@ void Call0(INT_PTR fn, void* ret, int retSz){
 	}
 }
 void Call1(INT_PTR fn, void* ret, int retSz, void* a1){
-	if (ret != NULL){
+	if (ret != NULL || retSz != 0){
 		if (retSz <= 8){
 			INT64 ret64 = ((fun1)fn)(a1);
 			memcpy(ret, &ret64, retSz);
@@ -110,7 +110,7 @@ void __cdecl initCopyFnArr() { //cdecl указан для запуска фун
 //__declspec(dllexport)
 void Call2_(INT_PTR fn, void* ret, int retSz, void* a1, void* a2) {
 	if (retSz > -1) {} else  return;
-	if (ret != NULL) {
+	if (ret != NULL || retSz != 0) {
 		if (retSz <= 8) {
 			INT64 ret64 = ((fun2)fn)(a1, a2);			
 			copyFnArr[retSz](ret, ret64);		//memcpy(ret, &ret64, retSz);
@@ -122,7 +122,7 @@ void Call2_(INT_PTR fn, void* ret, int retSz, void* a1, void* a2) {
 	}
 }
 void Call2(INT_PTR fn, void* ret, int retSz, void* a1, void* a2){
-	if (ret != NULL){
+	if (ret != NULL || retSz != 0){
 		if (retSz <= 8){
 			INT64 ret64 = ((fun2)fn)(a1, a2);
 			memcpy(ret, &ret64, retSz);
@@ -134,7 +134,7 @@ void Call2(INT_PTR fn, void* ret, int retSz, void* a1, void* a2){
 	}
 }
 void Call3(INT_PTR fn, void* ret, int retSz, void* a1, void* a2, void* a3){
-	if (ret != NULL){
+	if (ret != NULL || retSz != 0){
 		if (retSz <= 8){
 			INT64 ret64 = ((fun3)fn)(a1, a2, a3);
 			memcpy(ret, &ret64, retSz);
@@ -146,7 +146,7 @@ void Call3(INT_PTR fn, void* ret, int retSz, void* a1, void* a2, void* a3){
 	}
 }
 void Call4(INT_PTR fn, void* ret, int retSz, void* a1, void* a2, void* a3, void* a4){
-	if (ret != NULL){
+	if (ret != NULL || retSz != 0){
 		if (retSz <= 8){
 			INT64 ret64 = ((fun4)fn)(a1, a2, a3, a4);
 			memcpy(ret, &ret64, retSz);
@@ -158,7 +158,7 @@ void Call4(INT_PTR fn, void* ret, int retSz, void* a1, void* a2, void* a3, void*
 	}
 }
 void Call5(INT_PTR fn, void* ret, int retSz, void* a1, void* a2, void* a3, void* a4, void* a5){
-	if (ret != NULL){
+	if (ret != NULL || retSz != 0){
 		if (retSz <= 8){
 			INT64 ret64 = ((fun5)fn)(a1, a2, a3, a4, a5);
 			memcpy(ret, &ret64, retSz);
@@ -170,7 +170,7 @@ void Call5(INT_PTR fn, void* ret, int retSz, void* a1, void* a2, void* a3, void*
 	}
 }
 void Call6(INT_PTR fn, void* ret, int retSz, void* a1, void* a2, void* a3, void* a4, void* a5, void* a6){
-	if (ret != NULL){
+	if (ret != NULL || retSz != 0){
 		if (retSz <= 8){
 			INT64 ret64 = ((fun6)fn)(a1, a2, a3, a4, a5, a6);
 			memcpy(ret, &ret64, retSz);
@@ -182,7 +182,7 @@ void Call6(INT_PTR fn, void* ret, int retSz, void* a1, void* a2, void* a3, void*
 	}
 }
 void Call7(INT_PTR fn, void* ret, int retSz, void* a1, void* a2, void* a3, void* a4, void* a5, void* a6, void* a7){
-	if (ret != NULL){
+	if (ret != NULL || retSz != 0){
 		if (retSz <= 8){
 			INT64 ret64 = ((fun7)fn)(a1, a2, a3, a4, a5, a6, a7);
 			memcpy(ret, &ret64, retSz);
@@ -194,7 +194,7 @@ void Call7(INT_PTR fn, void* ret, int retSz, void* a1, void* a2, void* a3, void*
 	}
 }
 void Call8(INT_PTR fn, void* ret, int retSz, void* a1, void* a2, void* a3, void* a4, void* a5, void* a6, void* a7, void* a8){
-	if (ret != NULL){
+	if (ret != NULL || retSz != 0){
 		if (retSz <= 8){
 			INT64 ret64 = ((fun8)fn)(a1, a2, a3, a4, a5, a6, a7, a8);
 			memcpy(ret, &ret64, retSz);
@@ -206,7 +206,7 @@ void Call8(INT_PTR fn, void* ret, int retSz, void* a1, void* a2, void* a3, void*
 	}
 }
 void Call9(INT_PTR fn, void* ret, int retSz, void* a1, void* a2, void* a3, void* a4, void* a5, void* a6, void* a7, void* a8, void* a9){
-	if (ret != NULL){
+	if (ret != NULL || retSz != 0){
 		if (retSz <= 8){
 			INT64 ret64 = ((fun9)fn)(a1, a2, a3, a4, a5, a6, a7, a8, a9);
 			memcpy(ret, &ret64, retSz);
@@ -218,7 +218,7 @@ void Call9(INT_PTR fn, void* ret, int retSz, void* a1, void* a2, void* a3, void*
 	}
 }
 void Call10(INT_PTR fn, void* ret, int retSz, void* a1, void* a2, void* a3, void* a4, void* a5, void* a6, void* a7, void* a8, void* a9, void* a10){
-	if (ret != NULL){
+	if (ret != NULL || retSz != 0){
 		if (retSz <= 8){
 			INT64 ret64 = ((fun10)fn)(a1, a2, a3, a4, a5, a6, a7, a8, a9, a10);
 			memcpy(ret, &ret64, retSz);
@@ -231,7 +231,7 @@ void Call10(INT_PTR fn, void* ret, int retSz, void* a1, void* a2, void* a3, void
 }
 
 void CCall0(INT_PTR fn, void* ret, int retSz){
-	if (ret != NULL){
+	if (ret != NULL || retSz != 0){
 		if (retSz <= 8){
 			INT64 ret64 = ((cfun0)fn)();
 			memcpy(ret, &ret64, retSz);
@@ -243,7 +243,7 @@ void CCall0(INT_PTR fn, void* ret, int retSz){
 	}
 }
 void CCall1(INT_PTR fn, void* ret, int retSz, void* a1){
-	if (ret != NULL){
+	if (ret != NULL || retSz != 0){
 		if (retSz <= 8){
 			INT64 ret64 = ((cfun1)fn)(a1);
 			memcpy(ret, &ret64, retSz);
@@ -255,7 +255,7 @@ void CCall1(INT_PTR fn, void* ret, int retSz, void* a1){
 	}
 }
 void CCall2(INT_PTR fn, void* ret, int retSz, void* a1, void* a2){
-	if (ret != NULL){
+	if (ret != NULL || retSz != 0){
 		if (retSz <= 8){
 			INT64 ret64 = ((cfun2)fn)(a1, a2);
 			memcpy(ret, &ret64, retSz);
@@ -267,7 +267,7 @@ void CCall2(INT_PTR fn, void* ret, int retSz, void* a1, void* a2){
 	}
 }
 void CCall3(INT_PTR fn, void* ret, int retSz, void* a1, void* a2, void* a3){
-	if (ret != NULL){
+	if (ret != NULL || retSz != 0){
 		if (retSz <= 8){
 			INT64 ret64 = ((cfun3)fn)(a1, a2, a3);
 			memcpy(ret, &ret64, retSz);
@@ -279,7 +279,7 @@ void CCall3(INT_PTR fn, void* ret, int retSz, void* a1, void* a2, void* a3){
 	}
 }
 void CCall4(INT_PTR fn, void* ret, int retSz, void* a1, void* a2, void* a3, void* a4){
-	if (ret != NULL){
+	if (ret != NULL || retSz != 0){
 		if (retSz <= 8){
 			INT64 ret64 = ((cfun4)fn)(a1, a2, a3, a4);
 			memcpy(ret, &ret64, retSz);
@@ -291,7 +291,7 @@ void CCall4(INT_PTR fn, void* ret, int retSz, void* a1, void* a2, void* a3, void
 	}
 }
 void CCall5(INT_PTR fn, void* ret, int retSz, void* a1, void* a2, void* a3, void* a4, void* a5){
-	if (ret != NULL){
+	if (ret != NULL || retSz != 0){
 		if (retSz <= 8){
 			INT64 ret64 = ((cfun5)fn)(a1, a2, a3, a4, a5);
 			memcpy(ret, &ret64, retSz);
@@ -303,7 +303,7 @@ void CCall5(INT_PTR fn, void* ret, int retSz, void* a1, void* a2, void* a3, void
 	}
 }
 void CCall6(INT_PTR fn, void* ret, int retSz, void* a1, void* a2, void* a3, void* a4, void* a5, void* a6){
-	if (ret != NULL){
+	if (ret != NULL || retSz != 0){
 		if (retSz <= 8){
 			INT64 ret64 = ((cfun6)fn)(a1, a2, a3, a4, a5, a6);
 			memcpy(ret, &ret64, retSz);
@@ -315,7 +315,7 @@ void CCall6(INT_PTR fn, void* ret, int retSz, void* a1, void* a2, void* a3, void
 	}
 }
 void CCall7(INT_PTR fn, void* ret, int retSz, void* a1, void* a2, void* a3, void* a4, void* a5, void* a6, void* a7){
-	if (ret != NULL){
+	if (ret != NULL || retSz != 0){
 		if (retSz <= 8){
 			INT64 ret64 = ((cfun7)fn)(a1, a2, a3, a4, a5, a6, a7);
 			memcpy(ret, &ret64, retSz);
@@ -327,7 +327,7 @@ void CCall7(INT_PTR fn, void* ret, int retSz, void* a1, void* a2, void* a3, void
 	}
 }
 void CCall8(INT_PTR fn, void* ret, int retSz, void* a1, void* a2, void* a3, void* a4, void* a5, void* a6, void* a7, void* a8){
-	if (ret != NULL){
+	if (ret != NULL || retSz != 0){
 		if (retSz <= 8){
 			INT64 ret64 = ((cfun8)fn)(a1, a2, a3, a4, a5, a6, a7, a8);
 			memcpy(ret, &ret64, retSz);
@@ -339,7 +339,7 @@ void CCall8(INT_PTR fn, void* ret, int retSz, void* a1, void* a2, void* a3, void
 	}
 }
 void CCall9(INT_PTR fn, void* ret, int retSz, void* a1, void* a2, void* a3, void* a4, void* a5, void* a6, void* a7, void* a8, void* a9){
-	if (ret != NULL){
+	if (ret != NULL || retSz != 0){
 		if (retSz <= 8){
 			INT64 ret64 = ((cfun9)fn)(a1, a2, a3, a4, a5, a6, a7, a8, a9);
 			memcpy(ret, &ret64, retSz);
@@ -351,7 +351,7 @@ void CCall9(INT_PTR fn, void* ret, int retSz, void* a1, void* a2, void* a3, void
 	}
 }
 void CCall10(INT_PTR fn, void* ret, int retSz, void* a1, void* a2, void* a3, void* a4, void* a5, void* a6, void* a7, void* a8, void* a9, void* a10){
-	if (ret != NULL){
+	if (ret != NULL || retSz != 0){
 		if (retSz <= 8){
 			INT64 ret64 = ((cfun10)fn)(a1, a2, a3, a4, a5, a6, a7, a8, a9, a10);
 			memcpy(ret, &ret64, retSz);
@@ -390,7 +390,7 @@ void CCall10(INT_PTR fn, void* ret, int retSz, void* a1, void* a2, void* a3, voi
 //typedef void(__stdcall *sub2)(void*, void*);
 //typedef void(__stdcall *sub3)(void*, void*, void*);
 //void Call2(INT_PTR fn, void* ret, int retSz, void* a1, void* a2){
-//	if (ret != NULL){
+//	if (ret != NULL || retSz != 0){
 //		if (retSz <= 8){
 //			INT64 ret64 = ((fun2)fn)(a1, a2);
 //			memcpy(ret, &ret64, retSz);
