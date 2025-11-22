@@ -426,6 +426,20 @@ EXTERN_C const IID LIBID_ATLVBALib;
 #endif /* __ArrHelp_MODULE_DEFINED__ */
 
 
+#ifndef __ZipHelp_MODULE_DEFINED__
+#define __ZipHelp_MODULE_DEFINED__
+
+
+/* module ZipHelp */
+
+
+/* [entry] */ SAFEARRAY * UnzipFileToBytes( 
+    BSTR sFilePath,
+    BSTR sZipPath);
+
+#endif /* __ZipHelp_MODULE_DEFINED__ */
+
+
 #ifndef __CallHelp_MODULE_DEFINED__
 #define __CallHelp_MODULE_DEFINED__
 

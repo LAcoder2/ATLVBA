@@ -195,10 +195,11 @@ library ATLVBALib
 		HRESULT __stdcall TestProp(
 			[in, out] SAFEARRAY(VARIANT)* ArgList,
 			[in, out] SAFEARRAY(VARIANT)* rhs);*/
-	}
-	[
-		hidden
-	]
+	};
+	module ZipHelp{
+		[entry("UnzipFileToBytes")] SAFEARRAY(byte) UnzipFileToBytes(BSTR sFilePath, BSTR sZipPath);
+	};
+	[hidden]
 	module CallHelp{
 		[entry("Call0")] void __stdcall Call0([in] __int3264 fn, [in, out] void* ret, [in] int retSz);
 		[entry("Call1")] void __stdcall Call1([in] __int3264 fn, [in, out] void* ret, [in] int retSz, void* a1);

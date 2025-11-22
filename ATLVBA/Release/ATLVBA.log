@@ -115,6 +115,7 @@ f:\vsprojects\atlvba\atlvba\strhelp.c(379): warning C4047: return: "INT_PTR" о�
   dllmain.cpp
   Functions.cpp
   Test.cpp
+  ZipHelp.cpp
   Создание кода...
 f:\vsprojects\atlvba\atlvba\test.cpp(18): warning C4715: CreateStdRegexA: значение возвращается не при всех путях выполнения
   xdlldata.c

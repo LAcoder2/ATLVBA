@@ -83,7 +83,10 @@ EXPORTS
 		CCall8
 		CCall9
 		CCall10
-	;===Tests===
+	;===ZipHelp===
+		UnzipFileToBytes
+	;===Tests===		
+		WriteBytesToZipFile
 		CreateStdRegexA
 		DestroyStdRegex
 		StdRE_ExtractPositionsA

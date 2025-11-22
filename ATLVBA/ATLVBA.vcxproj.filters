@@ -81,6 +81,9 @@
     <ClCompile Include="Test.cpp">
       <Filter>Исходные файлы\Expotrs</Filter>
     </ClCompile>
+    <ClCompile Include="ZipHelp.cpp">
+      <Filter>Исходные файлы\Expotrs</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="ATLVBA.rc">
