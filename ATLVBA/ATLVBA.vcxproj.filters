@@ -52,6 +52,9 @@
     <ClInclude Include="constants.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
+    <ClInclude Include="StrHelp.h">
+      <Filter>Исходные файлы\Expotrs</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ATLVBA_i.c">

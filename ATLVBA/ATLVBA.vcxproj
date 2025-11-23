@@ -192,6 +192,11 @@
       </PrecompiledHeaderFile>
       <SDLCheck>true</SDLCheck>
       <CallingConvention>StdCall</CallingConvention>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+      <WholeProgramOptimization>true</WholeProgramOptimization>
+      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Midl>
       <MkTypLibCompatible>false</MkTypLibCompatible>
@@ -224,6 +229,7 @@
     <ClInclude Include="framework.h" />
     <ClInclude Include="Initialization.h" />
     <ClInclude Include="Resource.h" />
+    <ClInclude Include="StrHelp.h" />
     <ClInclude Include="targetver.h" />
     <ClInclude Include="xdlldata.h" />
   </ItemGroup>

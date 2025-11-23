@@ -55,38 +55,54 @@ f:\vsprojects\atlvba\atlvba\memhelp.c(130): warning C4047: return: "__int64" о�
 f:\vsprojects\atlvba\atlvba\memhelp.c(135): warning C4047: return: "__int64" отличается по уровням косвенного обращения от "void *"
 f:\vsprojects\atlvba\atlvba\memhelp.c(84): warning C4090: инициализация: разные квалификаторы "const"
   StrHelp.c
-f:\vsprojects\atlvba\atlvba\strhelp.c(125): warning C4244: return: преобразование "__int64" в "int", возможна потеря данных
-f:\vsprojects\atlvba\atlvba\strhelp.c(134): warning C4244: return: преобразование "__int64" в "int", возможна потеря данных
-f:\vsprojects\atlvba\atlvba\strhelp.c(143): warning C4244: return: преобразование "__int64" в "int", возможна потеря данных
-f:\vsprojects\atlvba\atlvba\strhelp.c(169): warning C4244: return: преобразование "__int64" в "int", возможна потеря данных
-f:\vsprojects\atlvba\atlvba\strhelp.c(178): warning C4244: return: преобразование "__int64" в "int", возможна потеря данных
-f:\vsprojects\atlvba\atlvba\strhelp.c(187): warning C4244: return: преобразование "__int64" в "int", возможна потеря данных
-f:\vsprojects\atlvba\atlvba\strhelp.c(194): warning C4133: функция: несовместимые типы - из "const BSTR" в "LPCSTR"
-f:\vsprojects\atlvba\atlvba\strhelp.c(195): warning C4133: функция: несовместимые типы - из "BSTR" в "LPSTR"
-f:\vsprojects\atlvba\atlvba\strhelp.c(200): warning C4133: функция: несовместимые типы - из "const BSTR" в "LPCSTR"
-f:\vsprojects\atlvba\atlvba\strhelp.c(201): warning C4133: функция: несовместимые типы - из "BSTR" в "LPSTR"
-f:\vsprojects\atlvba\atlvba\strhelp.c(218): warning C4090: функция: разные квалификаторы "const"
-f:\vsprojects\atlvba\atlvba\strhelp.c(219): warning C4090: функция: разные квалификаторы "const"
-f:\vsprojects\atlvba\atlvba\strhelp.c(221): warning C4090: return: разные квалификаторы "const"
-f:\vsprojects\atlvba\atlvba\strhelp.c(322): warning C4047: =: "INT_PTR" отличается по уровням косвенного обращения от "const BSTR"
-f:\vsprojects\atlvba\atlvba\strhelp.c(322): warning C4133: =: несовместимые типы - из "const BSTR" в "char *"
-f:\vsprojects\atlvba\atlvba\strhelp.c(322): warning C4133: функция: несовместимые типы - из "const BSTR" в "const LPCSTR"
-f:\vsprojects\atlvba\atlvba\strhelp.c(322): warning C4047: =: "INT_PTR" отличается по уровням косвенного обращения от "char *"
-f:\vsprojects\atlvba\atlvba\strhelp.c(323): warning C4013: _MemFindRev: нет определения; предполагается "extern" с возвратом типа "int"
-f:\vsprojects\atlvba\atlvba\strhelp.c(323): warning C4244: return: преобразование "INT_PTR" в "int", возможна потеря данных
-f:\vsprojects\atlvba\atlvba\strhelp.c(328): warning C4047: =: "INT_PTR" отличается по уровням косвенного обращения от "BSTR"
-f:\vsprojects\atlvba\atlvba\strhelp.c(328): warning C4133: =: несовместимые типы - из "const BSTR" в "char *"
-f:\vsprojects\atlvba\atlvba\strhelp.c(328): warning C4133: функция: несовместимые типы - из "BSTR" в "const LPCSTR"
-f:\vsprojects\atlvba\atlvba\strhelp.c(328): warning C4133: функция: несовместимые типы - из "const BSTR" в "const LPCSTR"
-f:\vsprojects\atlvba\atlvba\strhelp.c(328): warning C4047: =: "INT_PTR" отличается по уровням косвенного обращения от "char *"
-f:\vsprojects\atlvba\atlvba\strhelp.c(332): warning C4244: return: преобразование "INT_PTR" в "int", возможна потеря данных
-f:\vsprojects\atlvba\atlvba\strhelp.c(337): warning C4047: =: "INT_PTR" отличается по уровням косвенного обращения от "BSTR"
-f:\vsprojects\atlvba\atlvba\strhelp.c(337): warning C4133: =: несовместимые типы - из "const BSTR" в "char *"
-f:\vsprojects\atlvba\atlvba\strhelp.c(337): warning C4133: функция: несовместимые типы - из "BSTR" в "const LPCSTR"
-f:\vsprojects\atlvba\atlvba\strhelp.c(337): warning C4133: функция: несовместимые типы - из "const BSTR" в "const LPCSTR"
-f:\vsprojects\atlvba\atlvba\strhelp.c(337): warning C4047: =: "INT_PTR" отличается по уровням косвенного обращения от "char *"
-f:\vsprojects\atlvba\atlvba\strhelp.c(341): warning C4244: return: преобразование "INT_PTR" в "int", возможна потеря данных
-f:\vsprojects\atlvba\atlvba\strhelp.c(349): error C2371: _MemFindRev: переопределение; различные базовые типы
-f:\vsprojects\atlvba\atlvba\strhelp.c(366): warning C4047: return: "intptr_t" отличается по уровням косвенного обращения от "void *"
-f:\vsprojects\atlvba\atlvba\strhelp.c(386): warning C4047: return: "intptr_t" отличается по уровням косвенного обращения от "void *"
-  Создание кода...
+f:\vsprojects\atlvba\atlvba\strhelp.c(136): warning C4244: return: преобразование "__int64" в "int", возможна потеря данных
+f:\vsprojects\atlvba\atlvba\strhelp.c(145): warning C4244: return: преобразование "__int64" в "int", возможна потеря данных
+f:\vsprojects\atlvba\atlvba\strhelp.c(154): warning C4244: return: преобразование "__int64" в "int", возможна потеря данных
+f:\vsprojects\atlvba\atlvba\strhelp.c(180): warning C4244: return: преобразование "__int64" в "int", возможна потеря данных
+f:\vsprojects\atlvba\atlvba\strhelp.c(189): warning C4244: return: преобразование "__int64" в "int", возможна потеря данных
+f:\vsprojects\atlvba\atlvba\strhelp.c(198): warning C4244: return: преобразование "__int64" в "int", возможна потеря данных
+f:\vsprojects\atlvba\atlvba\strhelp.c(206): warning C4133: функция: несовместимые типы - из "const BSTR" в "LPCSTR"
+f:\vsprojects\atlvba\atlvba\strhelp.c(207): warning C4133: функция: несовместимые типы - из "BSTR" в "LPSTR"
+f:\vsprojects\atlvba\atlvba\strhelp.c(213): warning C4133: функция: несовместимые типы - из "const BSTR" в "LPCSTR"
+f:\vsprojects\atlvba\atlvba\strhelp.c(214): warning C4133: функция: несовместимые типы - из "BSTR" в "LPSTR"
+f:\vsprojects\atlvba\atlvba\strhelp.c(231): warning C4090: функция: разные квалификаторы "const"
+f:\vsprojects\atlvba\atlvba\strhelp.c(232): warning C4090: функция: разные квалификаторы "const"
+f:\vsprojects\atlvba\atlvba\strhelp.c(234): warning C4090: return: разные квалификаторы "const"
+f:\vsprojects\atlvba\atlvba\strhelp.c(335): warning C4047: =: "__int64" отличается по уровням косвенного обращения от "const BSTR"
+f:\vsprojects\atlvba\atlvba\strhelp.c(335): warning C4133: =: несовместимые типы - из "const BSTR" в "char *"
+f:\vsprojects\atlvba\atlvba\strhelp.c(335): warning C4133: функция: несовместимые типы - из "const BSTR" в "const LPCSTR"
+f:\vsprojects\atlvba\atlvba\strhelp.c(335): warning C4047: =: "__int64" отличается по уровням косвенного обращения от "char *"
+f:\vsprojects\atlvba\atlvba\strhelp.c(336): warning C4047: функция: "char *" отличается по уровням косвенного обращения от "__int64"
+f:\vsprojects\atlvba\atlvba\strhelp.c(336): warning C4024: MemFindRev_: различные типы для формального и фактического параметров 1
+f:\vsprojects\atlvba\atlvba\strhelp.c(341): warning C4047: =: "__int64" отличается по уровням косвенного обращения от "BSTR"
+f:\vsprojects\atlvba\atlvba\strhelp.c(341): warning C4133: =: несовместимые типы - из "const BSTR" в "char *"
+f:\vsprojects\atlvba\atlvba\strhelp.c(341): warning C4133: функция: несовместимые типы - из "BSTR" в "const LPCSTR"
+f:\vsprojects\atlvba\atlvba\strhelp.c(341): warning C4133: функция: несовместимые типы - из "const BSTR" в "const LPCSTR"
+f:\vsprojects\atlvba\atlvba\strhelp.c(341): warning C4047: =: "__int64" отличается по уровням косвенного обращения от "char *"
+f:\vsprojects\atlvba\atlvba\strhelp.c(345): warning C4047: функция: "char *" отличается по уровням косвенного обращения от "__int64"
+f:\vsprojects\atlvba\atlvba\strhelp.c(345): warning C4024: MemFindRev_: различные типы для формального и фактического параметров 1
+f:\vsprojects\atlvba\atlvba\strhelp.c(350): warning C4047: =: "__int64" отличается по уровням косвенного обращения от "BSTR"
+f:\vsprojects\atlvba\atlvba\strhelp.c(350): warning C4133: =: несовместимые типы - из "const BSTR" в "char *"
+f:\vsprojects\atlvba\atlvba\strhelp.c(350): warning C4133: функция: несовместимые типы - из "BSTR" в "const LPCSTR"
+f:\vsprojects\atlvba\atlvba\strhelp.c(350): warning C4133: функция: несовместимые типы - из "const BSTR" в "const LPCSTR"
+f:\vsprojects\atlvba\atlvba\strhelp.c(350): warning C4047: =: "__int64" отличается по уровням косвенного обращения от "char *"
+f:\vsprojects\atlvba\atlvba\strhelp.c(354): warning C4047: функция: "char *" отличается по уровням косвенного обращения от "__int64"
+f:\vsprojects\atlvba\atlvba\strhelp.c(354): warning C4024: MemFindRev_: различные типы для формального и фактического параметров 1
+  ATLVBA.cpp
+  ATLVBA_i.c
+  dllmain.cpp
+  Functions.cpp
+  Test.cpp
+f:\vsprojects\atlvba\atlvba\test.cpp(86): warning C4267: аргумент: преобразование из "size_t" в "UINT"; возможна потеря данных
+  ZipHelp.cpp
+  xdlldata.c
+  ArrHelp.obj : найден .netmodule MSIL или модуль, откомпилированный с параметром /GL; перезапускается компоновка с параметром /LTCG; добавьте /LTCG в командную строку компоновки для повышения производительности компоновщика
+     ╤ючфрхЄё  сшсышюЄхър F:\VSProjects\ATLVBA\x64\Release\ATLVBA.lib ш юс·хъЄ F:\VSProjects\ATLVBA\x64\Release\ATLVBA.exp
+ATLVBA.exp : warning LNK4070: фшЁхъЄштр /OUT:ATLVBALib.dll т .EXP юЄышўрхЄё  юЄ шьхэш т√їюфэюую Їрщыр "F:\VSProjects\ATLVBA\x64\Release\ATLVBA.dll"; фшЁхъЄштр шуэюЁшЁєхЄё
+  ╤ючфрэшх ъюфр
+f:\vsprojects\atlvba\atlvba\test.cpp(18): warning C4715: CreateStdRegexA: чэрўхэшх тючтЁр∙рхЄё  эх яЁш тёхї яєЄ ї т√яюыэхэш
+  ╤ючфрэшх ъюфр чртхЁ°хэю
+ATLVBA.exp : warning LNK4070: фшЁхъЄштр /OUT:ATLVBALib.dll т .EXP юЄышўрхЄё  юЄ шьхэш т√їюфэюую Їрщыр "F:\VSProjects\ATLVBA\x64\Release\ATLVBA.dll"; фшЁхъЄштр шуэюЁшЁєхЄё
+  ATLVBA.vcxproj -> F:\VSProjects\ATLVBA\x64\Release\ATLVBA.dll
+F:\Microsoft Visual Studio\2017\Community\Common7\IDE\VC\VCTargets\Microsoft.CppCommon.targets(1840,5): warning MSB3075: команда "regsvr32 /s "F:\VSProjects\ATLVBA\x64\Release\ATLVBA.dll"" завершила работу с кодом 5. Убедитесь в наличии достаточных прав для выполнения этой команды.
+F:\Microsoft Visual Studio\2017\Community\Common7\IDE\VC\VCTargets\Microsoft.CppCommon.targets(1852,5): error MSB8011: не удалось зарегистрировать выход. Попробуйте включить перенаправления регистраций пользователя или зарегистрировать компонент из командной строки, запущенной с повышенными разрешениями.

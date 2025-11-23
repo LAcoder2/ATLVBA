@@ -1,17 +1,28 @@
 //#include "ATLVBA_i.h"
 //#include <string.h>
-#include <windows.h>
 //#include "framework.h"
 //#include <hash_map>
 #include <stdint.h>
+//#define MYFUNCTIONS_EXPORTS
+//#include "StrHelp.h"
+#include <windows.h>
 
+const __int3264 NULLPTR = 0;
+#if defined(_WIN64)
+	const __int64 ptrSz = 8;
+#else
+	const __int32 ptrSz = 4;
+#endif
 typedef enum CompareMethod {
 	BinaryCompare = 0,
 	TextCompare = 1
 } CompareMethod;
 
-BSTR ToAnsi(const BSTR str)
-{
+static __inline __int3264 MemFindRevW_(WCHAR* pcWhere, int lnWhere, WCHAR* pcWhat, int lnWhat);
+static __inline __int3264 MemFindRev_(char* pcWhere, int lnWhere, char* pcWhat, int lnWhat);
+
+//BSTR ToAnsi(const BSTR str);
+BSTR ToAnsi(const BSTR str){
 	if (str == NULL) return NULL;
 	DWORD size = *((DWORD*)str - 1);
 	if (size == 0) return NULL;
@@ -27,8 +38,8 @@ BSTR ToAnsi(const BSTR str)
 	WideCharToMultiByte(CP_ACP, 0, str, wideLen, (char*)result, ansiLen, NULL, NULL);
 	return result;
 }
-BSTR FromAnsi(const BSTR str)
-{
+//BSTR FromAnsi(const BSTR str);
+BSTR FromAnsi(const BSTR str){
 	if (str == NULL) return NULL;
 
 	DWORD size = *((DWORD*)str - 1);
@@ -189,19 +200,21 @@ int InStrByt3(int Start, const SAFEARRAY** ppsaWhere, const SAFEARRAY** ppsaWhat
 	return 0;
 }
 
+BSTR UCaseA(const BSTR psInp);
 BSTR UCaseA(const BSTR psInp) {
 	int szInp = *((int*)psInp-1);
 	BSTR psRet = SysAllocStringByteLen(psInp, szInp);
 	CharUpperBuffA(psRet, szInp);
 	return psRet;
 }
+BSTR LCaseA(const BSTR psInp);
 BSTR LCaseA(const BSTR psInp) {
 	int szInp = *((int*)psInp - 1);
 	BSTR psRet = SysAllocStringByteLen(psInp, szInp);
 	CharLowerBuffA(psRet, szInp);
 	return psRet;
 }
-__inline LPSTR CreateUpperStringA(const LPCSTR psInp, int lenInp) {
+static __inline LPSTR CreateUpperStringA(const LPCSTR psInp, int lenInp) {
 	int szAlloc = lenInp + 1;
 	LPSTR psTmp1 = (LPSTR)malloc(szAlloc);
 	if (psTmp1 != NULL) {
@@ -211,7 +224,7 @@ __inline LPSTR CreateUpperStringA(const LPCSTR psInp, int lenInp) {
 	return psTmp1;
 }
 #define CREATE_UPPER_STRING_A(psInp, szsInp) CreateUpperStringA((psInp), (szsInp))
-__inline LPWSTR CreateUpperStringW(const LPCWSTR psInp, int lenInp) {
+static __inline LPWSTR CreateUpperStringW(const LPCWSTR psInp, int lenInp) {
 	int szAlloc = lenInp * 2 + 2;
 	LPCWSTR psTmp1 = (LPWSTR)malloc(szAlloc);
 	if (psTmp1 != NULL) {
@@ -250,7 +263,7 @@ __inline LPWSTR CreateUpperStringW(const LPCWSTR psInp, int lenInp) {
 		} \
 
 	#define INSTRREVB_COMP_VALIDATION_B \
-		INT_PTR pcCheck; \
+		__int3264 pcCheck; \
 		char* pcMatch;\
 		char *psTmp1 = NULL, *psTmp2 = NULL; \
 		if (Compare == BinaryCompare) { \
@@ -265,7 +278,7 @@ __inline LPWSTR CreateUpperStringW(const LPCWSTR psInp, int lenInp) {
 		} \
 
 	#define INSTRREV_COMP_VALIDATION_W \
-		INT_PTR pcCheck; \
+		__int3264 pcCheck; \
 		WCHAR* pcMatch;\
 		WCHAR *psTmp1 = NULL, *psTmp2 = NULL; \
 		if (Compare == BinaryCompare) { \
@@ -304,15 +317,15 @@ __inline LPWSTR CreateUpperStringW(const LPCWSTR psInp, int lenInp) {
 		} \
 
 	#define INSTRREV_LOOP_RET_B \
-		INT_PTR lpret = _MemFindRev(pcCheck, Start, pcMatch, szMatch); \
+		__int3264 lpret = MemFindRev_(pcCheck, Start, pcMatch, szMatch); \
 		if (Compare == 0) {} else { free(psTmp1); free(psTmp2); } \
-		if (lpret) return (lpret - (INT_PTR)psCheck) + 1; \
+		if (lpret!=NULLPTR) return (int)((lpret - (__int3264)psCheck) + 1); \
 		return 0; \
 
 	#define INSTRREV_LOOP_RET_W \
-		INT_PTR lpret = _MemFindRevW(pcCheck, Start * szChr, pcMatch, szMatch); \
+		__int3264 lpret = MemFindRevW_(pcCheck, Start * szChr, pcMatch, szMatch); \
 		if (Compare == 0) {} else { free(psTmp1); free(psTmp2); } \
-		if (lpret) return (lpret - pcCheck)/2 + 1; \
+		if (lpret!=NULLPTR) return (int)((lpret - (__int3264)pcCheck)/2 + 1); \
 		return 0; \
 
 #endif	// region InStrRevMacroses
@@ -341,12 +354,7 @@ int InStrRevB3(BSTR psCheck, const BSTR psMatch, long Start, long EndFind, enum 
 	INSTRREV_LOOP_RET_B;
 }
 
-intptr_t MemFindRev(void* pcWhere, int szWhere, void* pcWhat, int szWhat) {
-	intptr_t szWhere_ = szWhere;
-	intptr_t szWhat_ = szWhat;
-	return _MemFindRev((char*)pcWhere, szWhere_, (char*)pcWhat, szWhat_);
-}
-__inline intptr_t _MemFindRev(char* pcWhere, intptr_t szWhere, char* pcWhat, intptr_t szWhat) {
+static __inline __int3264 MemFindRev_(char* pcWhere, int szWhere, char* pcWhat, int szWhat) {
 	char* pcWhere1 = pcWhere;
 	char cWhat1 = *pcWhat;
 	char* pcWhat2 = pcWhat + 1;
@@ -359,14 +367,21 @@ __inline intptr_t _MemFindRev(char* pcWhere, intptr_t szWhere, char* pcWhat, int
 				if (*pcWhere_ == *pcWhat) {}
 				else goto skip;
 			}
-			return (intptr_t)pcWhere;
+			__int3264 lpret; memcpy(&lpret, &pcWhere, ptrSz);
+			return lpret; // (__int3264)pcWhere;
 		}
 	skip:;
 	}
-	return NULL;
+	return NULLPTR;
+}
+//__declspec(dllexport)
+__int3264 __stdcall MemFindRev(void* pcWhere, int szWhere, void* pcWhat, int szWhat) {
+	/*__int3264 szWhere_ = szWhere;
+	__int3264 szWhat_ = szWhat;*/
+	return MemFindRev_((char*)pcWhere, szWhere, (char*)pcWhat, szWhat);
 }
 
-static __inline intptr_t _MemFindRevW(WCHAR* pcWhere, intptr_t lnWhere, WCHAR* pcWhat, intptr_t lnWhat) {
+static __inline __int3264 MemFindRevW_(WCHAR* pcWhere, int lnWhere, WCHAR* pcWhat, int lnWhat) {
 	WCHAR* pcWhere1 = pcWhere;
 	WCHAR cWhat1 = *pcWhat;
 	WCHAR* pcWhat2 = pcWhat + 1;
@@ -379,14 +394,16 @@ static __inline intptr_t _MemFindRevW(WCHAR* pcWhere, intptr_t lnWhere, WCHAR* p
 				if (*pcWhere_ == *pcWhat) {}
 				else goto skip;
 			}
-			return (intptr_t)pcWhere;
+			__int3264 lpret; memcpy(&lpret, &pcWhere, ptrSz);
+			return lpret; //(__int3264)pcWhere;
 		}
 	skip:;
 	}
-	return NULL;
+	return NULLPTR;
 }
-intptr_t MemFindRevW(void* pcWhere, int szWhere, void* pcWhat, int szWhat) {
-	return _MemFindRevW((WCHAR*)pcWhere, szWhere, (WCHAR*)pcWhat, szWhat);
+//__declspec(dllexport)
+__int3264 __stdcall MemFindRevW(void* pcWhere, int szWhere, void* pcWhat, int szWhat) {
+	return MemFindRevW_((WCHAR*)pcWhere, szWhere, (WCHAR*)pcWhat, szWhat);
 }
 
 BSTR ToUTF8(const BSTR sInp){
@@ -418,7 +435,7 @@ BSTR FromUTF8(const BSTR sInp){
 	return result;
 }
 
-__inline VARIANT_BOOL _EndsWith(char* pcWhere, int szWhere, char* pcWhat, int szWhat) {
+static __inline VARIANT_BOOL _EndsWith(char* pcWhere, int szWhere, char* pcWhat, int szWhat) {
 	if (szWhere < szWhat) return VARIANT_FALSE;
 	//if (pcWhere = pcWhat) return VARIANT_TRUE;
 	pcWhere += szWhere - szWhat;
@@ -446,7 +463,7 @@ VARIANT_BOOL EndsWithAry(SAFEARRAY** ppsaWhere, SAFEARRAY** ppsaWhat) {
 	return _EndsWith((char*)psaWhere->pvData, szWhere, (char*)psaWhat->pvData, szWhat);
 }
 
-__inline VARIANT_BOOL _StartsWith(char* pcWhere, int szWhere, char* pcWhat, int szWhat) {
+static __inline VARIANT_BOOL _StartsWith(char* pcWhere, int szWhere, char* pcWhat, int szWhat) {
 	if (szWhere < szWhat) return VARIANT_FALSE;
 	//if (pcWhere = pcWhat) return VARIANT_TRUE;
 	while (szWhat--) {
