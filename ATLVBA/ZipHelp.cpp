@@ -8,167 +8,72 @@
 void WriteBytesToZipFile(BSTR psFilePath, BSTR psZipPath, SAFEARRAY** ppsaBytes) {
 	CoInitialize(NULL);
 
+	IStorage* pStorage = NULL;
+	IStream* pStream = NULL;
+
 	do {
-		// Проверяем входные параметры
+		// Проверяем параметры
 		if (!psFilePath || !psZipPath || !ppsaBytes || !*ppsaBytes) {
-			MessageBox(NULL, L"Ошибка: Неверные параметры функции", L"Ошибка", MB_ICONERROR);
+			MessageBox(NULL, L"Неверные параметры", L"Ошибка", MB_ICONERROR);
 			break;
 		}
 
-		// Получаем информацию о SAFEARRAY
 		SAFEARRAY* psa = *ppsaBytes;
-		if (SafeArrayGetDim(psa) != 1) {
-			MessageBox(NULL, L"Ошибка: SAFEARRAY должен быть одномерным", L"Ошибка", MB_ICONERROR);
+
+		// Получаем данные из SAFEARRAY напрямую
+		BYTE* pData = (BYTE*)psa->pvData;
+		ULONG dataSize = psa->rgsabound[0].cElements * psa->cbElements;
+
+		if (dataSize == 0) {
+			MessageBox(NULL, L"Пустой массив данных", L"Ошибка", MB_ICONERROR);
 			break;
 		}
 
-		VARTYPE vt;
-		if (FAILED(SafeArrayGetVartype(psa, &vt)) || vt != VT_UI1) {
-			MessageBox(NULL, L"Ошибка: SAFEARRAY должен содержать байты (VT_UI1)", L"Ошибка", MB_ICONERROR);
-			break;
-		}
-
-		long lLowerBound, lUpperBound;
-		if (FAILED(SafeArrayGetLBound(psa, 1, &lLowerBound)) ||
-			FAILED(SafeArrayGetUBound(psa, 1, &lUpperBound))) {
-			MessageBox(NULL, L"Ошибка: Не удалось получить границы SAFEARRAY", L"Ошибка", MB_ICONERROR);
-			break;
-		}
-
-		long elementCount = lUpperBound - lLowerBound + 1;
-		if (elementCount <= 0) {
-			MessageBox(NULL, L"Ошибка: SAFEARRAY пустой", L"Ошибка", MB_ICONERROR);
-			break;
-		}
-
-		// Получаем указатель на данные
-		LPVOID pData = NULL;
-		HRESULT hr = SafeArrayAccessData(psa, &pData);
+		// Создаем объект compressed folder
+		CLSID clsidCompressedFolder;
+		HRESULT hr = CLSIDFromString(L"{E88DCCE0-B7B3-11d1-A9F0-00AA0060FA31}", &clsidCompressedFolder);
 		if (FAILED(hr)) {
-			MessageBox(NULL, L"Ошибка: Не удалось получить доступ к данным SAFEARRAY", L"Ошибка", MB_ICONERROR);
+			MessageBox(NULL, L"Не удалось получить CLSID", L"Ошибка", MB_ICONERROR);
 			break;
 		}
 
-		// Создаем временный файл с уникальным именем
-		WCHAR tempPath[MAX_PATH];
-		WCHAR tempFile[MAX_PATH];
-
-		if (!GetTempPath(MAX_PATH, tempPath)) {
-			MessageBox(NULL, L"Ошибка: Не удалось получить путь к временной директории", L"Ошибка", MB_ICONERROR);
-			SafeArrayUnaccessData(psa);
-			break;
-		}
-
-		// Извлекаем имя файла из psZipPath для временного файла
-		std::wstring zipPath(psZipPath);
-		size_t lastSlash = zipPath.find_last_of(L"/\\");
-		std::wstring fileName = (lastSlash != std::wstring::npos) ?
-			zipPath.substr(lastSlash + 1) : zipPath;
-
-		if (fileName.empty()) {
-			MessageBox(NULL, L"Ошибка: Неверное имя файла в архиве", L"Ошибка", MB_ICONERROR);
-			SafeArrayUnaccessData(psa);
-			break;
-		}
-
-		// Создаем временный файл с правильным расширением
-		if (!GetTempFileName(tempPath, L"ZIP", 0, tempFile)) {
-			MessageBox(NULL, L"Ошибка: Не удалось создать временный файл", L"Ошибка", MB_ICONERROR);
-			SafeArrayUnaccessData(psa);
-			break;
-		}
-
-		// Переименовываем временный файл чтобы иметь правильное расширение
-		std::wstring finalTempFile = tempFile;
-		finalTempFile += L"_" + fileName;
-
-		if (!MoveFile(tempFile, finalTempFile.c_str())) {
-			MessageBox(NULL, L"Ошибка: Не удалось переименовать временный файл", L"Ошибка", MB_ICONERROR);
-			DeleteFile(tempFile);
-			SafeArrayUnaccessData(psa);
-			break;
-		}
-
-		// Записываем данные во временный файл
-		std::ofstream file(finalTempFile, std::ios::binary);
-		if (!file.is_open()) {
-			MessageBox(NULL, L"Ошибка: Не удалось открыть временный файл для записи", L"Ошибка", MB_ICONERROR);
-			SafeArrayUnaccessData(psa);
-			DeleteFile(finalTempFile.c_str());
-			break;
-		}
-
-		if (!file.write(static_cast<const char*>(pData), elementCount)) {
-			MessageBox(NULL, L"Ошибка: Не удалось записать данные во временный файл", L"Ошибка", MB_ICONERROR);
-			file.close();
-			SafeArrayUnaccessData(psa);
-			DeleteFile(finalTempFile.c_str());
-			break;
-		}
-
-		file.close();
-		SafeArrayUnaccessData(psa);
-
-		// Используем IShellDispatch для копирования файла в архив
-		IShellDispatch* pShell = NULL;
-		Folder* pDestFolder = NULL;
-		VARIANT vDir, vFile, vOpt;
-
-		hr = CoCreateInstance(CLSID_Shell, NULL, CLSCTX_INPROC_SERVER, IID_IShellDispatch, (void**)&pShell);
+		// Получаем интерфейс IStorage
+		hr = StgOpenStorage(psFilePath, NULL, STGM_READWRITE | STGM_SHARE_EXCLUSIVE, NULL, 0, &pStorage);
 		if (FAILED(hr)) {
-			MessageBox(NULL, L"Ошибка: Не удалось создать экземпляр IShellDispatch", L"Ошибка", MB_ICONERROR);
-			DeleteFile(finalTempFile.c_str());
-			break;
+			// Если архив не существует, создаем пустой
+			hr = StgCreateDocfile(psFilePath, STGM_CREATE | STGM_READWRITE | STGM_SHARE_EXCLUSIVE, 0, &pStorage);
+			if (FAILED(hr)) {
+				MessageBox(NULL, L"Не удалось создать/открыть архив", L"Ошибка", MB_ICONERROR);
+				break;
+			}
 		}
 
-		// Открываем ZIP-архив как папку
-		vDir.vt = VT_BSTR;
-		vDir.bstrVal = SysAllocString(psFilePath);
-		hr = pShell->NameSpace(vDir, &pDestFolder);
+		// Создаем поток в хранилище
+		hr = pStorage->CreateStream(psZipPath, STGM_CREATE | STGM_WRITE | STGM_SHARE_EXCLUSIVE, 0, 0, &pStream);
 		if (FAILED(hr)) {
-			std::wstring errorMsg = L"Ошибка: Не удалось открыть ZIP архив: ";
-			errorMsg += psFilePath;
-			MessageBox(NULL, errorMsg.c_str(), L"Ошибка", MB_ICONERROR);
-			VariantClear(&vDir);
-			pShell->Release();
-			DeleteFile(finalTempFile.c_str());
+			MessageBox(NULL, L"Не удалось создать поток в архиве", L"Ошибка", MB_ICONERROR);
 			break;
 		}
 
-		// Копируем временный файл в архив
-		vFile.vt = VT_BSTR;
-		vFile.bstrVal = SysAllocString(finalTempFile.c_str());
-		vOpt.vt = VT_I4;
-		vOpt.lVal = 16; // FOF_NO_UI - не показывать диалоги прогресса и ошибок
-
-		// Выполняем копирование
-		pDestFolder->CopyHere(vFile, vOpt);
-
-		// Ожидаем завершения операции (важно дать время на обработку)
-		Sleep(3000);
-
-		// Проверяем, был ли файл добавлен в архив
-		// Можно добавить дополнительную проверку здесь
-
-		// Освобождаем ресурсы
-		pDestFolder->Release();
-		pShell->Release();
-		VariantClear(&vDir);
-		VariantClear(&vFile);
-		VariantClear(&vOpt);
-
-		// Удаляем временный файл
-		if (!DeleteFile(finalTempFile.c_str())) {
-			MessageBox(NULL, L"Предупреждение: Не удалось удалить временный файл", L"Предупреждение", MB_ICONWARNING);
+		// Записываем данные
+		ULONG cbWritten;
+		hr = pStream->Write(pData, dataSize, &cbWritten);
+		if (FAILED(hr) || cbWritten != dataSize) {
+			MessageBox(NULL, L"Ошибка записи данных", L"Ошибка", MB_ICONERROR);
+			break;
 		}
 
-		std::wstring successMsg = L"Данные успешно записаны в архив. Размер: ";
-		successMsg += std::to_wstring(elementCount);
-		successMsg += L" байт";
-		MessageBox(NULL, successMsg.c_str(), L"Успех", MB_ICONINFORMATION);
+		// Фиксируем изменения
+		pStream->Commit(STGC_DEFAULT);
+		pStorage->Commit(STGC_DEFAULT);
+
+		MessageBox(NULL, L"Данные успешно записаны в архив", L"Успех", MB_ICONINFORMATION);
 
 	} while (false);
 
+	// Освобождаем ресурсы
+	if (pStream) pStream->Release();
+	if (pStorage) pStorage->Release();
 	CoUninitialize();
 }
 
@@ -338,7 +243,8 @@ void WriteBytesToZipFile(BSTR psFilePath, BSTR psZipPath, SAFEARRAY** ppsaBytes)
 //
 //	CoUninitialize();
 //}
-
+// This code is a port of The trick code 
+// https://www.cyberforum.ru/visual-basic/thread3183774-page4.html#post17433575
 SAFEARRAY* UnzipFileToBytes(BSTR psFilePath, BSTR psZipPath) {
 	CoInitialize(NULL);
 	SAFEARRAY* pSafeArray = NULL;

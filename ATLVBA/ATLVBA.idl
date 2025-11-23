@@ -9,19 +9,29 @@ import "ocidl.idl";
 
 [
 	uuid(566442d4-10d6-4437-b9d4-836bd6a64c04),
-	version(1.0),
+	version(1.0)
 ]
 library ATLVBALib
 {
 	importlib("stdole2.tlb");
+	import "helper.idl";
 	typedef [public] void AnyType;
-	const __int3264 NullPtr = 0;
-	
+	//const __int3264 NullPtr = 0;
+	//cpp_quote("#include \"Constants.h\"")
 	typedef enum CompareMethod {
 		BinaryCompare = 0,
 		TextCompare = 1
 	} CompareMethod;
-
+	//[
+	//	dllname("<no entry points>"),
+	//	//uuid(343DB180-2BCC-1069-8215-00DD010EDFAA)
+	//]
+	module ConstModule {
+		//cpp_quote("#define PTR_SIZE 4");
+		const __int3264 NullPtr = 0;
+		//const long ptrSz = PTR_SIZE; // 0x00000004;
+		//const __int3264 varSz = VAR_SIZE;
+	};
 	//[
 	//	uuid(DB8F8B36-848D-45D8-BF77-C6C1ADEABB1C), 
 	//	dllname("ATLVBA.dll"),
@@ -228,7 +238,7 @@ library ATLVBALib
 			void __stdcall Call2_([in] __int3264 fn, [in, out] void* ret, [in] int retSz, void* a1, void* a2);
 		//void __stdcall Call2([in] __int3264 fn, [in, out] void* ret, [in] int retSz, [in, optional, defaultvalue(NullPtr)] void* arg1, [in, optional, defaultvalue(NullPtr)] void* arg2);
 	};
-
+	
 	[
 		dllname("Kernel32.dll"),
 		helpstring("Library Functions"),

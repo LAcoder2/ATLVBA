@@ -1,4 +1,4 @@
-#include "ATLVBA_i.h"
+//#include "ATLVBA_i.h"
 #include <windows.h>
 //#include <oaidl.h>
 

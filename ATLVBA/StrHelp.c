@@ -1,8 +1,14 @@
-#include "ATLVBA_i.h"
+//#include "ATLVBA_i.h"
 //#include <string.h>
 #include <windows.h>
 //#include "framework.h"
 //#include <hash_map>
+#include <stdint.h>
+
+typedef enum CompareMethod {
+	BinaryCompare = 0,
+	TextCompare = 1
+} CompareMethod;
 
 BSTR ToAnsi(const BSTR str)
 {
@@ -334,10 +340,13 @@ int InStrRevB3(BSTR psCheck, const BSTR psMatch, long Start, long EndFind, enum 
 
 	INSTRREV_LOOP_RET_B;
 }
-INT_PTR MemFindRev(char* pcWhere, int szWhere, char* pcWhat, int szWhat) {
-	return _MemFindRev(pcWhere, szWhere, pcWhat, szWhat);
+
+intptr_t MemFindRev(void* pcWhere, int szWhere, void* pcWhat, int szWhat) {
+	intptr_t szWhere_ = szWhere;
+	intptr_t szWhat_ = szWhat;
+	return _MemFindRev((char*)pcWhere, szWhere_, (char*)pcWhat, szWhat_);
 }
-__inline INT_PTR _MemFindRev(char* pcWhere, int szWhere, char* pcWhat, int szWhat) {
+__inline intptr_t _MemFindRev(char* pcWhere, intptr_t szWhere, char* pcWhat, intptr_t szWhat) {
 	char* pcWhere1 = pcWhere;
 	char cWhat1 = *pcWhat;
 	char* pcWhat2 = pcWhat + 1;
@@ -350,16 +359,14 @@ __inline INT_PTR _MemFindRev(char* pcWhere, int szWhere, char* pcWhat, int szWha
 				if (*pcWhere_ == *pcWhat) {}
 				else goto skip;
 			}
-			return (INT_PTR)pcWhere;
+			return (intptr_t)pcWhere;
 		}
 	skip:;
 	}
 	return NULL;
 }
-INT_PTR MemFindRevW(const WCHAR* pcWhere, int szWhere, const WCHAR* pcWhat, int szWhat) {
-	return _MemFindRevW(pcWhere, szWhere, pcWhat, szWhat);
-}
-__inline INT_PTR _MemFindRevW(WCHAR* pcWhere, int lnWhere, WCHAR* pcWhat, int lnWhat) {
+
+static __inline intptr_t _MemFindRevW(WCHAR* pcWhere, intptr_t lnWhere, WCHAR* pcWhat, intptr_t lnWhat) {
 	WCHAR* pcWhere1 = pcWhere;
 	WCHAR cWhat1 = *pcWhat;
 	WCHAR* pcWhat2 = pcWhat + 1;
@@ -372,11 +379,14 @@ __inline INT_PTR _MemFindRevW(WCHAR* pcWhere, int lnWhere, WCHAR* pcWhat, int ln
 				if (*pcWhere_ == *pcWhat) {}
 				else goto skip;
 			}
-			return (INT_PTR)pcWhere;
+			return (intptr_t)pcWhere;
 		}
 	skip:;
 	}
 	return NULL;
+}
+intptr_t MemFindRevW(void* pcWhere, int szWhere, void* pcWhat, int szWhat) {
+	return _MemFindRevW((WCHAR*)pcWhere, szWhere, (WCHAR*)pcWhat, szWhat);
 }
 
 BSTR ToUTF8(const BSTR sInp){

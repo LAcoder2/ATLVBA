@@ -7,8 +7,8 @@
 /* at Tue Jan 19 11:14:07 2038
  */
 /* Compiler settings for ATLVBA.idl:
-    Oicf, W1, Zp8, env=Win32 (32b run), target_arch=X86 8.01.0628 
-    protocol : dce , ms_ext, c_ext, robust
+    Oicf, W1, Zp8, env=Win64 (32b run), target_arch=AMD64 8.01.0628 
+    protocol : all , ms_ext, c_ext, robust
     error checks: allocation ref bounds_check enum stub_data 
     VC __declspec() decoration level: 
          __declspec(uuid()), __declspec(selectany), __declspec(novtable)
@@ -66,8 +66,6 @@ extern "C"{
 
 typedef /* [public] */ void AnyType;
 
-#define	NullPtr	( 0 )
-
 typedef 
 enum CompareMethod
     {
@@ -77,6 +75,18 @@ enum CompareMethod
 
 
 EXTERN_C const IID LIBID_ATLVBALib;
+
+
+#ifndef __ConstModule_MODULE_DEFINED__
+#define __ConstModule_MODULE_DEFINED__
+
+
+/* module ConstModule */
+
+
+const __int3264 NullPtr	=	0;
+
+#endif /* __ConstModule_MODULE_DEFINED__ */
 
 
 #ifndef __MemHelp_MODULE_DEFINED__

@@ -49,6 +49,9 @@
     <ClInclude Include="Initialization.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
+    <ClInclude Include="constants.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ATLVBA_i.c">

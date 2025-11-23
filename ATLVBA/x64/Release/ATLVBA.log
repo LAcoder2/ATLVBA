@@ -24,17 +24,69 @@
   urlmon.idl
   64 bit Processing C:\Program Files (x86)\Windows Kits\10\Include\10.0.26100.0\um\msxml.idl
   msxml.idl
+  64 bit Processing .\helper.idl
+  helper.idl
   64 bit Processing C:\Program Files (x86)\Windows Kits\10\Include\10.0.26100.0\um\oaidl.acf
   oaidl.acf
   64 bit Processing C:\Program Files (x86)\Windows Kits\10\Include\10.0.26100.0\um\ocidl.acf
   ocidl.acf
-  ATLVBA.cpp
-  ATLVBA_i.c
+.\ATLVBA.idl(157): warning MIDL2401: [defaultvalue] is applied to a non-VARIANT and [optional]. Please remove [optional] : [ Parameter 'Start' of Procedure 'InStrRevB' ( Module 'StrHelp' ) ]
+.\ATLVBA.idl(157): warning MIDL2401: [defaultvalue] is applied to a non-VARIANT and [optional]. Please remove [optional] : [ Parameter 'Compare' of Procedure 'InStrRevB' ( Module 'StrHelp' ) ]
+.\ATLVBA.idl(161): warning MIDL2401: [defaultvalue] is applied to a non-VARIANT and [optional]. Please remove [optional] : [ Parameter 'Start' of Procedure 'InStrRevB2' ( Module 'StrHelp' ) ]
+.\ATLVBA.idl(161): warning MIDL2401: [defaultvalue] is applied to a non-VARIANT and [optional]. Please remove [optional] : [ Parameter 'Length' of Procedure 'InStrRevB2' ( Module 'StrHelp' ) ]
+.\ATLVBA.idl(161): warning MIDL2401: [defaultvalue] is applied to a non-VARIANT and [optional]. Please remove [optional] : [ Parameter 'Compare' of Procedure 'InStrRevB2' ( Module 'StrHelp' ) ]
+.\ATLVBA.idl(165): warning MIDL2401: [defaultvalue] is applied to a non-VARIANT and [optional]. Please remove [optional] : [ Parameter 'Start' of Procedure 'InStrRevB3' ( Module 'StrHelp' ) ]
+.\ATLVBA.idl(165): warning MIDL2401: [defaultvalue] is applied to a non-VARIANT and [optional]. Please remove [optional] : [ Parameter 'EndFind' of Procedure 'InStrRevB3' ( Module 'StrHelp' ) ]
+.\ATLVBA.idl(165): warning MIDL2401: [defaultvalue] is applied to a non-VARIANT and [optional]. Please remove [optional] : [ Parameter 'Compare' of Procedure 'InStrRevB3' ( Module 'StrHelp' ) ]
+  ArrHelp.c
   CallHelp.c
 f:\vsprojects\atlvba\atlvba\callhelp.c(116): warning C4022: copyFnArr: несоответствие указателя для фактического параметра 2
-  StrHlp.c
+  MemHelp.c
+f:\vsprojects\atlvba\atlvba\memhelp.c(28): warning C4047: return: "__int64" отличается по уровням косвенного обращения от "const void *"
+f:\vsprojects\atlvba\atlvba\memhelp.c(31): warning C4047: return: "__int64" отличается по уровням косвенного обращения от "void *"
+f:\vsprojects\atlvba\atlvba\memhelp.c(37): warning C4047: =: "INT_PTR" отличается по уровням косвенного обращения от "void *"
+f:\vsprojects\atlvba\atlvba\memhelp.c(89): warning C4047: return: "__int64" отличается по уровням косвенного обращения от "void *"
+f:\vsprojects\atlvba\atlvba\memhelp.c(95): warning C4047: return: "__int64" отличается по уровням косвенного обращения от "const char *"
+f:\vsprojects\atlvba\atlvba\memhelp.c(97): warning C4047: return: "__int64" отличается по уровням косвенного обращения от "const char *"
+f:\vsprojects\atlvba\atlvba\memhelp.c(98): warning C4047: return: "__int64" отличается по уровням косвенного обращения от "const char *"
+f:\vsprojects\atlvba\atlvba\memhelp.c(103): warning C4047: return: "__int64" отличается по уровням косвенного обращения от "void *"
+f:\vsprojects\atlvba\atlvba\memhelp.c(116): warning C4047: return: "__int64" отличается по уровням косвенного обращения от "const char *"
+f:\vsprojects\atlvba\atlvba\memhelp.c(130): warning C4047: return: "__int64" отличается по уровням косвенного обращения от "const char *"
+f:\vsprojects\atlvba\atlvba\memhelp.c(135): warning C4047: return: "__int64" отличается по уровням косвенного обращения от "void *"
+f:\vsprojects\atlvba\atlvba\memhelp.c(84): warning C4090: инициализация: разные квалификаторы "const"
+  StrHelp.c
+f:\vsprojects\atlvba\atlvba\strhelp.c(125): warning C4244: return: преобразование "__int64" в "int", возможна потеря данных
+f:\vsprojects\atlvba\atlvba\strhelp.c(134): warning C4244: return: преобразование "__int64" в "int", возможна потеря данных
+f:\vsprojects\atlvba\atlvba\strhelp.c(143): warning C4244: return: преобразование "__int64" в "int", возможна потеря данных
+f:\vsprojects\atlvba\atlvba\strhelp.c(169): warning C4244: return: преобразование "__int64" в "int", возможна потеря данных
+f:\vsprojects\atlvba\atlvba\strhelp.c(178): warning C4244: return: преобразование "__int64" в "int", возможна потеря данных
+f:\vsprojects\atlvba\atlvba\strhelp.c(187): warning C4244: return: преобразование "__int64" в "int", возможна потеря данных
+f:\vsprojects\atlvba\atlvba\strhelp.c(194): warning C4133: функция: несовместимые типы - из "const BSTR" в "LPCSTR"
+f:\vsprojects\atlvba\atlvba\strhelp.c(195): warning C4133: функция: несовместимые типы - из "BSTR" в "LPSTR"
+f:\vsprojects\atlvba\atlvba\strhelp.c(200): warning C4133: функция: несовместимые типы - из "const BSTR" в "LPCSTR"
+f:\vsprojects\atlvba\atlvba\strhelp.c(201): warning C4133: функция: несовместимые типы - из "BSTR" в "LPSTR"
+f:\vsprojects\atlvba\atlvba\strhelp.c(218): warning C4090: функция: разные квалификаторы "const"
+f:\vsprojects\atlvba\atlvba\strhelp.c(219): warning C4090: функция: разные квалификаторы "const"
+f:\vsprojects\atlvba\atlvba\strhelp.c(221): warning C4090: return: разные квалификаторы "const"
+f:\vsprojects\atlvba\atlvba\strhelp.c(322): warning C4047: =: "INT_PTR" отличается по уровням косвенного обращения от "const BSTR"
+f:\vsprojects\atlvba\atlvba\strhelp.c(322): warning C4133: =: несовместимые типы - из "const BSTR" в "char *"
+f:\vsprojects\atlvba\atlvba\strhelp.c(322): warning C4133: функция: несовместимые типы - из "const BSTR" в "const LPCSTR"
+f:\vsprojects\atlvba\atlvba\strhelp.c(322): warning C4047: =: "INT_PTR" отличается по уровням косвенного обращения от "char *"
+f:\vsprojects\atlvba\atlvba\strhelp.c(323): warning C4013: _MemFindRev: нет определения; предполагается "extern" с возвратом типа "int"
+f:\vsprojects\atlvba\atlvba\strhelp.c(323): warning C4244: return: преобразование "INT_PTR" в "int", возможна потеря данных
+f:\vsprojects\atlvba\atlvba\strhelp.c(328): warning C4047: =: "INT_PTR" отличается по уровням косвенного обращения от "BSTR"
+f:\vsprojects\atlvba\atlvba\strhelp.c(328): warning C4133: =: несовместимые типы - из "const BSTR" в "char *"
+f:\vsprojects\atlvba\atlvba\strhelp.c(328): warning C4133: функция: несовместимые типы - из "BSTR" в "const LPCSTR"
+f:\vsprojects\atlvba\atlvba\strhelp.c(328): warning C4133: функция: несовместимые типы - из "const BSTR" в "const LPCSTR"
+f:\vsprojects\atlvba\atlvba\strhelp.c(328): warning C4047: =: "INT_PTR" отличается по уровням косвенного обращения от "char *"
+f:\vsprojects\atlvba\atlvba\strhelp.c(332): warning C4244: return: преобразование "INT_PTR" в "int", возможна потеря данных
+f:\vsprojects\atlvba\atlvba\strhelp.c(337): warning C4047: =: "INT_PTR" отличается по уровням косвенного обращения от "BSTR"
+f:\vsprojects\atlvba\atlvba\strhelp.c(337): warning C4133: =: несовместимые типы - из "const BSTR" в "char *"
+f:\vsprojects\atlvba\atlvba\strhelp.c(337): warning C4133: функция: несовместимые типы - из "BSTR" в "const LPCSTR"
+f:\vsprojects\atlvba\atlvba\strhelp.c(337): warning C4133: функция: несовместимые типы - из "const BSTR" в "const LPCSTR"
+f:\vsprojects\atlvba\atlvba\strhelp.c(337): warning C4047: =: "INT_PTR" отличается по уровням косвенного обращения от "char *"
+f:\vsprojects\atlvba\atlvba\strhelp.c(341): warning C4244: return: преобразование "INT_PTR" в "int", возможна потеря данных
+f:\vsprojects\atlvba\atlvba\strhelp.c(349): error C2371: _MemFindRev: переопределение; различные базовые типы
+f:\vsprojects\atlvba\atlvba\strhelp.c(366): warning C4047: return: "intptr_t" отличается по уровням косвенного обращения от "void *"
+f:\vsprojects\atlvba\atlvba\strhelp.c(386): warning C4047: return: "intptr_t" отличается по уровням косвенного обращения от "void *"
   Создание кода...
-  dllmain.cpp
-  Functions.cpp
-  MemHlp.cpp
-f:\vsprojects\atlvba\atlvba\memhlp.cpp : fatal error C1041: невозможно открыть базу данных программы F:\VSProjects\ATLVBA\ATLVBA\x64\Release\vc141.pdb; если несколько файлов CL.EXE осуществляют запись в один и тот же PDB-файл, воспользуйтесь /FS
