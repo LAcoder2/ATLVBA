@@ -7,8 +7,8 @@
 /* at Tue Jan 19 11:14:07 2038
  */
 /* Compiler settings for ATLVBA.idl:
-    Oicf, W1, Zp8, env=Win64 (32b run), target_arch=AMD64 8.01.0628 
-    protocol : all , ms_ext, c_ext, robust
+    Oicf, W1, Zp8, env=Win32 (32b run), target_arch=X86 8.01.0628 
+    protocol : dce , ms_ext, c_ext, robust
     error checks: allocation ref bounds_check enum stub_data 
     VC __declspec() decoration level: 
          __declspec(uuid()), __declspec(selectany), __declspec(novtable)
@@ -85,6 +85,14 @@ EXTERN_C const IID LIBID_ATLVBALib;
 
 
 const __int3264 NullPtr	=	0;
+
+const long ptrSz	=	0x4;
+
+const long varSz	=	0x16;
+
+const LPSTR lpstrStr	=	"HIJ";
+
+const BSTR bstrStr	=	L"XYZ";
 
 #endif /* __ConstModule_MODULE_DEFINED__ */
 
@@ -436,6 +444,119 @@ const __int3264 NullPtr	=	0;
 #endif /* __ArrHelp_MODULE_DEFINED__ */
 
 
+#ifndef __BitHelp_MODULE_DEFINED__
+#define __BitHelp_MODULE_DEFINED__
+
+
+/* module BitHelp */
+
+
+/* [entry] */ VARIANT_BOOL __stdcall GetBit( 
+    int num,
+    unsigned char pos);
+
+/* [entry] */ int __stdcall SetBit( 
+    int num,
+    unsigned char pos);
+
+/* [entry] */ int __stdcall ClearBit( 
+    int num,
+    unsigned char pos);
+
+/* [helpstring][entry] */ int __stdcall LeftBitShift( 
+    int num,
+    unsigned char shift);
+
+/* [helpstring][entry] */ int __stdcall RightBitShift( 
+    int num,
+    unsigned char shift);
+
+/* [helpstring][entry] */ int __stdcall BitRotateLeft( 
+    int num,
+    unsigned char shift);
+
+/* [helpstring][entry] */ int __stdcall BitRotateRight( 
+    int num,
+    unsigned char shift);
+
+/* [helpstring][entry] */ unsigned char __stdcall BitCount( 
+    int num);
+
+/* [helpstring][entry] */ int __stdcall ExtractBits( 
+    int n,
+    int start,
+    int length);
+
+/* [helpstring][entry] */ int __stdcall SetBits( 
+    int n,
+    unsigned char start,
+    unsigned char length,
+    int value);
+
+/* [helpstring][entry] */ VARIANT_BOOL __stdcall GetBit64( 
+    __int64 num,
+    unsigned char pos);
+
+/* [helpstring][entry] */ __int64 __stdcall SetBit64( 
+    __int64 num,
+    unsigned char pos);
+
+/* [helpstring][entry] */ __int64 __stdcall ClearBit64( 
+    __int64 num,
+    unsigned char pos);
+
+/* [helpstring][entry] */ __int64 __stdcall LeftBitShift64( 
+    __int64 num,
+    unsigned char shift);
+
+/* [helpstring][entry] */ __int64 __stdcall RightBitShift64( 
+    __int64 num,
+    unsigned char shift);
+
+/* [helpstring][entry] */ __int64 __stdcall BitRotateLeft64( 
+    __int64 num,
+    unsigned char shift);
+
+/* [helpstring][entry] */ __int64 __stdcall BitRotateRight64( 
+    __int64 num,
+    unsigned char shift);
+
+/* [helpstring][entry] */ unsigned char __stdcall BitCount64( 
+    __int64 num);
+
+/* [helpstring][entry] */ __int64 __stdcall ExtractBits64( 
+    __int64 n,
+    __int64 start,
+    __int64 length);
+
+/* [helpstring][entry] */ __int64 __stdcall SetBits64( 
+    __int64 n,
+    unsigned char start,
+    unsigned char length,
+    __int64 value);
+
+/* [helpstring][entry] */ BOOL __stdcall IsEven( 
+    int n);
+
+/* [helpstring][entry] */ BOOL __stdcall IsOdd( 
+    int n);
+
+/* [helpstring][entry] */ BOOL __stdcall IsAligned( 
+    void *ptr,
+    SIZE_T alignment);
+
+/* [helpstring][entry] */ BOOL __stdcall IsPowerOfTwo( 
+    int n);
+
+/* [helpstring][entry] */ int __stdcall LowestSetBit( 
+    int n);
+
+/* [helpstring][entry] */ int __stdcall HighestSetBit( 
+    int n);
+
+#endif /* __BitHelp_MODULE_DEFINED__ */
+
+
 #ifndef __ZipHelp_MODULE_DEFINED__
 #define __ZipHelp_MODULE_DEFINED__
 
@@ -443,7 +564,7 @@ const __int3264 NullPtr	=	0;
 /* module ZipHelp */
 
 
-/* [entry] */ SAFEARRAY * UnzipFileToBytes( 
+/* [entry] */ SAFEARRAY * __stdcall UnzipFileToBytes( 
     BSTR sFilePath,
     BSTR sZipPath);
 

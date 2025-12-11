@@ -200,14 +200,14 @@ int InStrByt3(int Start, const SAFEARRAY** ppsaWhere, const SAFEARRAY** ppsaWhat
 	return 0;
 }
 
-BSTR UCaseA(const BSTR psInp);
+//BSTR UCaseA(const BSTR psInp);
 BSTR UCaseA(const BSTR psInp) {
 	int szInp = *((int*)psInp-1);
 	BSTR psRet = SysAllocStringByteLen(psInp, szInp);
 	CharUpperBuffA(psRet, szInp);
 	return psRet;
 }
-BSTR LCaseA(const BSTR psInp);
+//BSTR LCaseA(const BSTR psInp);
 BSTR LCaseA(const BSTR psInp) {
 	int szInp = *((int*)psInp - 1);
 	BSTR psRet = SysAllocStringByteLen(psInp, szInp);

@@ -7,6 +7,7 @@
 import "oaidl.idl";
 import "ocidl.idl";
 
+//import "ATLVBA64.idl";
 [
 	uuid(566442d4-10d6-4437-b9d4-836bd6a64c04),
 	version(1.0)
@@ -14,9 +15,8 @@ import "ocidl.idl";
 library ATLVBALib
 {
 	importlib("stdole2.tlb");
-	import "helper.idl";
 	typedef [public] void AnyType;
-	//const __int3264 NullPtr = 0;
+	//import "helper.idl";
 	//cpp_quote("#include \"Constants.h\"")
 	typedef enum CompareMethod {
 		BinaryCompare = 0,
@@ -27,22 +27,21 @@ library ATLVBALib
 	//	//uuid(343DB180-2BCC-1069-8215-00DD010EDFAA)
 	//]
 	module ConstModule {
-		//cpp_quote("#define PTR_SIZE 4");
-		const __int3264 NullPtr = 0;
-		//const long ptrSz = PTR_SIZE; // 0x00000004;
-		//const __int3264 varSz = VAR_SIZE;
+		const __int3264 NullPtr = 0;	
+	//#if difined(_WIN64)
+		const long ptrSz = 0x00000004;
+		const long varSz = 0x00000016;
+	//#else
+		//const long long ptrSz = 0x00000008;
+		//const long long varSz = 0x00000024;
+	//#endif
+		const LPSTR lpstrStr = "HIJ"; //автоматически конвертируется в UTF-16
+		const BSTR bstrStr = L"XYZ"; //для bstr обязательно надо указывать L
+		//const LPWSTR wstrStr = L"IFG"; //не поддерживаемый automation тип
+		//const unsigned char ansiStr[] = "ABC"; //поддерживается Asc("ansiStr")
+
 	};
-	//[
-	//	uuid(DB8F8B36-848D-45D8-BF77-C6C1ADEABB1C), 
-	//	dllname("ATLVBA.dll"),
-	//	helpstring("Example functions module")
-	//]
-	//module MathFunctions{
-		//[entry(1)]
-		//double __stdcall ExampleFun(
-		//	[in] double a,
-		//	[in] double b);
-	//};
+	
 	[
 		uuid(9300AA31-2722-453F-9140-1082D95E486D),
 		dllname("ATLVBA.dll"),
@@ -52,6 +51,7 @@ library ATLVBALib
 		[entry("VarPtr")] __int3264 vp([in] void* Var);
 		[entry("VarPtr")] __int3264 ap([in] SAFEARRAY(void)* Arr);
 		[entry("VarPtr")] __int3264 ArrPtr([in] const SAFEARRAY(void)* Arr);
+		
 		[entry("GetMemPtr")] void GetMemPtr(const void* src, void* dst);
 		[entry("GetMem1")] void GetMem1(const void* src, void* dst);
 		[entry("GetMem2")] void GetMem2(const void* src, void* dst);
@@ -206,8 +206,63 @@ library ATLVBALib
 			[in, out] SAFEARRAY(VARIANT)* ArgList,
 			[in, out] SAFEARRAY(VARIANT)* rhs);*/
 	};
+	module BitHelp{
+		[entry("GetBit")] VARIANT_BOOL __stdcall GetBit(int num, unsigned char pos);
+		[entry("SetBit")] int __stdcall SetBit(int num, unsigned char pos);
+		[entry("ClearBit")] int __stdcall ClearBit(int num, unsigned char pos);
+		[entry("LeftBitShift"), helpstring("num << shift")]
+		int __stdcall LeftBitShift(int num, unsigned char shift);
+		[entry("RightBitShift"), helpstring("num >> shift")]
+		int __stdcall RightBitShift(int num, unsigned char shift);
+		[entry("BitRotateLeft"), helpstring("левое битовое вращение")]
+		int __stdcall BitRotateLeft(int num, unsigned char shift);
+		[entry("BitRotateRight"), helpstring("правое битовое вращение")]
+		int __stdcall BitRotateRight(int num, unsigned char shift);
+		[entry("BitCount"), helpstring("кол-во установленных битов")]
+		unsigned char __stdcall BitCount(int num);
+		[entry("ExtractBits"), helpstring("Извлечь биты с позиции start длиной length. Пример: ExtractBits(0xABCD, 4, 8) -> извлечёт 0xBC")]
+		int __stdcall ExtractBits(int n, int start, int length);
+		[entry("SetBits"), helpstring("Установить биты из n с позиции 'start' длиной 'length' в значение 'value'")]
+		int __stdcall SetBits(int n, unsigned char start, unsigned char length, int value);
+
+		[entry("GetBit64"), helpstring("")]
+		VARIANT_BOOL __stdcall GetBit64(__int64 num, unsigned char pos);
+		[entry("SetBit64"), helpstring("")]
+		__int64 __stdcall SetBit64(__int64 num, unsigned char pos);
+		[entry("ClearBit64"), helpstring("")]
+		__int64 __stdcall ClearBit64(__int64 num, unsigned char pos);
+		[entry("LeftBitShift64"), helpstring("")]
+		__int64 __stdcall LeftBitShift64(__int64 num, unsigned char shift);
+		[entry("RightBitShift64"), helpstring("")]
+		__int64 __stdcall RightBitShift64(__int64 num, unsigned char shift);
+		[entry("BitRotateLeft64"), helpstring("")]
+		__int64 __stdcall BitRotateLeft64(__int64 num, unsigned char shift);
+		[entry("BitRotateRight64"), helpstring("")]
+		__int64 __stdcall BitRotateRight64(__int64 num, unsigned char shift);
+		[entry("BitCount64"), helpstring("")]
+		unsigned char __stdcall BitCount64(__int64 num);
+		[entry("ExtractBits64"), helpstring("")]
+		__int64 __stdcall ExtractBits64(__int64 n, __int64 start, __int64 length);
+		[entry("SetBits64"), helpstring("")]
+		__int64 __stdcall SetBits64(__int64 n, unsigned char start, unsigned char length, __int64 value);
+
+		[entry("IsEven"), helpstring("Проверка четности")]
+		BOOL __stdcall IsEven(int n);
+		[entry("IsOdd"), helpstring("Проверка нечетности")]
+		BOOL __stdcall IsOdd(int n);	// Нечётное
+		[entry("IsAligned"), helpstring("Проверка выравнивания адреса. alignment должно быть степенью двойки")]
+		BOOL __stdcall IsAligned(void* ptr, size_t alignment);
+		[entry("IsPowerOfTwo"), helpstring("Проверка, является ли число степенью двойки")]
+		BOOL __stdcall IsPowerOfTwo(int n);
+		[entry("LowestSetBit"), helpstring("Поиск самого младшего установленного бита\nПример: 12 (1100) & -12 (0100) = 4 (0100)")]
+		int __stdcall LowestSetBit(int n);
+		[entry("HighestSetBit_msvc"), helpstring("поиск самого старшего установленного бита")]
+		int __stdcall HighestSetBit(int n);
+	};
 	module ZipHelp{
-		[entry("UnzipFileToBytes")] SAFEARRAY(byte) UnzipFileToBytes(BSTR sFilePath, BSTR sZipPath);
+		[entry("UnzipFileToBytes")] 
+			SAFEARRAY(byte) __stdcall 
+			UnzipFileToBytes(BSTR sFilePath, BSTR sZipPath);
 	};
 	[hidden]
 	module CallHelp{

@@ -85,8 +85,37 @@ EXPORTS
 		CCall10
 	;===ZipHelp===
 		UnzipFileToBytes
+	;===BitHelp
+		GetBit
+		SetBit
+		ClearBit
+		LeftBitShift
+		RightBitShift
+		BitRotateLeft
+		BitRotateRight
+		BitCount
+		ExtractBits
+		SetBits
+		GetBit64
+		SetBit64
+		ClearBit64
+		LeftBitShift64
+		RightBitShift64
+		BitRotateLeft64
+		BitRotateRight64
+		BitCount64
+		ExtractBits64
+		SetBits64
+		IsEven
+		IsOdd
+		IsAligned
+		IsPowerOfTwo
+		LowestSetBit
+		HighestSetBit_msvc
+				
 	;===Tests===		
-		WriteBytesToZipFile
+		;GetCFBStrukt
+		;WriteBytesToZipFile
 		CreateStdRegexA
 		DestroyStdRegex
 		StdRE_ExtractPositionsA
