@@ -335,7 +335,29 @@ int InStrRevB(const BSTR psCheck, const BSTR psMatch, long Start, enum CompareMe
 	INSTRREVB_COMP_VALIDATION_B;
 	INSTRREV_LOOP_RET_B;
 }
-int InStrRevB2(BSTR psCheck, const BSTR psMatch, long Start, long Length, enum CompareMethod Compare) {
+//int InStrRevByt(const SAFEARRAY** ppsaCheck, const SAFEARRAY** ppsaMatch, long Start, enum CompareMethod Compare);
+#define INSTRREVBYT_VAR_PREPARE_B \
+	/*const int szChr = 1;*/ \
+	if (*ppsaCheck!=NULL && *ppsaMatch!=NULL) {} else return 0; /*проверка на инициализацию SA*/ \
+	LPSAFEARRAY psaCheck = *ppsaCheck;\
+	LPSAFEARRAY psaMatch = *ppsaMatch;\
+	/*if (psaCheck->cDims == 1 && psaMatch->cDims == 1) {} else return 0;// проверка на векторность*/ \
+	char* psCheck = (char*)psaCheck->pvData;\
+	int lnCheck = psaCheck->rgsabound[0].cElements;\
+	int szCheck = lnCheck; \
+	char* psMatch = (char*)psaMatch->pvData;\
+	int szMatch = psaMatch->rgsabound[0].cElements;\
+	/*if (szCheck > 0 && szMatch > 0) {} else return 0; //проверка наличия данных в массивах*/\
+	
+int InStrRevByt(const SAFEARRAY** ppsaCheck, const SAFEARRAY** ppsaMatch, long Start, enum CompareMethod Compare) {
+	INSTRREVBYT_VAR_PREPARE_B;	
+	INSTRREV_START_VALIDATION;
+	
+	INSTRREVB_COMP_VALIDATION_B;
+
+	INSTRREV_LOOP_RET_B;
+}
+int InStrRevB2(const BSTR psCheck, const BSTR psMatch, long Start, long Length, enum CompareMethod Compare) {
 	INSTRREVB_VAR_PREPARE_B;
 	INSTRREV_START_VALIDATION;
 	INSTRREVB_COMP_VALIDATION_B;

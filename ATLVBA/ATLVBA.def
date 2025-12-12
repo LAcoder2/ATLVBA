@@ -104,6 +104,8 @@ EXPORTS
 		BitRotateLeft64
 		BitRotateRight64
 		BitCount64
+		BitToggle
+		BitToggle64
 		ExtractBits64
 		SetBits64
 		IsEven
@@ -111,8 +113,7 @@ EXPORTS
 		IsAligned
 		IsPowerOfTwo
 		LowestSetBit
-		HighestSetBit_msvc
-				
+		HighestSetBit_msvc				
 	;===Tests===		
 		;GetCFBStrukt
 		;WriteBytesToZipFile

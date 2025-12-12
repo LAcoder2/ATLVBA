@@ -150,3 +150,13 @@ unsigned __int64 SetBits64(unsigned __int64 n, unsigned char start, unsigned cha
 	unsigned __int64 mask = ((1u << length) - 1) << start;
 	return (n & ~mask) | ((value << start) & mask);
 }
+
+//Переключение бита
+int BitToggle(int num, unsigned char pos) {
+	if (pos > 31) return num; // Проверка границ
+	return num ^ (1 << pos); // Ключевая операция XOR
+}
+__int64 BitToggle64(__int64 num, unsigned char pos) {
+	if (pos > 63) return num; 
+	return num ^ (1LL << pos); // 1LL - long long константа
+}

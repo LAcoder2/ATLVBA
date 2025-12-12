@@ -132,49 +132,74 @@ library ATLVBALib
 		[entry("MemFindRevW")] __int3264 MemFindRevW([in] void* pWhere, [in] int szWhere, [in] void* pWhat, [in] int szWhat);
 	};
 	module StrHelp{
-		[entry("StrLen")] INT32 StrLen([in] BSTR str);
-		[entry("StrLenB")] INT32 StrLenB([in] BSTR str);
-		[entry("ArrLen")] INT32 ArrLen([in] SAFEARRAY(void)* Arr);
-		[entry("ToAnsi")] BSTR ToAnsi([in] BSTR str);
-		[entry("ToAnsi"), helpstring("Alias ToAnsi")] BSTR toA([in] BSTR str);
-		[entry("FromAnsi")] BSTR FromAnsi([in] BSTR str);
-		[entry("FromAnsi"), helpstring("Alias FromAnsi")] BSTR fmA([in] BSTR str);
+		[entry("StrLen")] 
+			INT32 StrLen([in] BSTR str);
+		[entry("StrLenB")] 
+			INT32 StrLenB([in] BSTR str);
+		[entry("ArrLen")] 
+			INT32 ArrLen([in] SAFEARRAY(void)* Arr);
+		[entry("ToAnsi")] 
+			BSTR ToAnsi([in] BSTR str);
+		[entry("ToAnsi"), helpstring("Alias ToAnsi")] 
+			BSTR toA([in] BSTR str);
+		[entry("FromAnsi")] 
+			BSTR FromAnsi([in] BSTR str);
+		[entry("FromAnsi"), helpstring("Alias FromAnsi")] 
+			BSTR fmA([in] BSTR str);
 		[entry("InStrB_")]
-		INT32 InStrB_([in] int Start, [in] BSTR Where, [in] BSTR What);
+			INT32 InStrB_([in] int Start, [in] BSTR Where, [in] BSTR What);
 		[entry("InStrB2")] 
-		INT32 InStrB2([in] int Start, [in] BSTR Where, [in] BSTR What, [in] int Length);
+			INT32 InStrB2([in] int Start, [in] BSTR Where, [in] BSTR What, [in] int Length);
 		[entry("InStrB3")] 
-		INT32 InStrB3([in] int Start, [in] BSTR Where, [in] BSTR What, [in] int lStop);
+			INT32 InStrB3([in] int Start, [in] BSTR Where, [in] BSTR What, [in] int lStop);
 		[entry("InStrByt"), helpstring("Analogue of the InStrB function for byte arrays")]
-		INT32 InStrByt([in] int Start, [in] SAFEARRAY(byte)* Where, [in] SAFEARRAY(byte)* What);
+			INT32 InStrByt([in] int Start, [in] SAFEARRAY(byte)* Where, [in] SAFEARRAY(byte)* What);
 		[entry("InStrByt2")] 
-		INT32 InStrByt2([in] int Start, [in] SAFEARRAY(byte)* Where, [in] SAFEARRAY(byte)* What, [in] int Length);
+			INT32 InStrByt2([in] int Start, [in] SAFEARRAY(byte)* Where, [in] SAFEARRAY(byte)* What, [in] int Length);
 		[entry("InStrByt3")] 
-		INT32 InStrByt3([in] int Start, [in] SAFEARRAY(byte)* Where, [in] SAFEARRAY(byte)* What, [in] int lStop);
+			INT32 InStrByt3([in] int Start, [in] SAFEARRAY(byte)* Where, [in] SAFEARRAY(byte)* What, [in] int lStop);
 		[entry("InStrRevB")] 
-		long InStrRevB([in] BSTR psCheck, [in] BSTR psMatch, 
-			[in, optional, defaultvalue(0)] long Start, 
-			[in, optional, defaultvalue(BinaryCompare)] CompareMethod Compare);
+			long InStrRevB([in] BSTR psCheck, [in] BSTR psMatch, 
+				[in, optional, defaultvalue(0)] long Start, 
+				[in, optional, defaultvalue(BinaryCompare)] CompareMethod Compare);
 		[entry("InStrRevB2")] 
-		long InStrRevB2([in] BSTR psCheck, [in] BSTR psMatch,
-			[in, optional, defaultvalue(0)] long Start, [in, optional, defaultvalue(0)] long Length, 
-			[in, optional, defaultvalue(BinaryCompare)] CompareMethod Compare);
+			long InStrRevB2([in] BSTR psCheck, [in] BSTR psMatch,
+				[in, optional, defaultvalue(0)] long Start, [in, optional, defaultvalue(0)] long Length, 
+				[in, optional, defaultvalue(BinaryCompare)] CompareMethod Compare);
 		[entry("InStrRevB3")]
-		long InStrRevB3([in] BSTR psCheck, [in] BSTR psMatch,
-			[in, optional, defaultvalue(0)] long Start, [in, optional, defaultvalue(0)] long EndFind,
-			[in, optional, defaultvalue(BinaryCompare)] CompareMethod Compare);
-		[entry("ToUTF8")] BSTR ToUTF8([in] const BSTR sInp);
-		[entry("ToUTF8"), helpstring("Alias ToUTF8")] BSTR toU8([in] const BSTR sInp);
-		[entry("FromUTF8")] BSTR FromUTF8([in] const BSTR sInp);
-		[entry("FromUTF8"), helpstring("Alias FromUTF8")] BSTR fmU8([in] const BSTR sInp);
-		[entry("UCaseA")] BSTR UCaseA([in] const BSTR psInp);
-		[entry("LCaseA")] BSTR LCaseA([in] const BSTR psInp);
-		[entry("StartsWith")] VARIANT_BOOL StartsWith(BSTR sWhere, BSTR sWhat);
-		[entry("EndsWith")] VARIANT_BOOL EndsWith(BSTR sWhere, BSTR sWhat);
-		[entry("StartsWithAry")] VARIANT_BOOL StartsWithByt(SAFEARRAY(byte)* Where, SAFEARRAY(byte)* What);
-		[entry("EndsWithAry")] VARIANT_BOOL EndsWithByt(SAFEARRAY(byte)* Where, SAFEARRAY(byte)* What);
-		[entry("StartsWithAry")] VARIANT_BOOL StartsWithInt(SAFEARRAY(short)* Where, SAFEARRAY(short)* What);
-		[entry("EndsWithAry")] VARIANT_BOOL EndsWithInt(SAFEARRAY(short)* Where, SAFEARRAY(short)* What);
+			long InStrRevB3([in] BSTR psCheck, [in] BSTR psMatch,
+				[in, optional, defaultvalue(0)] long Start, [in, optional, defaultvalue(0)] long EndFind,
+				[in, optional, defaultvalue(BinaryCompare)] CompareMethod Compare);
+		[entry("ToUTF8")] 
+			BSTR ToUTF8([in] const BSTR sInp);
+		[entry("ToUTF8"), helpstring("Alias ToUTF8")] 
+			BSTR toU8([in] const BSTR sInp);
+		[entry("FromUTF8")] 
+			BSTR FromUTF8([in] const BSTR sInp);
+		[entry("FromUTF8"), helpstring("Alias FromUTF8")] 
+			BSTR fmU8([in] const BSTR sInp);
+		[entry("UCaseA")] 
+			BSTR UCaseA([in] const BSTR psInp);
+		[entry("LCaseA")] 
+			BSTR LCaseA([in] const BSTR psInp);
+		[entry("StartsWith")] 
+			VARIANT_BOOL 
+			StartsWith(BSTR sWhere, BSTR sWhat);
+		[entry("EndsWith")] 
+			VARIANT_BOOL 
+			EndsWith(BSTR sWhere, BSTR sWhat);
+		[entry("StartsWithAry")] 
+			VARIANT_BOOL 
+			StartsWithByt(SAFEARRAY(byte)* Where, SAFEARRAY(byte)* What);
+		[entry("EndsWithAry")] 
+			VARIANT_BOOL 
+			EndsWithByt(SAFEARRAY(byte)* Where, SAFEARRAY(byte)* What);
+		[entry("StartsWithAry")] 
+			VARIANT_BOOL 
+			StartsWithInt(SAFEARRAY(short)* Where, SAFEARRAY(short)* What);
+		[entry("EndsWithAry")] 
+			VARIANT_BOOL 
+			EndsWithInt(SAFEARRAY(short)* Where, SAFEARRAY(short)* What);
 	};
 	module ArrHelp{		
 		[entry("isObjInit")] VARIANT_BOOL isArrayInit([in] SAFEARRAY(void)* Arr);		
@@ -209,6 +234,8 @@ library ATLVBALib
 	module BitHelp{
 		[entry("GetBit")] VARIANT_BOOL __stdcall GetBit(int num, unsigned char pos);
 		[entry("SetBit")] int __stdcall SetBit(int num, unsigned char pos);
+		[entry("BitToggle")] int __stdcall BitToggle(int num, unsigned char pos);
+		[entry("BitToggle64")] __int64 __stdcall BitToggle64(__int64 num, unsigned char pos);
 		[entry("ClearBit")] int __stdcall ClearBit(int num, unsigned char pos);
 		[entry("LeftBitShift"), helpstring("num << shift")]
 		int __stdcall LeftBitShift(int num, unsigned char shift);
